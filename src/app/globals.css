@@ -57,3 +57,21 @@
 .card-shine:hover::before {
   left: 100%;
 }
+
+@layer utilities {
+  .floating-menu {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) translateX(-50%);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+  100% {
+    transform: translateY(0px) translateX(-50%);
+  }
+}
