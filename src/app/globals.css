@@ -19,5 +19,41 @@
 }
 
 .glass-effect {
-  @apply backdrop-blur-lg bg-background/60 border border-divider;
+  @apply backdrop-blur-lg bg-background/40 
+         border border-white/20 dark:border-white/10 
+         shadow-xl hover:shadow-2xl 
+         transition-all duration-300;
+}
+
+/* Add a subtle gradient overlay to cards */
+.backdrop-blur-lg {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+/* Add a subtle shine effect */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.card-shine:hover::before {
+  left: 100%;
 }

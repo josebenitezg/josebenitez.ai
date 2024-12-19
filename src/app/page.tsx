@@ -33,7 +33,7 @@ export default function Home() {
         <div className="space-y-4">
           <h1 className="text-4xl font-bold">
             Hi, I'm <span className="text-success">Jose</span> 
-            <span className="animate-pulse ml-2">_</span>
+            <span className="animate-[pulse_0.5s_ease-in-out_infinite] ml-2">_</span>
           </h1>
           <p className="text-xl text-default-500 max-w-2xl">
             Obsessed with neural networks and biohacking. I tinker with awesome tech at{" "}
@@ -49,9 +49,9 @@ export default function Home() {
       <section className="space-y-6">
         <h2 className="text-3xl font-bold">What I'm Into</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="backdrop-blur-lg bg-background/60">
+          <Card className="backdrop-blur-lg bg-background/40 border-1 border-white/20 dark:border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
             <CardHeader className="flex gap-3">
-              <GiBrain className="w-8 h-8 text-success" />
+              <CircleStackIcon className="w-8 h-8 text-success" />
               <p className="text-xl font-semibold">Neural Networks</p>
             </CardHeader>
             <CardBody>
@@ -61,7 +61,7 @@ export default function Home() {
             </CardBody>
           </Card>
 
-          <Card className="backdrop-blur-lg bg-background/60">
+          <Card className="backdrop-blur-lg bg-background/40 border-1 border-white/20 dark:border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
             <CardHeader className="flex gap-3">
               <BeakerIcon className="w-8 h-8 text-success" />
               <p className="text-xl font-semibold">Biohacking</p>
@@ -73,7 +73,7 @@ export default function Home() {
             </CardBody>
           </Card>
 
-          <Card className="backdrop-blur-lg bg-background/60">
+          <Card className="backdrop-blur-lg bg-background/40 border-1 border-white/20 dark:border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
             <CardHeader className="flex gap-3">
               <CodeBracketIcon className="w-8 h-8 text-success" />
               <p className="text-xl font-semibold">Open Source</p>
@@ -91,7 +91,7 @@ export default function Home() {
       <section className="space-y-6">
         <h2 className="text-3xl font-bold">Featured Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="backdrop-blur-lg bg-background/60">
+          <Card className="backdrop-blur-lg bg-background/40 border-1 border-white/20 dark:border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
             <CardHeader className="flex gap-3">
               <div className="flex flex-col">
                 <p className="text-xl font-semibold">Intuitivo Platform</p>
@@ -114,7 +114,7 @@ export default function Home() {
             </CardFooter>
           </Card>
 
-          <Card className="backdrop-blur-lg bg-background/60">
+          <Card className="backdrop-blur-lg bg-background/40 border-1 border-white/20 dark:border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
             <CardHeader className="flex gap-3">
               <div className="flex flex-col">
                 <p className="text-xl font-semibold">Biohacking Dashboard</p>
@@ -160,7 +160,7 @@ export default function Home() {
               isPressable
               as={Link}
               href={`/blog/post-${index + 1}`}
-              className="backdrop-blur-lg bg-background/60"
+              className="backdrop-blur-lg bg-background/40 border-1 border-white/20 dark:border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
             >
               <CardHeader className="flex gap-3">
                 <div className="flex flex-col">

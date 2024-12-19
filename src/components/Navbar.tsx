@@ -23,7 +23,7 @@ export default function Navbar() {
       <NavbarBrand>
         <Link href="/" className="font-bold text-inherit">
           <span className="text-primary">&lt;</span>
-          YourName
+          Joselo
           <span className="text-primary">/&gt;</span>
         </Link>
       </NavbarBrand>
