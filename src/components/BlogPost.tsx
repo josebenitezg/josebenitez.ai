@@ -2,13 +2,14 @@
 
 import React from 'react'
 import { MDXRemote } from 'next-mdx-remote'
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote/rsc'
 import { Card, Chip } from '@nextui-org/react'
 import Image from 'next/image';
 
 interface BlogPostProps {
   title: string
   date: string
-  content: string
+  content: MDXRemoteSerializeResult
   tags: string[]
   description?: string
   image?: string

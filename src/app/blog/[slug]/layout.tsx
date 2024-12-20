@@ -1,17 +1,14 @@
-import { generateMetadata } from './metadata'
+type LayoutProps = {
+  children: React.ReactNode;
+  params: Promise<{ slug: string }>;
+}
 
-export { generateMetadata }
-
-interface LayoutProps {
-    children: React.ReactNode;
-    params: Promise<{ slug: string }>;
-  }
+export default async function BlogPostLayout(props: LayoutProps) {
+  const { slug } = await props.params;
   
-  export default async function BlogPostLayout({
-    children,
-    params
-  }: LayoutProps) {
-    const { slug: _slug} = await params;
-    return children;
-  }
-  
+  return (
+    <div>
+      {props.children}
+    </div>
+  );
+}

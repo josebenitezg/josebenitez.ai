@@ -3,38 +3,46 @@
 import { getPostBySlug } from '@/lib/blog'
 import BlogPost from '@/components/BlogPost'
 import { serialize } from 'next-mdx-remote/serialize'
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { use } from 'react'
 
-interface BlogPost {
-  title: string;
-  content: string;
-  date: string;
-  tags: string[];
-  description: string;
-  image: string;
-  // add other relevant fields
+type Post = {
+  title: string
+  date: string
+  description: string
+  tags: string[]
+  image?: string
+  content: string
+  mdxSource: MDXRemoteSerializeResult
+  slug: string
 }
 
 export default function BlogPostPage({ 
   params 
 }: { 
-  params: Promise<{ slug: string }> | { slug: string }
+  params: Promise<{ slug: string }> 
 }) {
-  const [postData, setPostData] = useState<BlogPost | null>(null)
+  const [postData, setPostData] = useState<Post | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const loadPost = async () => {
-      const resolvedParams = await params
       try {
-        const post = await getPostBySlug(resolvedParams.slug)
+        const { slug } = await params;
+        const post = await getPostBySlug(slug)
+        
         if (!post) {
           notFound()
           return
         }
+        
         const mdxSource = await serialize(post.content)
-        setPostData({ ...post, mdxSource })
+        setPostData({ 
+          ...post,
+          mdxSource
+        })
       } catch (error) {
         console.error('Error loading post:', error)
         notFound()
@@ -60,7 +68,7 @@ export default function BlogPostPage({
       content={postData.mdxSource}
       tags={postData.tags}
       description={postData.description}
-      image={postData.image}
+      image={postData.image ?? ''} 
     />
   )
 }
