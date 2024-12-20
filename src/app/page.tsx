@@ -89,54 +89,70 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Featured Projects */}
+        {/* Featured Highlights */}
         <section className="space-y-6">
-          <h2 className="text-3xl font-bold">Featured Projects</h2>
+          <h2 className="text-3xl font-bold">Featured Highlights</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="glassmorphism neural-glow shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
               <CardHeader className="flex gap-3">
                 <div className="flex flex-col">
-                  <p className="text-xl font-semibold">Intuitivo Platform</p>
+                  <p className="text-xl font-semibold">AWS & MIT Recognition</p>
                 </div>
               </CardHeader>
               <CardBody>
-                <p className="text-default-500">
-                  Building innovative tech solutions at intuitivo.com, focusing on machine learning and AI applications.
-                </p>
+                <div className="space-y-4">
+                  <Link 
+                    href="https://aws.amazon.com/blogs/machine-learning/intuitivo-achieves-higher-throughput-while-saving-on-ai-ml-costs-using-aws-inferentia-and-pytorch/"
+                    isExternal
+                    className="block text-default-500 hover:text-success"
+                  >
+                    📝 AWS Blog Collaboration - Optimizing AI/ML with Inferentia Chips
+                  </Link>
+                  <Link 
+                    href="https://www.innovatorsunder35.com/the-list/jos%C3%A9-ben%C3%ADtez/"
+                    isExternal
+                    className="block text-default-500 hover:text-success"
+                  >
+                    🏆 MIT Innovator Under 35 - Class of 2022
+                  </Link>
+                </div>
                 <div className="flex gap-2 mt-4">
-                  <Chip color="success" variant="flat">Machine Learning</Chip>
-                  <Chip color="warning" variant="flat">Neural Networks</Chip>
-                  <Chip color="primary" variant="flat">AI</Chip>
+                  <Chip color="success" variant="flat">AWS</Chip>
+                  <Chip color="warning" variant="flat">MIT</Chip>
+                  <Chip color="primary" variant="flat">Innovation</Chip>
                 </div>
               </CardBody>
-              <CardFooter>
-                <Button color="success" variant="ghost">
-                  Learn More
-                </Button>
-              </CardFooter>
             </Card>
 
             <Card className="glassmorphism neural-glow shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
               <CardHeader className="flex gap-3">
                 <div className="flex flex-col">
-                  <p className="text-xl font-semibold">Biohacking Dashboard</p>
+                  <p className="text-xl font-semibold">Speaking Engagements</p>
                 </div>
               </CardHeader>
               <CardBody>
-                <p className="text-default-500">
-                  Personal project for tracking and analyzing biometric data using machine learning algorithms.
-                </p>
+                <div className="space-y-4">
+                  <Link 
+                    href="https://www.youtube.com/live/xWZ9mW7Z4Tc?si=e9eTO6KDl4xBdAHA&t=21551"
+                    isExternal
+                    className="block text-default-500 hover:text-success"
+                  >
+                    📹 YoloVision Conf - Foundation Models in Data Collection
+                  </Link>
+                  <Link 
+                    href="https://www.youtube.com/watch?v=IXhUOPBqyz4"
+                    isExternal
+                    className="block text-default-500 hover:text-success"
+                  >
+                    📹 Chat with OpenCV CEO Satya Mallick
+                  </Link>
+                </div>
                 <div className="flex gap-2 mt-4">
-                  <Chip color="success" variant="flat">Python</Chip>
-                  <Chip color="warning" variant="flat">TensorFlow</Chip>
-                  <Chip color="primary" variant="flat">Biometrics</Chip>
+                  <Chip color="success" variant="flat">Talks</Chip>
+                  <Chip color="warning" variant="flat">Computer Vision</Chip>
+                  <Chip color="primary" variant="flat">AI</Chip>
                 </div>
               </CardBody>
-              <CardFooter>
-                <Button color="success" variant="ghost">
-                  View Project
-                </Button>
-              </CardFooter>
             </Card>
           </div>
         </section>
