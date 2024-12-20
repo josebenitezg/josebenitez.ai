@@ -26,43 +26,41 @@ export default function LatestPosts() {
   return (
     <section className="space-y-6">
       <h2 className="text-3xl font-bold">Latest Insights</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {posts.map((post) => (
           <Card
             key={post.slug}
             isPressable
             as={Link}
             href={`/blog/${post.slug}`}
-            className="glassmorphism neural-glow shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
+            className="glassmorphism neural-glow shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] w-full md:max-w-sm"
           >
             {post.image && (
-              <div className="w-full h-48 overflow-hidden">
+              <div className="relative w-full aspect-[16/9]">
                 <Image
                   src={post.image || '/default-image.jpg'}
                   alt={post.title}
-                  width={400}
-                  height={200}
-                  className="rounded-lg shadow-lg"
+                  fill
+                  className="object-cover"
+                  priority
                 />
               </div>
             )}
-            <CardHeader className="flex gap-3">
-              <div className="flex flex-col">
-                <p className="text-xl font-semibold">{post.title}</p>
-              </div>
+            <CardHeader className="pb-2">
+              <h3 className="text-lg font-semibold">{post.title}</h3>
             </CardHeader>
-            <CardBody>
-              <p className="text-default-500">{post.description}</p>
+            <CardBody className="py-2">
+              <p className="text-default-500 text-sm line-clamp-2">{post.description}</p>
             </CardBody>
-            <CardFooter className="flex justify-between">
-              <span className="text-sm text-default-400">
+            <CardFooter className="flex justify-between pt-2">
+              <span className="text-xs text-default-400">
                 {new Date(post.date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric'
                 })}
               </span>
-              <span className="text-success">Read more →</span>
+              <span className="text-success text-sm">Read more →</span>
             </CardFooter>
           </Card>
         ))}
