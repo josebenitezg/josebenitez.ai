@@ -3,11 +3,12 @@
 import React from 'react'
 import { MDXRemote } from 'next-mdx-remote'
 import { Card, Chip } from '@nextui-org/react'
+import Image from 'next/image';
 
-type BlogPostProps = {
+interface BlogPostProps {
   title: string
   date: string
-  content: any
+  content: string
   tags: string[]
   description?: string
   image?: string
@@ -26,10 +27,12 @@ export default function BlogPost({
       <Card className="p-6 glassmorphism neural-glow">
         {image && (
           <div className="mb-6 rounded-lg overflow-hidden">
-            <img 
-              src={image} 
+            <Image 
+              src={image || '/default-image.jpg'} 
               alt={title}
-              className="w-full h-[300px] object-cover"
+              width={800}
+              height={400}
+              className="rounded-lg shadow-lg"
             />
           </div>
         )}

@@ -3,6 +3,7 @@
 import { getAllPosts, type BlogPost } from '@/lib/blog'
 import { Card, Chip, Link } from '@nextui-org/react'
 import { useEffect, useState } from 'react'
+import Image from 'next/image';
 
 export default function BlogIndex() {
   const [posts, setPosts] = useState<BlogPost[]>([])
@@ -29,9 +30,11 @@ export default function BlogIndex() {
             <div className="flex gap-6">
               {post.image && (
                 <div className="w-48 h-32 rounded-lg overflow-hidden shrink-0">
-                  <img 
+                  <Image 
                     src={post.image} 
                     alt={post.title}
+                    width={500}
+                    height={300}
                     className="w-full h-full object-cover"
                   />
                 </div>

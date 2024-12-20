@@ -2,10 +2,16 @@ import { generateMetadata } from './metadata'
 
 export { generateMetadata }
 
-export default function BlogPostLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return children
-} 
+interface LayoutProps {
+    children: React.ReactNode;
+    params: Promise<{ slug: string }>;
+  }
+  
+  export default async function BlogPostLayout({
+    children,
+    params
+  }: LayoutProps) {
+    const { slug: _slug} = await params;
+    return children;
+  }
+  

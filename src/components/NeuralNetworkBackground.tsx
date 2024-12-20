@@ -59,7 +59,7 @@ export default function NeuralNetworkBackground() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      neuronsRef.current.forEach((neuron, i) => {
+      neuronsRef.current.forEach((neuron) => {
         // Update position
         neuron.x += neuron.vx;
         neuron.y += neuron.vy;

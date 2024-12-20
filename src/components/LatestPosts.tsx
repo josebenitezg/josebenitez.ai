@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Card, CardHeader, CardBody, CardFooter, Link } from "@nextui-org/react"
 import { BlogPost } from '@/lib/blog'
+import Image from 'next/image';
 
 export default function LatestPosts() {
   const [posts, setPosts] = useState<BlogPost[]>([])
@@ -36,10 +37,12 @@ export default function LatestPosts() {
           >
             {post.image && (
               <div className="w-full h-48 overflow-hidden">
-                <img
-                  src={post.image}
+                <Image
+                  src={post.image || '/default-image.jpg'}
                   alt={post.title}
-                  className="w-full h-full object-cover"
+                  width={400}
+                  height={200}
+                  className="rounded-lg shadow-lg"
                 />
               </div>
             )}

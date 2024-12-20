@@ -34,7 +34,7 @@ export default function Home() {
           />
           <div className="space-y-4">
             <h1 className="text-4xl font-bold">
-              Hi, I'm <span className="text-success">Jose</span> 
+              Hi, I&apos;m <span className="text-success">Jose</span> 
               <span className="animate-[pulse_0.5s_ease-in-out_infinite] ml-2">_</span>
             </h1>
             <p className="text-xl text-default-500 max-w-2xl">
@@ -49,7 +49,7 @@ export default function Home() {
 
         {/* Areas of Interest */}
         <section className="space-y-6">
-          <h2 className="text-3xl font-bold">What I'm Into</h2>
+          <h2 className="text-3xl font-bold">What I&apos;m Into</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="glassmorphism neural-glow shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
               <CardHeader className="flex gap-3">

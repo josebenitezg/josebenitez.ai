@@ -6,12 +6,22 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { notFound } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
+interface BlogPost {
+  title: string;
+  content: string;
+  date: string;
+  tags: string[];
+  description: string;
+  image: string;
+  // add other relevant fields
+}
+
 export default function BlogPostPage({ 
   params 
 }: { 
   params: Promise<{ slug: string }> | { slug: string }
 }) {
-  const [postData, setPostData] = useState<any>(null)
+  const [postData, setPostData] = useState<BlogPost | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
