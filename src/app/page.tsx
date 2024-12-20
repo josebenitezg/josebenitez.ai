@@ -9,15 +9,14 @@ import {
   Chip,
   Link,
   Avatar,
-  Divider,
 } from "@nextui-org/react";
 import {
   CircleStackIcon,
   BeakerIcon,
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
-import { GiBrain } from 'react-icons/gi';
 import NeuralNetworkBackground from "@/components/NeuralNetworkBackground";
+import LatestPosts from "@/components/LatestPosts";
 
 export default function Home() {
   return (
@@ -143,44 +142,7 @@ export default function Home() {
         </section>
 
         {/* Latest Blog Posts */}
-        <section className="space-y-6">
-          <h2 className="text-3xl font-bold">Latest Insights</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                title: "The Future of Neural Networks",
-                preview: "Exploring the latest developments in neural architecture and their implications for AI.",
-                date: "March 15, 2024",
-              },
-              {
-                title: "Biohacking: A Developer's Approach",
-                preview: "How I use technology to optimize cognitive performance and productivity.",
-                date: "March 10, 2024",
-              },
-            ].map((post, index) => (
-              <Card
-                key={index}
-                isPressable
-                as={Link}
-                href={`/blog/post-${index + 1}`}
-                className="glassmorphism neural-glow shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
-              >
-                <CardHeader className="flex gap-3">
-                  <div className="flex flex-col">
-                    <p className="text-xl font-semibold">{post.title}</p>
-                  </div>
-                </CardHeader>
-                <CardBody>
-                  <p className="text-default-500">{post.preview}</p>
-                </CardBody>
-                <CardFooter className="flex justify-between">
-                  <span className="text-sm text-default-400">{post.date}</span>
-                  <span className="text-success">Read more →</span>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        </section>
+        <LatestPosts />
       </div>
     </>
   );
