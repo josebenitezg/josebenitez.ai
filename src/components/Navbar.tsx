@@ -7,6 +7,7 @@ import {
   NavbarItem,
   Button,
   Link,
+  Kbd,
 } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
@@ -16,12 +17,15 @@ import {
   HomeIcon,
   InformationCircleIcon,
   RectangleStackIcon,
+  MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import { usePathname } from 'next/navigation';
+import { useKBar } from "kbar";
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
+  const { query } = useKBar();
 
   const menuItems = [
     { name: "Home", href: "/", icon: HomeIcon },
@@ -68,7 +72,19 @@ export default function Navbar() {
           </NavbarItem>
         </NavbarContent>
 
-        <NavbarContent justify="end">
+        <NavbarContent justify="end" className="gap-4">
+          <NavbarItem>
+            <Button
+              variant="light"
+              className="gap-2"
+              startContent={<MagnifyingGlassIcon className="h-4 w-4" />}
+              onClick={() => query.toggle()}
+            >
+              <div className="flex gap-1 items-center text-sm">
+                <Kbd keys={["command"]}>K</Kbd>
+              </div>
+            </Button>
+          </NavbarItem>
           <NavbarItem>
             <Button
               isIconOnly

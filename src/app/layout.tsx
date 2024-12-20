@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Providers } from "./providers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { CommandPalette } from "@/components/CommandPalette";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,13 +18,15 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <Providers>
-            <div className="min-h-screen bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/80 flex flex-col">
-              <Navbar />
-              <main className="container mx-auto px-4 py-8 flex-grow">
-                {children}
-              </main>
-              <Footer />
-            </div>
+            <CommandPalette>
+              <div className="min-h-screen bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/80 flex flex-col">
+                <Navbar />
+                <main className="container mx-auto px-4 py-8 flex-grow">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </CommandPalette>
           </Providers>
         </ThemeProvider>
       </body>
