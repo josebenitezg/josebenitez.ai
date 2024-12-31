@@ -3,7 +3,7 @@
 import { KBarProvider, KBarPortal, KBarPositioner, KBarAnimator, KBarSearch, useMatches, KBarResults, Action } from "kbar";
 import { Kbd } from "@nextui-org/react";
 import { ReactNode } from "react";
-import { HomeIcon, RectangleStackIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
+import { HomeIcon, RectangleStackIcon, InformationCircleIcon, WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
 
 interface ActionItem extends Action {
   icon?: ReactNode;
@@ -69,6 +69,14 @@ export function CommandPalette({ children }: { children: ReactNode }) {
       keywords: "about info",
       icon: <InformationCircleIcon />,
       perform: () => (window.location.pathname = "/about"),
+    },
+    {
+      id: "projects",
+      name: "Projects",
+      shortcut: ["p"],
+      keywords: "projects work portfolio",
+      icon: <WrenchScrewdriverIcon />,
+      perform: () => (window.location.pathname = "/projects"),
     },
   ];
 
