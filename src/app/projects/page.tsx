@@ -17,7 +17,7 @@ export default function Projects() {
               <span className="animate-[pulse_0.5s_ease-in-out_infinite] ml-2">_</span>
             </h1>
             <p className="text-xl text-default-500">
-              I'm currently building something awesome here. Check back soon to see my latest projects and experiments in AI, neural networks, and biohacking.
+              I'm currently building something here. Check back soon to see my latest projects and experiments.
             </p>
             <div className="flex justify-center gap-2 pt-4">
               <div className="w-2 h-2 rounded-full bg-success/60 animate-[pulse_1.5s_ease-in-out_infinite]" />
