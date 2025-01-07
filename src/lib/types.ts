@@ -9,4 +9,6 @@ export interface Paper {
   github_link: string;
   arxiv_link: string;
   media?: string;
+  created_at?: string;
+  updated_at?: string;
 } 
