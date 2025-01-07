@@ -71,7 +71,7 @@ export default function Navbar() {
           </NavbarItem>
           <NavbarItem>
             <Link color="foreground" href="/papers">
-              Pepe Agent
+              Pepe
             </Link>
           </NavbarItem>
           <NavbarItem>
