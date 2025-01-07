@@ -3,18 +3,61 @@ import { OpenAI } from 'openai';
 import { Paper } from '@/lib/types';
 import * as cheerio from 'cheerio';
 
-const openai = new OpenAI();
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+async function fetchWithRetry(url: string, options: RequestInit, maxRetries = 3): Promise<Response> {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      const response = await fetch(url, options);
+      if (response.ok) return response;
+      
+      // If we get a 429 (Too Many Requests), wait before retrying
+      if (response.status === 429) {
+        const retryAfter = response.headers.get('Retry-After');
+        await new Promise(resolve => setTimeout(resolve, (parseInt(retryAfter || '10') * 1000)));
+        continue;
+      }
+      
+      throw new Error(`HTTP error! status: ${response.status}`);
+    } catch (error) {
+      if (i === maxRetries - 1) throw error;
+      await new Promise(resolve => setTimeout(resolve, 1000 * Math.pow(2, i))); // Exponential backoff
+    }
+  }
+  throw new Error('Max retries reached');
+}
 
 async function getPapersFromPapersWithCode(): Promise<Partial<Paper>[]> {
   try {
-    const response = await fetch('https://paperswithcode.com/', {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
+    const response = await fetchWithRetry('https://paperswithcode.com/', {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-      }
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+        'Cache-Control': 'max-age=0'
+      },
+      signal: controller.signal,
+      next: { revalidate: 3600 } // Cache for 1 hour
+    });
+
+    clearTimeout(timeoutId);
+
+    // Log the response status and headers in production
+    console.log('Papers API Response:', {
+      status: response.status,
+      statusText: response.statusText,
+      headers: Object.fromEntries(response.headers.entries())
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
     }
 
     const html = await response.text();
