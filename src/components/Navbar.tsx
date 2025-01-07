@@ -19,6 +19,7 @@ import {
   RectangleStackIcon,
   MagnifyingGlassIcon,
   WrenchScrewdriverIcon,
+  DocumentIcon,
 } from "@heroicons/react/24/outline";
 import { usePathname } from 'next/navigation';
 import { useKBar } from "kbar";
@@ -31,6 +32,7 @@ export default function Navbar() {
   const menuItems = [
     { name: "Home", href: "/", icon: HomeIcon },
     { name: "Blog", href: "/blog", icon: RectangleStackIcon },
+    { name: "Papers", href: "/papers", icon: DocumentIcon },
     { name: "Projects", href: "/projects", icon: WrenchScrewdriverIcon },
     { name: "About", href: "/about", icon: InformationCircleIcon },
   ];
@@ -65,6 +67,11 @@ export default function Navbar() {
           <NavbarItem>
             <Link color="foreground" href="/projects">
               Projects
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link color="foreground" href="/papers">
+              Pepe Agent
             </Link>
           </NavbarItem>
           <NavbarItem>
