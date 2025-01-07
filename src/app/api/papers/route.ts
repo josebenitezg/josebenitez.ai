@@ -96,7 +96,7 @@ async function generatePaperSummary(paper: Partial<Paper>) {
 
   try {
     const completion = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-4o",
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt }
