@@ -95,3 +95,45 @@
     filter: drop-shadow(0 0 2rem rgba(136, 255, 136, 0.5));
   }
 }
+
+/* Add these to your existing styles */
+.prose {
+  @apply text-lg leading-relaxed;
+}
+
+.prose p {
+  @apply mb-6;
+}
+
+.prose blockquote {
+  @apply pl-4 border-l-4 border-success/50 italic;
+}
+
+.prose ul {
+  @apply list-disc list-inside mb-6;
+}
+
+.prose ol {
+  @apply list-decimal list-inside mb-6;
+}
+
+/* Add smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhance code block styling */
+.prose pre {
+  @apply my-6 p-4 rounded-lg bg-black/50 overflow-x-auto;
+}
+
+.prose code {
+  @apply px-1.5 py-0.5 rounded bg-default-200/20 text-sm;
+}
+
+/* Add responsive font sizes */
+@media (max-width: 640px) {
+  .prose {
+    @apply text-base;
+  }
+}

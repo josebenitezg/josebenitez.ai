@@ -7,6 +7,8 @@ import type { MDXRemoteSerializeResult } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { use } from 'react'
+import { Card } from '@nextui-org/react'
+import ReadingProgress from '@/components/ReadingProgress'
 
 type Post = {
   title: string
@@ -54,7 +56,17 @@ export default function BlogPostPage({
   }, [params])
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return (
+      <div className="max-w-4xl mx-auto py-8 px-4">
+        <Card className="p-8 glassmorphism">
+          <div className="space-y-4 animate-pulse">
+            <div className="w-3/4 h-8 bg-default-200/20 rounded" />
+            <div className="w-1/2 h-6 bg-default-200/20 rounded" />
+            <div className="aspect-video bg-default-200/20 rounded" />
+          </div>
+        </Card>
+      </div>
+    );
   }
 
   if (!postData) {
@@ -62,13 +74,16 @@ export default function BlogPostPage({
   }
 
   return (
-    <BlogPost
-      title={postData.title}
-      date={postData.date}
-      content={postData.mdxSource}
-      tags={postData.tags}
-      description={postData.description}
-      image={postData.image ?? ''} 
-    />
+    <>
+      <ReadingProgress />
+      <BlogPost
+        title={postData.title}
+        date={postData.date}
+        content={postData.mdxSource}
+        tags={postData.tags}
+        description={postData.description}
+        image={postData.image ?? ''} 
+      />
+    </>
   )
 }
