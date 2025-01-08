@@ -27,9 +27,9 @@ export default function BlogIndex() {
             href={`/blog/${post.slug}`}
             className="p-6 glassmorphism hover:scale-[1.02] transition-all duration-300"
           >
-            <div className="flex gap-6">
+            <div className="flex flex-col md:flex-row gap-6">
               {post.image && (
-                <div className="w-48 h-32 rounded-lg overflow-hidden shrink-0">
+                <div className="w-full md:w-48 h-48 md:h-32 rounded-lg overflow-hidden shrink-0">
                   <Image 
                     src={post.image} 
                     alt={post.title}
@@ -42,8 +42,8 @@ export default function BlogIndex() {
               <div className="flex-1">
                 <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
                 <p className="text-default-500 mb-4">{post.description}</p>
-                <div className="flex justify-between items-center">
-                  <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag: string) => (
                       <Chip 
                         key={tag} 
@@ -56,10 +56,10 @@ export default function BlogIndex() {
                       </Chip>
                     ))}
                   </div>
-                  <time className="text-default-500 text-sm">
+                  <time className="text-default-500 text-sm sm:ml-auto">
                     {new Date(post.date).toLocaleDateString('en-US', {
                       year: 'numeric',
-                      month: 'long',
+                      month: 'short',
                       day: 'numeric'
                     })}
                   </time>
