@@ -44,8 +44,10 @@ export default function Repos() {
   const getVisibleRepos = () => {
     if (!repos.length) return [];
     const items = [...repos, ...repos, ...repos];
-    // Show only 1 repo on mobile, 2 on tablets, and 3 on desktop
-    const visibleCount = window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    const visibleCount: number = window.innerWidth < 640 ? 1 
+      : window.innerWidth < 1024 ? 2 
+      : window.innerWidth < 1280 ? 3 
+      : 4;
     return items.slice(currentIndex, currentIndex + visibleCount);
   };
 
@@ -94,7 +96,7 @@ export default function Repos() {
     <>
       <NeuralNetworkBackground />
       <div className="min-h-[80vh] flex flex-col items-center justify-center px-4">
-        <div className="w-full max-w-6xl mx-auto space-y-8">
+        <div className="w-full max-w-7xl mx-auto space-y-8">
           {/* Terminal-like header */}
           <div className="flex items-center gap-2 font-mono text-success overflow-x-auto w-full text-sm sm:text-base">
             <span>$</span>
@@ -105,36 +107,36 @@ export default function Repos() {
           </div>
 
           {/* Repository Carousel */}
-          <div className="relative h-[450px] sm:h-[400px] w-full overflow-hidden">
-            <div className="flex gap-4 absolute transition-transform duration-500">
+          <div className="relative h-[400px] w-full overflow-hidden">
+            <div className="flex gap-4 absolute left-1/2 -translate-x-1/2 transition-transform duration-500">
               {!loading && getVisibleRepos().map((repo, idx) => (
                 <motion.div
                   key={`${repo.id}-${idx}`}
                   initial={{ opacity: 0, x: 100 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -100 }}
-                  className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)]"
+                  className="w-[280px]"
                 >
-                  <Card className="h-full glassmorphism">
-                    <CardBody className="flex flex-col gap-4">
+                  <Card className="h-[350px] glassmorphism">
+                    <CardBody className="flex flex-col gap-3 h-full">
                       <div className="flex items-center gap-3">
-                        <CodeBracketIcon className="w-6 h-6 text-success" />
-                        <h2 className="text-lg sm:text-xl font-bold truncate">{repo.name}</h2>
+                        <CodeBracketIcon className="w-6 h-6 text-success shrink-0" />
+                        <h2 className="text-lg font-bold truncate">{repo.name}</h2>
                       </div>
 
-                      <div className="min-h-[60px]">
+                      <div className="h-[60px]">
                         {repo.description ? (
-                          <p className="text-default-500 text-sm sm:text-base line-clamp-2">
+                          <p className="text-default-500 text-sm line-clamp-2">
                             {repo.description}
                           </p>
                         ) : (
-                          <p className="text-default-400 text-sm sm:text-base italic">
+                          <p className="text-default-400 text-sm italic">
                             No description available
                           </p>
                         )}
                       </div>
 
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 min-h-[32px]">
                         {repo.language && (
                           <Chip
                             color={getLanguageColor(repo.language)}
@@ -144,7 +146,7 @@ export default function Repos() {
                             {repo.language}
                           </Chip>
                         )}
-                        {repo.topics.slice(0, window.innerWidth < 640 ? 1 : 2).map((topic) => (
+                        {repo.topics.slice(0, 2).map((topic) => (
                           <Chip key={topic} variant="flat" size="sm">
                             {topic}
                           </Chip>
@@ -153,11 +155,11 @@ export default function Repos() {
 
                       <div className="flex gap-4 mt-auto">
                         <div className="flex items-center gap-1 text-sm">
-                          <StarIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <StarIcon className="w-4 h-4" />
                           <span>{repo.stargazers_count}</span>
                         </div>
                         <div className="flex items-center gap-1 text-sm">
-                          <ArrowPathRoundedSquareIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <ArrowPathRoundedSquareIcon className="w-4 h-4" />
                           <span>{repo.forks_count}</span>
                         </div>
                       </div>
