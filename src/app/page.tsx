@@ -36,7 +36,6 @@ interface Repository {
 
 export default function Home() {
   const [repos, setRepos] = useState<Repository[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -54,16 +53,6 @@ export default function Home() {
 
     fetchRepos();
   }, []);
-
-  useEffect(() => {
-    if (repos.length === 0) return;
-    
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % (repos.length * 3));
-    }, 2000);
-
-    return () => clearInterval(timer);
-  }, [repos.length]);
 
   const getLanguageColor = (language: string): "success" | "warning" | "primary" | "danger" | "secondary" | "default" => {
     const colors = {
@@ -226,96 +215,81 @@ export default function Home() {
         <section className="space-y-6">
           <h2 className="text-3xl font-bold">Latest Repositories</h2>
           <div className="relative h-[400px] w-full overflow-hidden">
-            <div 
-              className="flex gap-4 absolute left-1/2 transition-transform duration-300 ease-linear repo-carousel"
-              style={{
-                transform: `translateX(calc(-50% - ${currentIndex * (280 + 16)}px))`
-              }}
-            >
-              {!loading && getVisibleRepos().map((repo, idx) => (
-                <motion.div
-                  key={`${repo.id}-${idx}`}
-                  className="w-[280px] shrink-0"
-                  initial={false}
-                >
-                  <Card className="h-[350px] glassmorphism">
-                    <CardBody className="flex flex-col gap-3 h-full">
-                      <div className="flex items-center gap-3">
-                        <CodeBracketIcon className="w-6 h-6 text-success shrink-0" />
-                        <h2 className="text-lg font-bold truncate">{repo.name}</h2>
-                      </div>
+            <div className="flex gap-4 absolute left-0 animate-slideRepos">
+              {!loading && (
+                <>
+                  {getVisibleRepos().map((repo, idx) => (
+                    <motion.div
+                      key={`${repo.id}-${idx}`}
+                      className="w-[280px] shrink-0"
+                      initial={false}
+                    >
+                      <Card className="h-[350px] glassmorphism">
+                        <CardBody className="flex flex-col gap-3 h-full">
+                          <div className="flex items-center gap-3">
+                            <CodeBracketIcon className="w-6 h-6 text-success shrink-0" />
+                            <h2 className="text-lg font-bold truncate">{repo.name}</h2>
+                          </div>
 
-                      <div className="h-[60px]">
-                        {repo.description ? (
-                          <p className="text-default-500 text-sm line-clamp-2">
-                            {repo.description}
-                          </p>
-                        ) : (
-                          <p className="text-default-400 text-sm italic">
-                            No description available
-                          </p>
-                        )}
-                      </div>
+                          <div className="h-[60px]">
+                            {repo.description ? (
+                              <p className="text-default-500 text-sm line-clamp-2">
+                                {repo.description}
+                              </p>
+                            ) : (
+                              <p className="text-default-400 text-sm italic">
+                                No description available
+                              </p>
+                            )}
+                          </div>
 
-                      <div className="flex flex-wrap gap-2 min-h-[32px]">
-                        {repo.language && (
-                          <Chip
-                            color={getLanguageColor(repo.language)}
-                            variant="flat"
+                          <div className="flex flex-wrap gap-2 min-h-[32px]">
+                            {repo.language && (
+                              <Chip
+                                color={getLanguageColor(repo.language)}
+                                variant="flat"
+                                size="sm"
+                              >
+                                {repo.language}
+                              </Chip>
+                            )}
+                            {repo.topics.slice(0, 2).map((topic) => (
+                              <Chip key={topic} variant="flat" size="sm">
+                                {topic}
+                              </Chip>
+                            ))}
+                          </div>
+
+                          <div className="flex gap-4 mt-auto">
+                            <div className="flex items-center gap-1 text-sm">
+                              <StarIcon className="w-4 h-4" />
+                              <span>{repo.stargazers_count}</span>
+                            </div>
+                            <div className="flex items-center gap-1 text-sm">
+                              <ArrowPathRoundedSquareIcon className="w-4 h-4" />
+                              <span>{repo.forks_count}</span>
+                            </div>
+                          </div>
+                        </CardBody>
+                        <CardFooter>
+                          <Button
+                            as={Link}
+                            href={repo.html_url}
+                            target="_blank"
+                            color="success"
+                            variant="ghost"
                             size="sm"
+                            className="w-full"
                           >
-                            {repo.language}
-                          </Chip>
-                        )}
-                        {repo.topics.slice(0, 2).map((topic) => (
-                          <Chip key={topic} variant="flat" size="sm">
-                            {topic}
-                          </Chip>
-                        ))}
-                      </div>
-
-                      <div className="flex gap-4 mt-auto">
-                        <div className="flex items-center gap-1 text-sm">
-                          <StarIcon className="w-4 h-4" />
-                          <span>{repo.stargazers_count}</span>
-                        </div>
-                        <div className="flex items-center gap-1 text-sm">
-                          <ArrowPathRoundedSquareIcon className="w-4 h-4" />
-                          <span>{repo.forks_count}</span>
-                        </div>
-                      </div>
-                    </CardBody>
-                    <CardFooter>
-                      <Button
-                        as={Link}
-                        href={repo.html_url}
-                        target="_blank"
-                        color="success"
-                        variant="ghost"
-                        size="sm"
-                        className="w-full"
-                      >
-                        View Repository
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </motion.div>
-              ))}
+                            View Repository
+                          </Button>
+                        </CardFooter>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </>
+              )}
             </div>
-          </div>
-
-          <div className="flex justify-center gap-2">
-            {repos.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
-                  index === currentIndex % repos.length
-                    ? "bg-success w-3 sm:w-4"
-                    : "bg-default-200 hover:bg-default-300"
-                }`}
-              />
-            ))}
           </div>
         </section>
 

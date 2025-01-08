@@ -12,6 +12,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      animation: {
+        slideRepos: 'slideRepos 30s linear infinite',
+      }
     },
   },
   plugins: [],

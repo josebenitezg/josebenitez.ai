@@ -179,3 +179,21 @@ html {
 .repo-carousel {
   transition: transform 0.3s linear;
 }
+
+@keyframes slideRepos {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-33.33%); /* Adjust based on how many repos you want to show */
+  }
+}
+
+.animate-slideRepos {
+  animation: slideRepos 30s linear infinite;
+}
+
+/* Optional: Slow down on hover */
+.animate-slideRepos:hover {
+  animation-play-state: paused;
+}
