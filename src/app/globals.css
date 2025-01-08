@@ -137,3 +137,31 @@ html {
     @apply text-base;
   }
 }
+
+/* Add this to your existing styles */
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid transparent;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+  max-width: fit-content;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}

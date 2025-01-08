@@ -20,6 +20,7 @@ import {
   MagnifyingGlassIcon,
   WrenchScrewdriverIcon,
   DocumentIcon,
+  CodeBracketIcon,
 } from "@heroicons/react/24/outline";
 import { usePathname } from 'next/navigation';
 import { useKBar } from "kbar";
