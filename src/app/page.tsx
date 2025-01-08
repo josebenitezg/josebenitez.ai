@@ -85,6 +85,19 @@ export default function Home() {
                   Contributing to and creating open-source projects that push the boundaries of tech.
                 </p>
               </CardBody>
+              <CardFooter>
+                <Button 
+                  as={Link}
+                  href="/repos"
+                  color="success"
+                  variant="ghost"
+                  size="sm"
+                  className="w-full"
+                  endContent={<CodeBracketIcon className="w-4 h-4" />}
+                >
+                  View My Repositories
+                </Button>
+              </CardFooter>
             </Card>
           </div>
         </section>
