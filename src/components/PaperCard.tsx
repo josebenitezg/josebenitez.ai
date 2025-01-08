@@ -8,7 +8,7 @@ interface PaperCardProps {
 
 export default function PaperCard({ paper }: PaperCardProps) {
   return (
-    <Card className="glassmorphism neural-glow">
+    <Card className="glassmorphism">
       <CardHeader className="flex gap-3">
         <div className="flex flex-col">
           <p className="text-xl font-semibold">{paper.title}</p>

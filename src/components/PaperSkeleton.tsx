@@ -2,7 +2,7 @@ import { Card, Skeleton } from "@nextui-org/react";
 
 export default function PaperSkeleton() {
   return (
-    <Card className="w-full p-4 space-y-5 glassmorphism neural-glow" radius="lg">
+    <Card className="w-full p-4 space-y-5 glassmorphism" radius="lg">
       <div className="space-y-3">
         <Skeleton className="w-3/5 rounded-lg">
           <div className="h-8 w-3/5 rounded-lg bg-default-200"></div>

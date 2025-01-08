@@ -9,7 +9,7 @@ export default function Projects() {
     <>
       <NeuralNetworkBackground />
       <div className="min-h-[70vh] flex items-center justify-center px-4">
-        <Card className="w-full max-w-2xl p-8 glassmorphism neural-glow text-center">
+        <Card className="w-full max-w-2xl p-8 glassmorphism text-center">
           <div className="space-y-6">
             <WrenchScrewdriverIcon className="w-16 h-16 mx-auto text-success animate-pulse" />
             <h1 className="text-4xl font-bold">

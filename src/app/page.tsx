@@ -51,7 +51,7 @@ export default function Home() {
         <section className="space-y-6">
           <h2 className="text-3xl font-bold">What I&apos;m Into</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="glassmorphism neural-glow shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+            <Card className="glassmorphism shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
               <CardHeader className="flex gap-3">
                 <CircleStackIcon className="w-8 h-8 text-success" />
                 <p className="text-xl font-semibold">Neural Networks</p>
@@ -63,7 +63,7 @@ export default function Home() {
               </CardBody>
             </Card>
 
-            <Card className="glassmorphism neural-glow shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+            <Card className="glassmorphism shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
               <CardHeader className="flex gap-3">
                 <BeakerIcon className="w-8 h-8 text-success" />
                 <p className="text-xl font-semibold">Biohacking</p>
@@ -75,7 +75,7 @@ export default function Home() {
               </CardBody>
             </Card>
 
-            <Card className="glassmorphism neural-glow shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+            <Card className="glassmorphism shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
               <CardHeader className="flex gap-3">
                 <CodeBracketIcon className="w-8 h-8 text-success" />
                 <p className="text-xl font-semibold">Open Source</p>
@@ -93,7 +93,7 @@ export default function Home() {
         <section className="space-y-6">
           <h2 className="text-3xl font-bold">Featured Highlights</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="glassmorphism neural-glow shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+            <Card className="glassmorphism shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
               <CardHeader className="flex gap-3">
                 <div className="flex flex-col">
                   <p className="text-xl font-semibold">AWS & MIT Recognition</p>
@@ -124,7 +124,7 @@ export default function Home() {
               </CardBody>
             </Card>
 
-            <Card className="glassmorphism neural-glow shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+            <Card className="glassmorphism shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
               <CardHeader className="flex gap-3">
                 <div className="flex flex-col">
                   <p className="text-xl font-semibold">Speaking Engagements</p>

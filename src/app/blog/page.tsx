@@ -25,7 +25,7 @@ export default function BlogIndex() {
             key={post.slug}
             as={Link}
             href={`/blog/${post.slug}`}
-            className="p-6 glassmorphism neural-glow hover:scale-[1.02] transition-all duration-300"
+            className="p-6 glassmorphism hover:scale-[1.02] transition-all duration-300"
           >
             <div className="flex gap-6">
               {post.image && (

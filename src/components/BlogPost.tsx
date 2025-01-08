@@ -5,6 +5,21 @@ import { MDXRemote } from 'next-mdx-remote'
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote/rsc'
 import { Card, Chip } from '@nextui-org/react'
 import Image from 'next/image';
+import StaticTweet from './Tweet'
+
+// Define the components that will be available in MDX
+const components = {
+  Image: (props: any) => (
+    <div className="my-6">
+      <Image
+        {...props}
+        style={{ maxWidth: '100%', height: 'auto' }}
+        alt={props.alt || 'Blog image'}
+      />
+    </div>
+  ),
+  StaticTweet,
+}
 
 interface BlogPostProps {
   title: string
@@ -25,15 +40,16 @@ export default function BlogPost({
 }: BlogPostProps) {
   return (
     <article className="max-w-4xl mx-auto py-8">
-      <Card className="p-6 glassmorphism neural-glow">
+      <Card className="p-6 glassmorphism">
         {image && (
-          <div className="mb-6 rounded-lg overflow-hidden">
+          <div className="relative mx-auto max-w-2xl mb-6">
             <Image 
               src={image || '/default-image.jpg'} 
               alt={title}
               width={800}
               height={400}
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg w-full h-auto object-cover"
+              priority
             />
           </div>
         )}
@@ -65,7 +81,7 @@ export default function BlogPost({
           </div>
         </div>
         <div className="prose prose-invert prose-green max-w-none">
-          <MDXRemote {...content} />
+          <MDXRemote {...content} components={components} />
         </div>
       </Card>
     </article>

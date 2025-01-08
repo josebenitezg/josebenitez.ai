@@ -33,7 +33,7 @@ export default function LatestPosts() {
             isPressable
             as={Link}
             href={`/blog/${post.slug}`}
-            className="glassmorphism neural-glow shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] w-full md:max-w-sm"
+            className="glassmorphism shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] w-full md:max-w-sm"
           >
             {post.image && (
               <div className="relative w-full aspect-[16/9]">
