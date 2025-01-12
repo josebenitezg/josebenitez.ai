@@ -5,7 +5,7 @@ import { Providers } from "./providers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CommandPalette } from "@/components/CommandPalette";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,11 +26,11 @@ export default function RootLayout({
                   {children}
                 </main>
                 <Footer />
-                <Analytics />
               </div>
             </CommandPalette>
           </Providers>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
