@@ -11,16 +11,16 @@ export default function Home() {
     <>
       <NeuralNetworkBackground />
       <div className="fixed inset-0">
-        <div className="h-screen flex items-center">
+        <div className="h-screen flex items-start pt-16 sm:items-center sm:pt-0">
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-8">
-              {/* Left Side - Profile */}
+              {/* Left Side - Profile - Más compacto en móvil */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="sm:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left mb-2 sm:mb-0"
+                className="sm:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left mb-4 sm:mb-0"
               >
-                {/* Avatar - Now hidden on both mobile and desktop */}
+                {/* Avatar solo en desktop */}
                 <div className="hidden sm:block relative w-32 h-32">
                   <div className="absolute inset-0 rounded-full border-2 border-success/30" />
                   <Avatar
@@ -32,25 +32,25 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="space-y-1 sm:space-y-4">
+                <div className="space-y-2 sm:space-y-4">
                   <h1 className="text-2xl sm:text-4xl font-bold">
                     Hi, I&apos;m José Benítez
                     <span className="animate-[pulse_0.5s_ease-in-out_infinite] ml-2">_</span>
                   </h1>
-                  <p className="text-default-500 text-sm sm:text-lg leading-tight">
+                  <p className="text-default-500 text-sm sm:text-lg leading-tight sm:leading-relaxed">
                     Building the future with AI and open source. 
                     Passionate about neural networks and pushing technological boundaries.
                   </p>
                 </div>
               </motion.div>
 
-              {/* Right Side - Carousels */}
-              <div className="sm:col-span-8 space-y-2 sm:space-y-8">
+              {/* Right Side - Carousels - Adjusted spacing */}
+              <div className="sm:col-span-8 flex flex-col justify-center space-y-2 sm:space-y-6">
                 {/* Latest Books */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="space-y-1 sm:space-y-4"
+                  className="space-y-1 sm:space-y-3"
                 >
                   <h2 className="text-lg sm:text-2xl font-bold text-success/80 text-center sm:text-left">
                     Latest Books
@@ -65,7 +65,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="space-y-1 sm:space-y-4"
+                  className="space-y-1 sm:space-y-3"
                 >
                   <h2 className="text-lg sm:text-2xl font-bold text-success/80 text-center sm:text-left">
                     Latest Repos
