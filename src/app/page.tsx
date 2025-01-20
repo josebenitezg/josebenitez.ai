@@ -5,31 +5,33 @@ import NeuralNetworkBackground from "@/components/NeuralNetworkBackground";
 import BookCarousel from "@/components/BookCarousel";
 import RepoCarousel from "@/components/RepoCarousel";
 import { motion } from "framer-motion";
+import { FaGithub, FaCalendarCheck } from "react-icons/fa";
+import { SiHuggingface } from "react-icons/si";
+import { BsGpuCard } from "react-icons/bs";
+import { GoDotFill } from "react-icons/go";
 
 export default function Home() {
   return (
     <>
       <NeuralNetworkBackground />
       <div className="fixed inset-0">
-        <div className="h-screen flex items-start pt-16 sm:items-center sm:pt-0">
+        <div className="h-screen flex items-center">
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-8">
-              {/* Left Side - Profile - Más compacto en móvil */}
+              {/* Left Side - Profile */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="sm:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left mb-4 sm:mb-0"
               >
-                {/* Avatar solo en desktop */}
-                <div className="hidden sm:block relative w-32 h-32">
+
+                {/* Simplified Avatar */}
+                <div className="hidden sm:block relative w-32 h-32 mb-6">
                   <div className="absolute inset-0 rounded-full border-2 border-success/30" />
                   <Avatar
                     src="/your-avatar.jpg"
                     className="w-full h-full border-2 border-success"
                   />
-                  <div className="absolute -right-1 -bottom-1 w-3 h-3 rounded-full bg-success/20 flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
-                  </div>
                 </div>
 
                 <div className="space-y-2 sm:space-y-4">
@@ -42,9 +44,46 @@ export default function Home() {
                     Passionate about neural networks and pushing technological boundaries.
                   </p>
                 </div>
+
+                {/* Social Links & Status - Desktop Only */}
+                <div className="hidden sm:flex flex-col gap-3 mt-6">
+                  {/* Training Status */}
+                  <div className="flex items-center gap-2 text-warning/80">
+                    <BsGpuCard className="animate-pulse" />
+                    <span className="text-sm">Training AI models</span>
+                  </div>
+                  
+                  {/* Links */}
+                  <div className="flex flex-col gap-2">
+                    <a 
+                      href="https://github.com/josebenitezg" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-default-500 hover:text-success transition-colors"
+                    >
+                      <FaGithub /> GitHub
+                    </a>
+                    <a 
+                      href="https://huggingface.co/joselobenitezg" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-default-500 hover:text-success transition-colors"
+                    >
+                      <SiHuggingface /> Hugging Face
+                    </a>
+                    <a 
+                      href="https://calendly.com/josebenitezg/30min" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-default-500 hover:text-success transition-colors"
+                    >
+                      <FaCalendarCheck /> Schedule a call
+                    </a>
+                  </div>
+                </div>
               </motion.div>
 
-              {/* Right Side - Carousels - Adjusted spacing */}
+              {/* Right Side - Carousels */}
               <div className="sm:col-span-8 flex flex-col justify-center space-y-2 sm:space-y-6">
                 {/* Latest Books */}
                 <motion.div
