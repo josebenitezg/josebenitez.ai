@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CommandPalette } from "@/components/CommandPalette";
 import { Analytics } from "@vercel/analytics/next";
+import ChatWidget from "@/components/ChatWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
                   {children}
                 </main>
                 <Footer className="footer-container" />
+                <ChatWidget />
               </div>
             </CommandPalette>
           </Providers>
