@@ -249,7 +249,7 @@ html {
   animation: rotate-gradient 4s linear infinite;
 }
 
-/* Ajustar el layout para footer fijo */
+/* Ajustar el layout para footer */
 .layout-container {
   display: flex;
   flex-direction: column;
@@ -262,8 +262,6 @@ html {
 
 .footer-container {
   flex-shrink: 0;
-  position: sticky;
-  bottom: 0;
   width: 100%;
   background: linear-gradient(to top, 
     rgba(0, 0, 0, 0.8) 0%,
