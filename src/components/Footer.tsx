@@ -1,8 +1,12 @@
 "use client";
 
 import { Link } from "@nextui-org/react";
+import { usePathname } from 'next/navigation';
 
 export default function Footer({ className = "" }: { className?: string }) {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   const socialIcons = {
     github: (
       <svg
@@ -47,7 +51,14 @@ export default function Footer({ className = "" }: { className?: string }) {
   };
 
   return (
-    <footer className={`w-full py-6 px-4 bg-gradient-to-t from-black/20 to-transparent backdrop-blur-sm ${className}`}>
+    <footer className={`
+      ${className}
+      ${isHome ? 'sticky bottom-0' : ''}
+      w-full
+      bg-gradient-to-t from-black/80 via-black/40 to-transparent
+      backdrop-blur-md
+      z-10
+    `}>
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-4">
         {/* Location Indicator */}
         <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-success/5 border border-success/10 backdrop-blur-md">
