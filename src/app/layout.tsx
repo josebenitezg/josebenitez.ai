@@ -20,12 +20,12 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark">
           <Providers>
             <CommandPalette>
-              <div className="min-h-screen bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/80 flex flex-col">
-                <Navbar />
-                <main className="container mx-auto px-4 py-8 flex-grow">
+              <div className="layout-container bg-gradient-to-br from-background to-background/80 dark:from-background dark:to-background/80">
+                <Navbar className="z-20" />
+                <main className="main-content">
                   {children}
                 </main>
-                <Footer />
+                <Footer className="footer-container" />
               </div>
             </CommandPalette>
           </Providers>
