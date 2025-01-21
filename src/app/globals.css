@@ -309,3 +309,42 @@ html {
 .animate-ping-slow {
   animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
+
+/* Add these to your existing styles */
+@keyframes typewriter {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.ascii-line {
+  animation: typewriter 0.05s ease-out forwards;
+}
+
+/* Add a glitch effect for the ASCII art */
+@keyframes glitch {
+  0% {
+    text-shadow: 0.03em 0 0 rgba(136, 255, 136, 0.5),
+                -0.03em -0.015em 0 rgba(136, 255, 136, 0.5),
+                -0.015em 0.03em 0 rgba(136, 255, 136, 0.5);
+  }
+  50% {
+    text-shadow: -0.03em -0.015em 0 rgba(136, 255, 136, 0.5),
+                0.015em 0.015em 0 rgba(136, 255, 136, 0.5),
+                -0.03em -0.03em 0 rgba(136, 255, 136, 0.5);
+  }
+  100% {
+    text-shadow: 0.015em 0.03em 0 rgba(136, 255, 136, 0.5),
+                0.03em 0 0 rgba(136, 255, 136, 0.5),
+                0 -0.03em 0 rgba(136, 255, 136, 0.5);
+  }
+}
+
+.ascii-hover {
+  animation: glitch 3s linear infinite;
+}

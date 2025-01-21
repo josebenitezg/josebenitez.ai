@@ -9,6 +9,7 @@ import { FaGithub, FaCalendarCheck } from "react-icons/fa";
 import { SiHuggingface } from "react-icons/si";
 import { BsGpuCard } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
+import AsciiAvatar from "@/components/AsciiAvatar";
 
 export default function Home() {
   return (
@@ -22,17 +23,13 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               className="sm:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left mb-4 sm:mb-0"
             >
-
-              {/* Simplified Avatar */}
-              <div className="hidden sm:block relative w-32 h-32 mb-6">
-                <div className="absolute inset-0 rounded-full border-2 border-success/30" />
-                <Avatar
-                  src="/your-avatar.jpg"
-                  className="w-full h-full border-2 border-success"
-                />
+              {/* ASCII Avatar */}
+              <div className="hidden sm:block w-56 mb-2">
+                <AsciiAvatar />
               </div>
 
-              <div className="space-y-2 sm:space-y-4">
+              {/* Content */}
+              <div className="space-y-4">
                 <h1 className="text-2xl sm:text-4xl font-bold">
                   Hi, I&apos;m José Benítez
                   <span className="animate-[pulse_0.5s_ease-in-out_infinite] ml-2">_</span>
@@ -43,7 +40,7 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Social Links & Status - Desktop Only */}
+              {/* Social Links & Status */}
               <div className="hidden sm:flex flex-col gap-3 mt-6">
                 {/* Training Status */}
                 <div className="flex items-center gap-2 text-warning/80">
