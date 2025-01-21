@@ -32,6 +32,24 @@ const SAMPLE_BOOKS: Book[] = [
     cover: "https://m.media-amazon.com/images/I/71RXc0OoEwL._SL1500_.jpg",
     link: "https://a.co/d/1dHXLGt"
   },
+  {
+    id: 4,
+    title: "The Worlds I see",
+    cover: "https://m.media-amazon.com/images/I/81blPlUVdyL._SL1500_.jpg",
+    link: "https://a.co/d/0JL7vB2"
+  },
+  {
+    id: 5,
+    title: "1984",
+    cover: "https://m.media-amazon.com/images/I/71rpa1-kyvL._SL1500_.jpg",
+    link: "https://a.co/d/6HP2iMB"
+  },
+  {
+    id: 6,
+    title: "The Litle Book of Deep Learning",
+    cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1686060481i/174612914.jpg",
+    link: "https://a.co/d/968888X"
+  },
   // Add more books as needed
 ];
 
