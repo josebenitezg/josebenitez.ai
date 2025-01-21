@@ -9,7 +9,7 @@ import { FaGithub, FaCalendarCheck } from "react-icons/fa";
 import { SiHuggingface } from "react-icons/si";
 import { BsGpuCard } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
-import AsciiAvatar from "@/components/AsciiAvatar";
+import ProfileAvatar from "@/components/ProfileAvatar";
 
 export default function Home() {
   return (
@@ -23,57 +23,59 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               className="sm:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left mb-4 sm:mb-0"
             >
-              {/* ASCII Avatar */}
-              <div className="hidden sm:block w-56 mb-2">
-                <AsciiAvatar />
-              </div>
-
-              {/* Content */}
-              <div className="space-y-4">
-                <h1 className="text-2xl sm:text-4xl font-bold">
-                  Hi, I&apos;m José Benítez
-                  <span className="animate-[pulse_0.5s_ease-in-out_infinite] ml-2">_</span>
-                </h1>
-                <p className="text-default-500 text-sm sm:text-lg leading-tight sm:leading-relaxed">
-                  Building the future with AI and open source. 
-                  Passionate about neural networks and pushing technological boundaries.
-                </p>
-              </div>
-
-              {/* Social Links & Status */}
-              <div className="hidden sm:flex flex-col gap-3 mt-6">
-                {/* Training Status */}
-                <div className="flex items-center gap-2 text-warning/80">
-                  <BsGpuCard className="animate-pulse" />
-                  <span className="text-sm">Training AI models</span>
+              <div className="flex flex-col items-center sm:items-start w-full">
+                {/* Profile Avatar */}
+                <div className="hidden sm:block w-56 h-56 mb-8 self-center">
+                  <ProfileAvatar />
                 </div>
-                
-                {/* Links */}
-                <div className="flex flex-col gap-2">
-                  <a 
-                    href="https://github.com/josebenitezg" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-default-500 hover:text-success transition-colors"
-                  >
-                    <FaGithub /> GitHub
-                  </a>
-                  <a 
-                    href="https://huggingface.co/joselobenitezg" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-default-500 hover:text-success transition-colors"
-                  >
-                    <SiHuggingface /> Hugging Face
-                  </a>
-                  <a 
-                    href="https://calendly.com/josebenitezg/30min" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-default-500 hover:text-success transition-colors"
-                  >
-                    <FaCalendarCheck /> Schedule a call
-                  </a>
+
+                {/* Content */}
+                <div className="space-y-4 w-full">
+                  <h1 className="text-2xl sm:text-4xl font-bold">
+                    Hi, I&apos;m José Benítez
+                    <span className="animate-[pulse_0.5s_ease-in-out_infinite] ml-2">_</span>
+                  </h1>
+                  <p className="text-default-500 text-sm sm:text-lg leading-tight sm:leading-relaxed">
+                    Building the future with AI and open source. 
+                    Passionate about neural networks and pushing technological boundaries.
+                  </p>
+                </div>
+
+                {/* Social Links & Status */}
+                <div className="hidden sm:flex flex-col gap-3 mt-6 w-full">
+                  {/* Training Status */}
+                  <div className="flex items-center gap-2 text-warning/80">
+                    <BsGpuCard className="animate-pulse" />
+                    <span className="text-sm">Training AI models</span>
+                  </div>
+                  
+                  {/* Links */}
+                  <div className="flex flex-col gap-2">
+                    <a 
+                      href="https://github.com/josebenitezg" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-default-500 hover:text-success transition-colors"
+                    >
+                      <FaGithub /> GitHub
+                    </a>
+                    <a 
+                      href="https://huggingface.co/joselobenitezg" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-default-500 hover:text-success transition-colors"
+                    >
+                      <SiHuggingface /> Hugging Face
+                    </a>
+                    <a 
+                      href="https://calendly.com/josebenitezg/30min" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-default-500 hover:text-success transition-colors"
+                    >
+                      <FaCalendarCheck /> Schedule a call
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>

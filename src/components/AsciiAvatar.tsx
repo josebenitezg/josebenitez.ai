@@ -29,11 +29,11 @@ export default function AsciiAvatar() {
 
   return (
     <pre 
-      className="text-[0.35rem] leading-[0.6] font-mono text-success/90 
+      className="text-[0.15rem] leading-[0.5] font-mono text-success/80 
                  whitespace-pre select-none"
       style={{ 
         fontFamily: 'Consolas, monospace',
-        transform: 'scale(1)',
+        transform: 'scaleY(1.05) scaleX(0.9)',
         maxWidth: '100%',
         maxHeight: '100%',
         display: 'block',
