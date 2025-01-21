@@ -249,15 +249,38 @@ html {
   animation: rotate-gradient 4s linear infinite;
 }
 
-/* Ajustar el layout para footer */
+/* Actualizar los estilos del layout */
 .layout-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  /* Asegurar que no haya padding o margin innecesario */
+  padding: 0;
+  margin: 0;
 }
 
 .main-content {
-  flex: 1 0 auto;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  /* Asegurar que no haya padding o margin innecesario */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Añadir esto */
+  flex-direction: column; /* Añadir esto */
+}
+
+/* Asegurar que el contenido de la página principal ocupe todo el espacio disponible */
+.home-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .footer-container {
