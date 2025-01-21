@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const TypewriterText = ({ text }: { text: string }) => {
   const [displayText, setDisplayText] = useState('');
@@ -43,24 +44,9 @@ export default function About() {
           <p className="text-xl leading-relaxed mb-6">
             I'm an <HighlightText>electrical engineer and entrepreneur</HighlightText> passionate about creating new tech. 
             Originally from Ybycui, Paraguay, I'm currently the <HighlightText>Founder and Director of AI at Intuitivo</HighlightText>, 
-            a startup that creates the AI Infrastructure for unattended retail.
+            a company that creates the AI Infrastructure for unattended retail.
           </p>
         </div>
-
-        <motion.section 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mb-12"
-        >
-          <h2 className="text-2xl font-bold mb-4">Current Role</h2>
-          <p className="mb-6">
-            I lead the AI team and oversee the development of the infrastructure for millions of autonomous points of purchase, 
-            using <HighlightText>deep learning</HighlightText>, <HighlightText>IoT</HighlightText>, and <HighlightText>data science</HighlightText> as 
-            core competencies. My previous roles have included founding and serving as CTO of Aratiri, 
-            a startup focused on digital manufacturing, 3D design, 3D printing and IoT development.
-          </p>
-        </motion.section>
 
         <motion.section 
           initial={{ opacity: 0 }}
@@ -70,8 +56,37 @@ export default function About() {
         >
           <h2 className="text-2xl font-bold mb-4">My Journey</h2>
           <p className="mb-6">
-            My journey began with a deep passion for technology and a drive to solve complex problems. 
-            As an advocate for innovation, I have consistently aimed to create solutions that make a significant impact.
+            Since I was a kid, I've been passionate about solving hard problems and building useful things for people. 
+            The biggest challenge I've faced wasn't technical - it was my life circumstances. I grew up facing extreme economic 
+            and personal adversity, which made it incredibly hard to follow a traditional path through university and career building. 
+            I had to find my own way!
+
+            I started by repairing elevators to pay for college, but my curiosity for technology never stopped. Even during the toughest times 
+            when I was struggling to pay bills, I would grab every opportunity to learn about different technologies. 
+            This adversity actually fueled my passion for knowledge even more - it showed me that with technology, you can overcome almost any obstacle.
+
+            Back in 2014, while still juggling work and studies, I took my first Machine Learning course with Andrew Ng on Coursera. 
+            That was my gateway into AI and ML, which I started combining with other technologies like IoT, Robotics, and Cloud Computing. 
+            The learning never stops, and honestly, I wouldn't want it any other way!
+
+            Looking back at this challenging journey, I learned something really important: 
+            <HighlightText>Education is like compound interest - the more you genuinely invest in it (even during tough times), 
+            the more it gives back!</HighlightText>
+          </p>
+        </motion.section>
+
+        <motion.section 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="mb-12"
+        >
+          <h2 className="text-2xl font-bold mb-4">Current Role</h2>
+          <p className="mb-6">
+            I lead the Intuitivo AI team and oversee the development of the infrastructure for millions of autonomous points of purchase, 
+            using <HighlightText>deep learning</HighlightText>, <HighlightText>IoT</HighlightText>, and <HighlightText>data science</HighlightText> as 
+            core competencies. My previous roles have included founding and serving as CTO of Aratiri, 
+            a startup focused on digital manufacturing, 3D design, 3D printing and IoT development.
           </p>
         </motion.section>
 
@@ -102,7 +117,7 @@ export default function About() {
               className="flex items-center space-x-2"
             >
               <span className="text-emerald-500">▹</span>
-              <span>Developed research and production strategies at Po Paraguay, enhancing the quality of 3D printed prostheses.</span>
+              <span>Helped the incredible team of Po Paraguay (equiPO) to create top-notch quality 3D-printed low-cost prostheses</span>
             </motion.li>
             <motion.li 
               whileHover={{ x: 10 }}
@@ -112,6 +127,76 @@ export default function About() {
               <span>Worked on smart building technologies at Función Digital.</span>
             </motion.li>
           </ul>
+        </motion.section>
+
+        <motion.section 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.9 }}
+          className="mb-12"
+        >
+          <h2 className="text-2xl font-bold mb-4">Featured In</h2>
+          <div className="space-y-4">
+            <motion.div 
+              whileHover={{ x: 10 }}
+              className="flex items-center space-x-2"
+            >
+              <span className="text-emerald-500">📝</span>
+              <Link
+                href="https://aws.amazon.com/blogs/machine-learning/intuitivo-achieves-higher-throughput-while-saving-on-ai-ml-costs-using-aws-inferentia-and-pytorch/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-success transition-colors"
+              >
+                AWS Blog Collaboration - Optimizing AI/ML with Inferentia Chips
+              </Link>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ x: 10 }}
+              className="flex items-center space-x-2"
+            >
+              <span className="text-emerald-500">📹</span>
+              <Link
+                href="https://www.youtube.com/live/xWZ9mW7Z4Tc?si=e9eTO6KDl4xBdAHA&t=21551"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-success transition-colors"
+              >
+                YoloVision Conference - Foundation Models in Data Collection
+              </Link>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ x: 10 }}
+              className="flex items-center space-x-2"
+            >
+              <span className="text-emerald-500">📹</span>
+              <Link
+                href="https://www.youtube.com/watch?v=IXhUOPBqyz4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-success transition-colors"
+              >
+                Interview with Satya Mallick, CEO of OpenCV
+              </Link>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ x: 10 }}
+              className="flex items-center space-x-2"
+            >
+              <span className="text-emerald-500">🏆</span>
+              <Link
+                href="https://www.innovatorsunder35.com/the-list/josé-benítez/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-success transition-colors"
+              >
+                MIT Innovator Under 35 - 2022
+              </Link>
+            </motion.div>
+          </div>
         </motion.section>
 
         <motion.section 
