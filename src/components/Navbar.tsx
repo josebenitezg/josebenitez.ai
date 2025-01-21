@@ -6,7 +6,7 @@ import {
   NavbarContent,
   NavbarItem,
   Button,
-  Link,
+  Link as NextUILink,
   Kbd,
 } from "@nextui-org/react";
 import { useTheme } from "next-themes";
@@ -23,28 +23,30 @@ import {
   CodeBracketIcon,
   Bars3Icon,
 } from "@heroicons/react/24/outline";
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useKBar } from "kbar";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import Link from 'next/link';
 
 interface NavbarProps {
   className?: string;
 }
 
+const MENU_ITEMS = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Blog", path: "/blog" },
+  { label: "Papers", path: "/papers" },
+  { label: "Projects", path: "/projects" },
+];
+
 export default function Navbar({ className = "" }: NavbarProps) {
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
+  const router = useRouter();
   const { query } = useKBar();
   const [isDropUpOpen, setIsDropUpOpen] = useState(false);
-
-  const menuItems = [
-    { name: "Home", href: "/", icon: HomeIcon },
-    { name: "Blog", href: "/blog", icon: RectangleStackIcon },
-    { name: "Papers", href: "/papers", icon: DocumentIcon },
-    { name: "Projects", href: "/projects", icon: WrenchScrewdriverIcon },
-    { name: "About", href: "/about", icon: InformationCircleIcon },
-  ];
 
   return (
     <>
@@ -67,27 +69,25 @@ export default function Navbar({ className = "" }: NavbarProps) {
           </Link>
         </NavbarBrand>
 
-        <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <NavbarItem>
-            <Link color="foreground" href="/blog">
-              Blog
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="/projects">
-              Projects
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="/papers">
-              Pepe
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="/about">
-              About
-            </Link>
-          </NavbarItem>
+        {/* Desktop Menu */}
+        <NavbarContent className="hidden sm:flex justify-center" justify="center">
+          <div className="flex gap-2 px-4 py-2 rounded-full bg-black/50 backdrop-blur-xl border border-success/10">
+            {MENU_ITEMS.map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`
+                  px-4 py-2 rounded-full transition-all duration-300
+                  ${pathname === item.path 
+                    ? 'bg-success/20 text-success' 
+                    : 'hover:bg-success/10 text-default-600 hover:text-success'
+                  }
+                `}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </NavbarContent>
 
         <NavbarContent justify="end" className="gap-4">
@@ -151,55 +151,23 @@ export default function Navbar({ className = "" }: NavbarProps) {
                 {/* Flecha decorativa */}
                 <div className="absolute bottom-[-8px] right-4 w-4 h-4 bg-black/50 border-r border-b border-success/20 transform rotate-45" />
                 
-                {menuItems.map((item) => (
+                {/* Menú items */}
+                {MENU_ITEMS.map((item) => (
                   <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${
-                      pathname === item.href 
+                    key={item.path}
+                    href={item.path}
+                    className={`
+                      px-4 py-2 rounded-xl transition-all duration-300
+                      ${pathname === item.path 
                         ? 'bg-success/20 text-success' 
-                        : 'hover:bg-success/10 text-foreground'
-                    }`}
+                        : 'hover:bg-success/10 text-default-600 hover:text-success'
+                      }
+                    `}
                     onClick={() => setIsDropUpOpen(false)}
                   >
-                    <item.icon className="w-5 h-5" />
-                    <span className="font-medium">{item.name}</span>
+                    {item.label}
                   </Link>
                 ))}
-                
-                {/* Theme Toggle */}
-                <button
-                  onClick={() => {
-                    setTheme(theme === "dark" ? "light" : "dark");
-                    setIsDropUpOpen(false);
-                  }}
-                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-success/10 w-full"
-                >
-                  {theme === "light" ? (
-                    <>
-                      <MoonIcon className="w-5 h-5" />
-                      <span className="font-medium">Dark Mode</span>
-                    </>
-                  ) : (
-                    <>
-                      <SunIcon className="w-5 h-5 text-yellow-500" />
-                      <span className="font-medium">Light Mode</span>
-                    </>
-                  )}
-                </button>
-
-                {/* Command Palette Trigger */}
-                <button
-                  onClick={() => {
-                    query.toggle();
-                    setIsDropUpOpen(false);
-                  }}
-                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-success/10 w-full"
-                >
-                  <MagnifyingGlassIcon className="w-5 h-5" />
-                  <span className="font-medium">Search</span>
-                  <Kbd className="ml-auto">⌘K</Kbd>
-                </button>
               </div>
             </motion.div>
           )}
