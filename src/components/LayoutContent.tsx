@@ -13,11 +13,11 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
   return (
     <CommandPalette>
       <div className="layout-container">
-        <Navbar className="absolute top-0 left-0 right-0 z-20" />
-        <main className={`main-content ${!isHome ? 'scrollable' : ''}`}>
+        <Navbar className="z-20" />
+        <main className={`main-content ${isHome ? 'home-content' : 'scrollable-content'}`}>
           {children}
         </main>
-        <Footer className="footer-container" />
+        <Footer />
         <ChatWidget />
       </div>
     </CommandPalette>

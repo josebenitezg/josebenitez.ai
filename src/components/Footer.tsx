@@ -52,12 +52,13 @@ export default function Footer({ className = "" }: { className?: string }) {
 
   return (
     <footer className={`
-      ${className}
-      ${isHome ? 'sticky bottom-0' : ''}
+      footer-container
+      ${isHome ? 'fixed bottom-0' : 'relative'}
       w-full
       bg-gradient-to-t from-black/80 via-black/40 to-transparent
       backdrop-blur-md
       z-10
+      ${className}
     `}>
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-4">
         {/* Location Indicator */}
