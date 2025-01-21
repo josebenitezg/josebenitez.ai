@@ -1,16 +1,13 @@
 "use client";
 
-import { Avatar } from "@nextui-org/react";
-import NeuralNetworkBackground from "@/components/NeuralNetworkBackground";
 import BookCarousel from "@/components/BookCarousel";
 import RepoCarousel from "@/components/RepoCarousel";
 import { motion } from "framer-motion";
 import { FaGithub, FaCalendarCheck } from "react-icons/fa";
 import { SiHuggingface } from "react-icons/si";
 import { BsGpuCard } from "react-icons/bs";
-import { GoDotFill } from "react-icons/go";
 import ProfileAvatar from "@/components/ProfileAvatar";
-
+import Link from "next/link";
 export default function Home() {
   return (
     <div className="h-full flex items-center justify-center overflow-hidden">
@@ -35,8 +32,8 @@ export default function Home() {
                   <span className="animate-[pulse_0.5s_ease-in-out_infinite] ml-2">_</span>
                 </h1>
                 <p className="text-default-500 text-sm sm:text-lg leading-tight sm:leading-relaxed">
-                  Building the future with AI and open source. 
-                  Passionate about neural networks and pushing technological boundaries.
+                  Obsessed with neural networks and biohacking. I tinker with awesome tech at <Link href="https://www.intuitivo.com" target="_blank" rel="noopener noreferrer" className="text-success hover:text-success/80 transition-colors">Intuitivo</Link>. 
+                  Tech geek at heart, open-source lover, and always eager to plug into new AI projects!
                 </p>
               </div>
 
