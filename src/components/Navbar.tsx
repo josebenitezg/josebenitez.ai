@@ -39,6 +39,7 @@ const MENU_ITEMS = [
   { label: "Blog", path: "/blog" },
   { label: "Papers", path: "/papers" },
   { label: "Projects", path: "/projects" },
+  { label: "Biohacking", path: "/biohacking" },
 ];
 
 export default function Navbar({ className = "" }: NavbarProps) {
