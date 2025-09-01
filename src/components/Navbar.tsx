@@ -50,28 +50,32 @@ export default function Navbar({ className = "" }: NavbarProps) {
       </div>
 
       <div className="sm:hidden fixed bottom-8 right-4 z-50">
+        {isDropUpOpen && (
+          <div
+            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsDropUpOpen(false)}
+          />
+        )}
         <button
           onClick={() => setIsDropUpOpen(!isDropUpOpen)}
           className={`
             w-12 h-12 rounded-full 
-            bg-green-500/10 border border-green-500/20 
+            bg-white/10 border border-white/15 
             backdrop-blur-lg flex items-center justify-center 
-            shadow-lg shadow-green-500/20
+            shadow-lg shadow-black/20
             transition-all duration-300
-            hover:bg-green-500/20 hover:scale-105
+            hover:bg-white/15 hover:scale-105
             relative
             after:absolute after:inset-0
-            after:rounded-full after:border-2 after:border-green-500/40
-            after:animate-ping-slow
+            after:rounded-full after:border-2 after:border-white/20
           `}
         >
-          <Bars3Icon className="w-6 h-6 text-green-400" />
+          <Bars3Icon className="w-6 h-6 text-white" />
         </button>
 
         {isDropUpOpen && (
-          <div className="absolute bottom-16 right-0 w-64 p-2 rounded-2xl bg-black/50 backdrop-blur-xl border border-green-500/20 shadow-xl">
-            <div className="flex flex-col gap-2 relative">
-              <div className="absolute bottom-[-8px] right-4 w-4 h-4 bg-black/50 border-r border-b border-green-500/20 transform rotate-45" />
+          <div className="absolute bottom-16 right-0 z-50 w-64 p-2 rounded-xl bg-black/60 backdrop-blur-xl border border-white/15 shadow-xl">
+            <div className="flex flex-col gap-2">
               {MENU_ITEMS.map((item) => (
                 <Link
                   key={item.path}
@@ -79,8 +83,8 @@ export default function Navbar({ className = "" }: NavbarProps) {
                   className={`
                     px-4 py-2 rounded-xl transition-all duration-300
                     ${pathname === item.path 
-                      ? 'bg-green-500/20 text-green-400' 
-                      : 'hover:bg-green-500/10 text-neutral-300 hover:text-green-300'
+                      ? 'bg-white/10 text-white' 
+                      : 'hover:bg-white/5 text-neutral-300 hover:text-white'
                     }
                   `}
                   onClick={() => setIsDropUpOpen(false)}

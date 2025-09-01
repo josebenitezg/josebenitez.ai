@@ -67,7 +67,7 @@ export default function About() {
         <section className="mb-12 prose dark:prose-invert">
           <h2 className="text-2xl font-bold mb-4">Current Role</h2>
           <p className="mb-6">
-            I lead the Intuitivo AI team and oversee the development of the infrastructure for millions of autonomous points of purchase, 
+            I lead an amazing AI team at intuitivo and oversee the development of the infrastructure for millions of autonomous points of purchase, 
             using <HighlightText>deep learning</HighlightText>, <HighlightText>IoT</HighlightText>, and <HighlightText>data science</HighlightText> as 
             core competencies. My previous roles have included founding and serving as CTO of Aratiri, 
             a startup focused on digital manufacturing, 3D design, 3D printing and IoT development.
