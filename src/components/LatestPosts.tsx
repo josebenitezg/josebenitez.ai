@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from 'react'
-import { Card, CardHeader, CardBody, CardFooter, Link } from "@nextui-org/react"
 import { BlogPost } from '@/lib/blog'
 import Image from 'next/image';
+import Link from 'next/link'
 
 export default function LatestPosts() {
   const [posts, setPosts] = useState<BlogPost[]>([])
@@ -28,12 +28,10 @@ export default function LatestPosts() {
       <h2 className="text-3xl font-bold">Latest Insights</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {posts.map((post) => (
-          <Card
+          <Link
             key={post.slug}
-            isPressable
-            as={Link}
             href={`/blog/${post.slug}`}
-            className="glassmorphism shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] w-full md:max-w-sm"
+            className="glassmorphism hover:shadow-lg transition-all duration-300 hover:scale-[1.02] w-full md:max-w-sm rounded-lg overflow-hidden border border-white/10"
           >
             {post.image && (
               <div className="relative w-full aspect-[16/9]">
@@ -46,23 +44,21 @@ export default function LatestPosts() {
                 />
               </div>
             )}
-            <CardHeader className="pb-2">
+            <div className="p-4">
               <h3 className="text-lg font-semibold">{post.title}</h3>
-            </CardHeader>
-            <CardBody className="py-2">
-              <p className="text-default-500 text-sm line-clamp-2">{post.description}</p>
-            </CardBody>
-            <CardFooter className="flex justify-between pt-2">
-              <span className="text-xs text-default-400">
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </span>
-              <span className="text-success text-sm">Read more →</span>
-            </CardFooter>
-          </Card>
+              <p className="text-neutral-400 text-sm line-clamp-2 mt-1">{post.description}</p>
+              <div className="flex justify-between pt-2 text-sm mt-2">
+                <span className="text-xs text-neutral-500">
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </span>
+                <span className="text-green-300">Read more →</span>
+              </div>
+            </div>
+          </Link>
         ))}
       </div>
     </section>

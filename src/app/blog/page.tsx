@@ -1,74 +1,30 @@
-"use client";
-
 import { getAllPosts, type BlogPost } from '@/lib/blog'
-import { Card, Chip, Link } from '@nextui-org/react'
-import { useEffect, useState } from 'react'
-import Image from 'next/image';
+import Image from 'next/image'
+import Link from 'next/link'
 
-export default function BlogIndex() {
-  const [posts, setPosts] = useState<BlogPost[]>([])
-
-  useEffect(() => {
-    const loadPosts = async () => {
-      const allPosts = await getAllPosts()
-      setPosts(allPosts)
-    }
-    loadPosts()
-  }, [])
+export default async function BlogIndex() {
+  const posts = await getAllPosts()
 
   return (
-    <div className="max-w-4xl mx-auto py-8">
-      <h1 className="text-4xl font-bold mb-8">Blog Posts</h1>
-      <div className="grid gap-6">
+    <div className="max-w-2xl mx-auto py-16 px-4">
+      <h1 className="text-3xl font-bold tracking-tight [font-family:var(--font-serif)] mb-10">Blog</h1>
+      <ul className="divide-y divide-white/10">
         {posts.map((post: BlogPost) => (
-          <Card 
-            key={post.slug}
-            as={Link}
-            href={`/blog/${post.slug}`}
-            className="p-6 glassmorphism hover:scale-[1.02] transition-all duration-300"
-          >
-            <div className="flex flex-col md:flex-row gap-6">
-              {post.image && (
-                <div className="w-full md:w-48 h-48 md:h-32 rounded-lg overflow-hidden shrink-0">
-                  <Image 
-                    src={post.image} 
-                    alt={post.title}
-                    width={500}
-                    height={300}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+          <li key={post.slug} className="py-5">
+            <Link href={`/blog/${post.slug}`} className="group block">
+              <h2 className="text-xl font-medium group-hover:underline underline-offset-4">
+                {post.title}
+              </h2>
+              {post.description && (
+                <p className="text-sm text-neutral-400 mt-1 line-clamp-2">{post.description}</p>
               )}
-              <div className="flex-1">
-                <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-                <p className="text-default-500 mb-4">{post.description}</p>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag: string) => (
-                      <Chip 
-                        key={tag} 
-                        color="success" 
-                        variant="flat" 
-                        size="sm"
-                        className="capitalize"
-                      >
-                        {tag}
-                      </Chip>
-                    ))}
-                  </div>
-                  <time className="text-default-500 text-sm sm:ml-auto">
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric'
-                    })}
-                  </time>
-                </div>
-              </div>
-            </div>
-          </Card>
+              <time className="text-xs text-neutral-500 mt-2 block">
+                {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   )
 }

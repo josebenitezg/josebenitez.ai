@@ -1,89 +1,42 @@
-"use client";
+import { getAllSlugs, getPostBySlug } from '@/lib/blog'
+import { renderMarkdownToHtml } from '@/lib/markdown'
+import type { Metadata } from 'next'
 
-import { getPostBySlug } from '@/lib/blog'
-import BlogPost from '@/components/BlogPost'
-import { serialize } from 'next-mdx-remote/serialize'
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote/rsc'
-import { notFound } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import { use } from 'react'
-import { Card } from '@nextui-org/react'
-import ReadingProgress from '@/components/ReadingProgress'
-
-type Post = {
-  title: string
-  date: string
-  description: string
-  tags: string[]
-  image?: string
-  content: string
-  mdxSource: MDXRemoteSerializeResult
-  slug: string
+export async function generateStaticParams() {
+  const slugs = await getAllSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
-export default function BlogPostPage({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
-}) {
-  const [postData, setPostData] = useState<Post | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    const loadPost = async () => {
-      try {
-        const { slug } = await params;
-        const post = await getPostBySlug(slug)
-        
-        if (!post) {
-          notFound()
-          return
-        }
-        
-        const mdxSource = await serialize(post.content)
-        setPostData({ 
-          ...post,
-          mdxSource
-        })
-      } catch (error) {
-        console.error('Error loading post:', error)
-        notFound()
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    loadPost()
-  }, [params])
-
-  if (isLoading) {
-    return (
-      <div className="max-w-4xl mx-auto py-8 px-4">
-        <Card className="p-8 glassmorphism">
-          <div className="space-y-4 animate-pulse">
-            <div className="w-3/4 h-8 bg-default-200/20 rounded" />
-            <div className="w-1/2 h-6 bg-default-200/20 rounded" />
-            <div className="aspect-video bg-default-200/20 rounded" />
-          </div>
-        </Card>
-      </div>
-    );
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
+  if (!post) {
+    return { title: 'Post Not Found' }
   }
-
-  if (!postData) {
-    return null
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: { images: post.image ? [post.image] : [] },
   }
+}
+
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
+  if (!post) return null
+
+  const html = await renderMarkdownToHtml(post.content)
 
   return (
-    <>
-      <ReadingProgress />
-      <BlogPost
-        title={postData.title}
-        date={postData.date}
-        content={postData.mdxSource}
-        tags={postData.tags}
-        description={postData.description}
-        image={postData.image ?? ''} 
-      />
-    </>
+    <article className="max-w-3xl mx-auto py-10 px-4">
+      <header className="mb-10">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight [font-family:var(--font-serif)]">{post.title}</h1>
+        <p className="text-neutral-400 mt-3 text-lg">{post.description}</p>
+        <time className="text-sm text-neutral-500 mt-4 block">
+          {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+      </header>
+      <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
+    </article>
   )
 }

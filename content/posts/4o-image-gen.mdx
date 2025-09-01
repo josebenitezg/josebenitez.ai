@@ -10,33 +10,15 @@ image: ""
 
 Todo lo que estamos viviendo en esta semana tiene un punto de inflexión en las industrias creativas. Si bien la generación de imágenes tuvo sus primeros pasos más relevantes en 2015 con DeepDream de Google, donde se generaban imágenes raras como la siguiente:
 
-<div className="flex flex-col items-center mb-6">
-  <div className="w-full max-w-2xl">
-    <Image 
-      src="https://www.tensorflow.org/tutorials/generative/images/dogception.png" 
-      alt="Imagen generada por Google DeepDream" 
-      width={480} 
-      height={240} 
-      className="rounded-lg w-full"
-    />
-  </div>
-  <p className="text-sm text-gray-500 mt-2 italic">Fuente: Google DeepDream</p>
-</div>
+![Imagen generada por Google DeepDream](https://www.tensorflow.org/tutorials/generative/images/dogception.png)
+
+Fuente: Google DeepDream
 
 En 2021, OpenAI ya nos empieza a deslumbrar con los modelos de difusión para generar imágenes, como es el caso de DALL·E. Esto generó una primera movida grande sobre la generación de imágenes, logrando una calidad sin precedentes para ese entonces, con una capacidad creativa única al combinar distintos estilos y textos, pero con muchas falencias en los detalles. Por ejemplo, las personas con seis dedos.
 
-<div className="flex flex-col items-center mb-6">
-  <div className="w-full max-w-2xl">
-    <Image 
-      src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*D8AItivJufMJ_dj5LVTiNQ.png" 
-      alt="DALL-E generated hand with six fingers" 
-      width={640} 
-      height={480} 
-      className="rounded-lg w-full"
-    />
-  </div>
-  <p className="text-sm text-gray-500 mt-2 italic">Fuente: <a href="https://medium.com/@sanderink.ursina/why-do-ai-models-sometimes-produce-images-with-six-fingers-da4cd53f3313" className="hover:underline" target="_blank" rel="noopener noreferrer">Medium - Why do AI models sometimes produce images with six fingers</a></p>
-</div>
+![DALL-E generated hand with six fingers](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*D8AItivJufMJ_dj5LVTiNQ.png)
+
+Fuente: Medium - Why do AI models sometimes produce images with six fingers: https://medium.com/@sanderink.ursina/why-do-ai-models-sometimes-produce-images-with-six-fingers-da4cd53f3313
 
 
 Un año más tarde, aparece Stability AI con su modelo Stable Diffusion, estableciendo un nuevo estándar en la generación de imágenes hiperrealistas, con alto nivel de detalle y posicionándose como el estado del arte.
@@ -49,18 +31,9 @@ Estos modelos funcionan bajo un principio complejo pero relativamente sencillo d
 
 3. Al final, obtienen una imagen clara que coincide con la guía.
 
-<div className="flex flex-col items-center mb-6">
-  <div className="w-full max-w-xl">
-    <Image 
-      src="https://demzamss7t8rinle.public.blob.vercel-storage.com/1743122557710-06ed784a-6e3c-4726-8fbb-2439fdabdc63-usMvGU6iEO3UMn0om40ItwrlSIlry7.png"
-      alt="Flujo de trabajo para transferencia de estilos" 
-      width={480} 
-      height={360} 
-      className="rounded-lg w-full"
-    />
-  </div>
-  <p className="text-sm text-gray-500 mt-2 italic">Diffusion Models - Infografía hecha con 4o image gen</p>
-</div>
+![Flujo de trabajo para transferencia de estilos](https://demzamss7t8rinle.public.blob.vercel-storage.com/1743122557710-06ed784a-6e3c-4726-8fbb-2439fdabdc63-usMvGU6iEO3UMn0om40ItwrlSIlry7.png)
+
+Diffusion Models - Infografía hecha con 4o image gen
 
 
 Están entrenados con millones de imágenes y sus descripciones para que el modelo aprenda cómo se 'construyen' estas imágenes a partir del ruido.​ Es como el 'proceso creativo' de estos modelos.
@@ -69,18 +42,9 @@ Luego fueron apareciendo otros actores en la industria que vinieron a redefinirl
 
 Pero el problema principal de estos modelos basados en difusión es que, por la naturaleza misma de la arquitectura, es complicado volver a generar la misma imagen agregando otro detalle. Por ejemplo, pedirle que al gato se le agregue un moño. Si bien se ha mejorado muchísimo para poder hacer más estables las salidas de estos modelos, es complicado mantener la consistencia.
 
-<div className="flex flex-col items-center mb-6">
-  <div className="w-full max-w-xl">
-    <Image 
-      src="https://demzamss7t8rinle.public.blob.vercel-storage.com/1743124298999-ChatGPT%20Image%20Mar%2027%2C%202025%2C%2006_11_16%20PM-sTIZpWMj9eq199GsFr74pglgQJEGNJ.png"
-      alt="Ejemplo de edición con GPT-4o" 
-      width={480} 
-      height={360} 
-      className="rounded-lg w-full"
-    />
-  </div>
-  <p className="text-sm text-gray-500 mt-2 italic">Ejemplo de edición con modelos de difusión </p>
-</div>
+![Ejemplo de edición con GPT-4o](https://demzamss7t8rinle.public.blob.vercel-storage.com/1743124298999-ChatGPT%20Image%20Mar%2027%2C%202025%2C%2006_11_16%20PM-sTIZpWMj9eq199GsFr74pglgQJEGNJ.png)
+
+Ejemplo de edición con modelos de difusión
 
 
 Para atacar este problema, se empezaron a desarrollar muchas técnicas, especialmente las que tienen que ver con transferencias de estilo o, por ejemplo, entrenar con varias imágenes con tu rostro usando ControlNets, LoRAs, IP adapters.​
@@ -89,33 +53,15 @@ El problema es que esto dejaba afuera a usuarios convencionales no técnicos por
 
 Para que se hagan una idea, este es un ejemplo de un flujo de trabajo para hacer transferencias de estilos:
 
-<div className="flex flex-col items-center mb-6">
-  <div className="w-full max-w-xl">
-    <Image 
-      src="https://preview.redd.it/union-flux-controlnet-running-on-comfyui-workflow-and-nodes-v0-nrhxejbwnfjd1.png?width=2210&format=png&auto=webp&s=05d6bbaccbb369cf1dfefb19430b9970ef360a72"
-      alt="Flujo de trabajo complejo para edición de imágenes" 
-      width={480} 
-      height={360} 
-      className="rounded-lg w-full"
-    />
-  </div>
-  <p className="text-sm text-gray-500 mt-2 italic">Fuente: reddit</p>
-</div>
+![Flujo de trabajo complejo para edición de imágenes](https://preview.redd.it/union-flux-controlnet-running-on-comfyui-workflow-and-nodes-v0-nrhxejbwnfjd1.png?width=2210&format=png&auto=webp&s=05d6bbaccbb369cf1dfefb19430b9970ef360a72)
+
+Fuente: reddit
 
 
 
-<div className="flex flex-col items-center mb-6">
-  <div className="w-full max-w-xl">
-    <Image 
-      src="https://cdn.openart.ai/workflow_thumbnails/d784O26IvqPV8o5fwcAO/image_cRCDc4Dy_1704368908449_raw.jpg"
-      alt="Flujo de trabajo complejo para edición de imágenes" 
-      width={480} 
-      height={360} 
-      className="rounded-lg w-full"
-    />
-  </div>
-  <p className="text-sm text-gray-500 mt-2 italic">Fuente: OpenART.ai</p>
-</div>
+![Flujo de trabajo complejo para edición de imágenes](https://cdn.openart.ai/workflow_thumbnails/d784O26IvqPV8o5fwcAO/image_cRCDc4Dy_1704368908449_raw.jpg)
+
+Fuente: OpenART.ai
 
 Se necesitaban otros modelos como estimación de profundidad, detección de bordes u otros algoritmos adicionales de visión por computadora que logren capturar los detalles necesarios para poder mantener consistencia y realizar la difusión solo en las áreas de necesidad. Por ejemplo, si queríamos cambiar la escena, usábamos visión por computadora en el flujo de trabajo para detectar partes claves de la escena y solo pasábamos esa parte por un modelo de difusión para generar, en este caso, la escena y luego terminar de componer la imagen final.​
 
@@ -140,18 +86,9 @@ Esta forma de generar imagen cambió completamente el juego porque no solo gener
 Es decir, ahora no necesitamos un flujo de trabajo complejo como el de arriba para editar el detalle de una imagen; simplemente abrimos un chat y comenzamos la edición como verán abajo (o seguro ya vieron por todos lados):
 
 
-<div className="flex flex-col items-center mb-6">
-  <div className="w-full max-w-xl">
-    <Image 
-      src="https://demzamss7t8rinle.public.blob.vercel-storage.com/1743124417517-Captura%20de%20pantalla%202025-03-27%20a%20la%28s%29%206.12.29%E2%80%AFp.%C2%A0m.-WrBw2gDnSFU5jBmV7h35ZhORZ2kYa5.png"
-      alt="Flujo de trabajo complejo para edición de imágenes" 
-      width={480} 
-      height={360} 
-      className="rounded-lg w-full"
-    />
-  </div>
-  <p className="text-sm text-gray-500 mt-2 italic">Fuente: OpenAI</p>
-</div>
+![Flujo de trabajo complejo para edición de imágenes](https://demzamss7t8rinle.public.blob.vercel-storage.com/1743124417517-Captura%20de%20pantalla%202025-03-27%20a%20la%28s%29%206.12.29%E2%80%AFp.%C2%A0m.-WrBw2gDnSFU5jBmV7h35ZhORZ2kYa5.png)
+
+Fuente: OpenAI
 
 La consistencia lograda es impresionante; los textos generados se mantienen casi idénticos, incluso en reflejos, permitiendo que un solo modelo, mediante un simple prompt, realice ediciones complejas que anteriormente requerían un arduo trabajo profesional o flujos de trabajo complicados con modelos de difusión y visión por computadora.​
 

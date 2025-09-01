@@ -3,27 +3,26 @@
 @tailwind utilities;
 
 @layer base {
+  :root { color-scheme: dark light; }
   :root {
-    --background: 255 255 255;
-    --foreground: 0 0 0;
+    --bg: 255 255 255;
+    --fg: 17 24 39;
+    --accent: 16 185 129; /* emerald-500 */
   }
-
-  .dark {
-    --background: 0 0 0;
-    --foreground: 255 255 255;
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: 0 0 0;
+      --fg: 229 231 235;
+      --accent: 16 185 129;
+    }
   }
+  html, body { background-color: rgb(var(--bg)); color: rgb(var(--fg)); }
 }
 
-::selection {
-  @apply bg-primary/30;
-}
+::selection { @apply bg-green-500/30; }
 
-.glass-effect {
-  @apply backdrop-blur-lg bg-background/40 
-         border border-white/20 dark:border-white/10 
-         shadow-xl hover:shadow-2xl 
-         transition-all duration-300;
-}
+/* Remove glassmorphism for ultra minimal */
+.glass-effect { @apply border border-white/10; }
 
 /* Add a subtle gradient overlay to cards */
 .backdrop-blur-lg {
@@ -76,31 +75,8 @@
   }
 }
 
-.glassmorphism {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0.02) 100%
-  );
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 
-    0 8px 32px 0 rgba(31, 38, 135, 0.15),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-}
-
-.glassmorphism:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  box-shadow: 
-    0 8px 32px 0 rgba(31, 38, 135, 0.25),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
+.glassmorphism { @apply border border-white/10 transition-colors; }
+.glassmorphism:hover { @apply bg-white/5; }
 
 .neural-glow {
   animation: neuralGlow 4s ease-in-out infinite;
@@ -116,17 +92,13 @@
 }
 
 /* Add these to your existing styles */
-.prose {
-  @apply text-lg leading-relaxed;
-}
+.prose { @apply text-[17px] leading-8; }
 
 .prose p {
   @apply mb-6;
 }
 
-.prose blockquote {
-  @apply pl-4 border-l-4 border-success/50 italic;
-}
+.prose blockquote { @apply pl-4 border-l-2 border-green-500/40 italic; }
 
 .prose ul {
   @apply list-disc list-inside mb-6;
@@ -142,13 +114,9 @@ html {
 }
 
 /* Enhance code block styling */
-.prose pre {
-  @apply my-6 p-4 rounded-lg bg-black/50 overflow-x-auto;
-}
+.prose pre { @apply my-6 p-4 rounded-lg bg-black/60 overflow-x-auto; }
 
-.prose code {
-  @apply px-1.5 py-0.5 rounded bg-default-200/20 text-sm;
-}
+.prose code { @apply px-1.5 py-0.5 rounded bg-white/10 text-sm; }
 
 /* Add responsive font sizes */
 @media (max-width: 640px) {

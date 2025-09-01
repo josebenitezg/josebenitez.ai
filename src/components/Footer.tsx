@@ -1,6 +1,5 @@
 "use client";
 
-import { Link } from "@nextui-org/react";
 import { usePathname } from 'next/navigation';
 
 export default function Footer({ className = "" }: { className?: string }) {
@@ -51,49 +50,25 @@ export default function Footer({ className = "" }: { className?: string }) {
   };
 
   return (
-    <footer className={`
-      footer-container
-      ${isHome ? 'fixed bottom-0' : 'relative'}
-      w-full
-      bg-gradient-to-t from-black/80 via-black/40 to-transparent
-      backdrop-blur-md
-      z-10
-      ${className}
-    `}>
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-4">
-        {/* Location Indicator */}
-        <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-success/5 border border-success/10 backdrop-blur-md">
-          <span className="text-sm font-mono text-success/80">
-            Crafting neural networks in San Francisco
-          </span>
-          <div className="w-2 h-2 rounded-full bg-success animate-ping" />
-        </div>
-
-        {/* Social Links */}
-        <div className="flex items-center gap-4 mt-4">
+    <footer className={`footer-container ${isHome ? 'fixed bottom-0' : 'relative'} w-full z-10 ${className}`}>
+      <div className="max-w-3xl mx-auto flex flex-col items-center gap-3 py-6">
+        <div className="flex items-center gap-4">
           {[
             { icon: 'github', url: 'https://github.com/josebenitezg' },
             { icon: 'linkedin', url: 'https://www.linkedin.com/in/josebenitezg/' },
             { icon: 'twitter', url: 'https://x.com/joselobenitezg' },
             { icon: 'instagram', url: 'https://www.instagram.com/joselobenitezg' },
           ].map((social) => (
-            <Link
+            <a
               key={social.icon}
               href={social.url}
               target="_blank"
-              className="group hover:text-primary transition-colors"
+              rel="noopener noreferrer"
+              className="group hover:text-white transition-colors"
             >
               {socialIcons[social.icon as keyof typeof socialIcons]}
-            </Link>
+            </a>
           ))}
-        </div>
-
-        {/* Terminal-style signature */}
-        <div className="flex items-center gap-2 mt-4 font-mono text-sm text-default-600">
-          <span className="text-primary">&gt;</span>
-          <span className="text-default-400">echo</span>
-          <span className="text-default-600">&quot;Made with 🧠 by Jose&quot;</span>
-          <span className="animate-[pulse_1.5s_ease-in-out_infinite] opacity-70">_</span>
         </div>
       </div>
     </footer>
