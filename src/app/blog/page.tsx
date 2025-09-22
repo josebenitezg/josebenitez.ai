@@ -19,7 +19,7 @@ export default async function BlogIndex() {
                 <p className="text-sm text-neutral-400 mt-1 line-clamp-2">{post.description}</p>
               )}
               <time className="text-xs text-neutral-500 mt-2 block">
-                {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                {new Date(post.date.length === 10 ? `${post.date}T00:00:00` : post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
               </time>
             </Link>
           </li>

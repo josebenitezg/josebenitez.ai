@@ -33,7 +33,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight [font-family:var(--font-serif)]">{post.title}</h1>
         <p className="text-neutral-400 mt-3 text-lg">{post.description}</p>
         <time className="text-sm text-neutral-500 mt-4 block">
-          {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          {new Date(post.date.length === 10 ? `${post.date}T00:00:00` : post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
         </time>
       </header>
       <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
