@@ -70,12 +70,12 @@ export default function Footer({ className = "" }: { className?: string }) {
             </a>
           ))}
         </div>
-        <a
+        {/* <a
           href="mailto:benitez.ing@gmail.com"
           className="text-sm text-neutral-400 hover:text-white hover:underline underline-offset-4"
         >
           benitez.ing@gmail.com
-        </a>
+        </a> */}
       </div>
     </footer>
   );
