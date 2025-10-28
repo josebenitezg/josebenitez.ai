@@ -62,35 +62,67 @@ export default function LikeButton({ slug }: LikeButtonProps) {
   }
 
   return (
-    <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
-      <div className="flex flex-col items-center gap-2 bg-neutral-900/80 backdrop-blur-sm border border-neutral-800 rounded-2xl p-4 shadow-xl">
+    <>
+      {/* Desktop Version - Sidebar flotante */}
+      <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
+        <div className="flex flex-col items-center gap-2 bg-neutral-900/80 backdrop-blur-sm border border-neutral-800 rounded-2xl p-4 shadow-xl">
+          <button
+            onClick={handleLike}
+            disabled={isLoading}
+            className={`group relative transition-all duration-300 ${
+              isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'
+            }`}
+            aria-label={hasLiked ? 'Unlike post' : 'Like post'}
+          >
+            <Heart
+              className={`w-8 h-8 transition-all duration-300 ${
+                hasLiked
+                  ? 'fill-red-500 text-red-500'
+                  : 'text-neutral-400 group-hover:text-red-400 group-hover:fill-red-400/20'
+              }`}
+            />
+            {!hasLiked && (
+              <span className="absolute inset-0 rounded-full bg-red-500/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            )}
+          </button>
+          <span className="text-sm font-medium text-neutral-300 tabular-nums">
+            {likes}
+          </span>
+          <span className="text-xs text-neutral-500 text-center max-w-[60px] leading-tight">
+            {hasLiked ? 'Liked' : 'Like this'}
+          </span>
+        </div>
+      </div>
+
+      {/* Mobile Version - FAB en esquina inferior izquierda */}
+      <div className="fixed bottom-6 left-6 z-50 lg:hidden">
         <button
           onClick={handleLike}
           disabled={isLoading}
-          className={`group relative transition-all duration-300 ${
-            isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'
+          className={`group relative bg-neutral-900/90 backdrop-blur-md border border-neutral-800 rounded-full shadow-2xl transition-all duration-300 ${
+            isLoading ? 'opacity-50 cursor-not-allowed' : 'active:scale-95 hover:shadow-red-500/20'
           }`}
           aria-label={hasLiked ? 'Unlike post' : 'Like post'}
         >
-          <Heart
-            className={`w-8 h-8 transition-all duration-300 ${
-              hasLiked
-                ? 'fill-red-500 text-red-500'
-                : 'text-neutral-400 group-hover:text-red-400 group-hover:fill-red-400/20'
-            }`}
-          />
-          {!hasLiked && (
-            <span className="absolute inset-0 rounded-full bg-red-500/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="flex items-center gap-2 px-4 py-3">
+            <Heart
+              className={`w-6 h-6 transition-all duration-300 ${
+                hasLiked
+                  ? 'fill-red-500 text-red-500'
+                  : 'text-neutral-400 group-active:text-red-400 group-active:fill-red-400/20'
+              }`}
+            />
+            <span className="text-sm font-semibold text-neutral-300 tabular-nums min-w-[20px] text-center">
+              {likes}
+            </span>
+          </div>
+          {/* Glow effect */}
+          {hasLiked && (
+            <span className="absolute inset-0 rounded-full bg-red-500/30 blur-xl" />
           )}
         </button>
-        <span className="text-sm font-medium text-neutral-300 tabular-nums">
-          {likes}
-        </span>
-        <span className="text-xs text-neutral-500 text-center max-w-[60px] leading-tight">
-          {hasLiked ? 'Liked' : 'Like this'}
-        </span>
       </div>
-    </div>
+    </>
   )
 }
 
