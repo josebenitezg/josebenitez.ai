@@ -101,12 +101,15 @@
 .prose blockquote { @apply pl-4 border-l-2 border-green-500/40 italic; }
 
 .prose ul {
-  @apply list-disc list-inside mb-6;
+  @apply list-disc list-outside pl-6 mb-6;
 }
 
 .prose ol {
-  @apply list-decimal list-inside mb-6;
+  @apply list-decimal list-outside pl-6 mb-6;
 }
+
+/* Evitar que el párrafo dentro del li empuje el texto debajo del bullet */
+.prose li > p { @apply my-0; }
 
 /* Add smooth scrolling for the whole page */
 html {
