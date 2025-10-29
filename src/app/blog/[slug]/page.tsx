@@ -38,7 +38,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {new Date(post.date.length === 10 ? `${post.date}T00:00:00` : post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
         </header>
-        <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
+        <div className="prose dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
       </article>
       <LikeButton slug={slug} />
     </>
