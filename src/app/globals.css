@@ -2,310 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root { color-scheme: dark light; }
-  :root {
-    --bg: 255 255 255;
-    --fg: 17 24 39;
-    --accent: 16 185 129; /* emerald-500 */
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: 0 0 0;
-      --fg: 229 231 235;
-      --accent: 16 185 129;
-    }
-  }
-  html, body { background-color: rgb(var(--bg)); color: rgb(var(--fg)); }
+:root {
+  color-scheme: dark;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia,
+    serif;
 }
 
-::selection { @apply bg-green-500/30; }
-
-/* Remove glassmorphism for ultra minimal */
-.glass-effect { @apply border border-white/10; }
-
-/* Add a subtle gradient overlay to cards */
-.backdrop-blur-lg {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+* {
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Add a subtle shine effect */
-.card-shine {
-  position: relative;
-  overflow: hidden;
-}
-
-.card-shine::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.05),
-    transparent
-  );
-  transition: 0.5s;
-}
-
-.card-shine:hover::before {
-  left: 100%;
-}
-
-@layer utilities {
-  .floating-menu {
-    animation: float 6s ease-in-out infinite;
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px) translateX(-50%);
-  }
-  50% {
-    transform: translateY(-10px) translateX(-50%);
-  }
-  100% {
-    transform: translateY(0px) translateX(-50%);
-  }
-}
-
-.glassmorphism { @apply border border-white/10 transition-colors; }
-.glassmorphism:hover { @apply bg-white/5; }
-
-.neural-glow {
-  animation: neuralGlow 4s ease-in-out infinite;
-}
-
-@keyframes neuralGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 1rem rgba(136, 255, 136, 0.3));
-  }
-  50% {
-    filter: drop-shadow(0 0 2rem rgba(136, 255, 136, 0.5));
-  }
-}
-
-/* Add these to your existing styles */
-.prose { @apply text-[17px] leading-8; }
-
-.prose p {
-  @apply mb-6;
-}
-
-.prose blockquote { @apply pl-4 border-l-2 border-green-500/40 italic; }
-
-.prose ul {
-  @apply list-disc list-outside pl-6 mb-6;
-}
-
-.prose ol {
-  @apply list-decimal list-outside pl-6 mb-6;
-}
-
-/* Evitar que el párrafo dentro del li empuje el texto debajo del bullet */
-.prose li > p { @apply my-0; }
-
-/* Add smooth scrolling for the whole page */
 html {
   scroll-behavior: smooth;
+  background: #090909;
 }
 
-/* Enhance code block styling */
-.prose pre { @apply my-6 p-4 rounded-lg bg-black/60 overflow-x-auto; }
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 80% 5%, rgba(255, 255, 255, 0.055), transparent 24rem),
+    #090909;
+  color: #f5f5f4;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
 
-.prose code { @apply px-1.5 py-0.5 rounded bg-white/10 text-sm; }
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+}
 
-/* Add responsive font sizes */
-@media (max-width: 640px) {
-  .prose {
-    @apply text-base;
+::selection {
+  background: rgba(214, 211, 209, 0.25);
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-stone-500;
+  }
+
+  .button {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-stone-100 px-5 py-2.5 text-sm font-semibold text-stone-950 transition-colors hover:bg-white;
+  }
+
+  .button-secondary {
+    @apply border border-white/15 bg-transparent text-stone-200 hover:bg-white/10;
+  }
+
+  .button-small {
+    @apply min-h-9 px-4 py-2;
+  }
+
+  .surface {
+    @apply rounded-2xl border border-white/10 bg-white/[0.025];
+  }
+
+  .text-link {
+    @apply inline-flex items-center gap-2 text-sm font-medium text-stone-200 underline decoration-white/20 underline-offset-4 transition-colors hover:text-white hover:decoration-white/60;
   }
 }
 
-/* Add this to your existing styles */
-.typing-animation {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid transparent;
-  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-  max-width: fit-content;
+.prose {
+  color: #d6d3d1;
+  font-size: 1.0625rem;
+  line-height: 1.85;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
+.prose :where(h2, h3, h4) {
+  color: #f5f5f4;
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+  scroll-margin-top: 6rem;
+}
+
+.prose :where(a) {
+  color: #f5f5f4;
+  text-decoration-color: rgba(255, 255, 255, 0.35);
+  text-underline-offset: 0.2em;
+}
+
+.prose :where(a:hover) {
+  text-decoration-color: rgba(255, 255, 255, 0.85);
+}
+
+.prose :where(blockquote) {
+  border-left-color: rgba(255, 255, 255, 0.25);
+  color: #a8a29e;
+  font-style: normal;
+}
+
+.prose :where(code):not(:where(pre code)) {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e7e5e4;
+}
+
+.prose :where(pre) {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #111111;
+}
+
+.prose :where(img) {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+}
+
+:where(a, button):focus-visible {
+  outline: 2px solid #f5f5f4;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  to {
-    width: 100%;
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
-}
-
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: currentColor;
-  }
-}
-
-/* Add to your existing styles */
-@keyframes slideLeft {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-.repo-carousel {
-  transition: transform 0.3s linear;
-}
-
-@keyframes slideRepos {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-33.33% - 1.5rem));
-  }
-}
-
-.animate-slideRepos {
-  animation: slideRepos 25s linear infinite;
-  will-change: transform;
-}
-
-.animate-slideRepos:hover {
-  animation-play-state: paused;
-}
-
-/* Añadir nuevas animaciones */
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 10s linear infinite;
-}
-
-/* Añadir nuevos estilos para el avatar */
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes rotate-gradient {
-  to {
-    --angle: 360deg;
-  }
-}
-
-.bg-gradient-conic {
-  background-image: conic-gradient(from var(--angle), var(--tw-gradient-from) 0%, var(--tw-gradient-via) 50%, var(--tw-gradient-to) 100%);
-  animation: rotate-gradient 4s linear infinite;
-}
-
-/* Actualizar los estilos del layout */
-.layout-container {
-  @apply flex flex-col min-h-screen;
-}
-
-/* Estilo base para el contenido principal */
-.main-content {
-  @apply flex-1 relative;
-}
-
-/* Estilo específico para la página de inicio */
-.home-content {
-  @apply h-[calc(100vh-4rem)] overflow-hidden;
-}
-
-/* Estilo para las demás páginas que necesitan scroll */
-.scrollable-content {
-  @apply min-h-[calc(100vh-4rem)] overflow-y-auto;
-}
-
-/* Asegurar que el contenedor del footer siempre esté al final */
-.footer-container {
-  @apply mt-auto;
-}
-
-/* Optimizaciones para mobile */
-@media (max-width: 640px) {
-  .home-content {
-    @apply h-[calc(100vh-3rem)];
-  }
-  
-  .scrollable-content {
-    @apply min-h-[calc(100vh-3rem)];
-  }
-}
-
-@keyframes ping-slow {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  75%, 100% {
-    transform: scale(1.2);
-    opacity: 0;
-  }
-}
-
-.animate-ping-slow {
-  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-/* Add these to your existing styles */
-@keyframes typewriter {
-  from {
-    transform: translateY(10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.ascii-line {
-  animation: typewriter 0.05s ease-out forwards;
-}
-
-/* Add a glitch effect for the ASCII art */
-@keyframes glitch {
-  0% {
-    text-shadow: 0.03em 0 0 rgba(136, 255, 136, 0.5),
-                -0.03em -0.015em 0 rgba(136, 255, 136, 0.5),
-                -0.015em 0.03em 0 rgba(136, 255, 136, 0.5);
-  }
-  50% {
-    text-shadow: -0.03em -0.015em 0 rgba(136, 255, 136, 0.5),
-                0.015em 0.015em 0 rgba(136, 255, 136, 0.5),
-                -0.03em -0.03em 0 rgba(136, 255, 136, 0.5);
-  }
-  100% {
-    text-shadow: 0.015em 0.03em 0 rgba(136, 255, 136, 0.5),
-                0.03em 0 0 rgba(136, 255, 136, 0.5),
-                0 -0.03em 0 rgba(136, 255, 136, 0.5);
-  }
-}
-
-.ascii-hover {
-  animation: glitch 3s linear infinite;
 }
