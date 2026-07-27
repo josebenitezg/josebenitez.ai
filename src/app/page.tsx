@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Container from "@/components/Container";
+import DitherField from "@/components/DitherField";
 import {
   capabilities,
   credentials,
@@ -25,14 +26,20 @@ export default async function Home() {
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-white/10">
-        <Container className="grid min-h-[78vh] items-end gap-14 py-20 sm:py-28 lg:grid-cols-[minmax(0,1.5fr)_minmax(18rem,0.5fr)] lg:py-32">
-          <div>
+      <section className="hero-section overflow-hidden border-b border-white/10">
+        <DitherField />
+        <Container className="relative z-10 grid min-h-[82vh] items-end gap-14 py-20 sm:py-28 lg:grid-cols-[minmax(0,1.5fr)_minmax(18rem,0.5fr)] lg:py-32">
+          <div className="relative">
             <p className="eyebrow">Applied AI · Computer vision · Infrastructure</p>
-            <h1 className="mt-6 max-w-5xl text-5xl font-semibold leading-[0.98] tracking-[-0.055em] text-stone-100 sm:text-7xl lg:text-[5.75rem]">
-              José Benítez —
-              <br />
-              AI systems for the physical world.
+            <h1
+              className="hero-title mt-7 max-w-5xl text-stone-100"
+              aria-label="José Benítez — AI systems for the physical world."
+            >
+              <span className="block">
+                José Benítez <span className="hero-title-dash">—</span>
+              </span>
+              <span className="block">AI systems for the</span>
+              <em className="block">physical world.</em>
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-stone-400 sm:text-xl">
               I&apos;m an electrical engineer, founder, and AI operator working

@@ -1,10 +1,28 @@
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { siteConfig } from "@/lib/site";
+
+const instrumentSerif = localFont({
+  src: [
+    {
+      path: "./fonts/InstrumentSerif-Regular.woff2",
+      style: "normal",
+      weight: "400",
+    },
+    {
+      path: "./fonts/InstrumentSerif-Italic.woff2",
+      style: "italic",
+      weight: "400",
+    },
+  ],
+  variable: "--font-display",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -50,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={instrumentSerif.variable}>
       <body>
         <a
           href="#main-content"
