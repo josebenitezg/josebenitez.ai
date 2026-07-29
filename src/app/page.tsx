@@ -33,11 +33,8 @@ export default async function Home() {
             <p className="eyebrow">Applied AI · Computer vision · Infrastructure</p>
             <h1
               className="hero-title mt-7 max-w-5xl text-stone-100"
-              aria-label="José Benítez — AI systems for the physical world."
+              aria-label="AI systems for the physical world."
             >
-              <span className="block">
-                José Benítez <span className="hero-title-dash">—</span>
-              </span>
               <span className="block">AI systems for the</span>
               <em className="block">physical world.</em>
             </h1>

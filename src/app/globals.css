@@ -52,10 +52,6 @@ body {
   letter-spacing: -0.055em;
 }
 
-.hero-title-dash {
-  color: rgba(214, 211, 209, 0.42);
-}
-
 .hero-dither {
   position: absolute;
   z-index: 0;
