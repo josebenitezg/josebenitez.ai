@@ -27,29 +27,15 @@ export default function ContactPage() {
         </p>
       </div>
 
-      <div className="surface p-7 sm:p-9">
-        <p className="text-sm leading-7 text-stone-400">
-          LinkedIn is the verified public contact route currently available.
-          Include the company, the problem, and why the decision matters.
-        </p>
-        <a
-          href={siteConfig.links.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="button mt-7 w-full"
-        >
-          Connect on LinkedIn
-          <ArrowUpRight aria-hidden="true" size={16} />
-        </a>
-        <div className="mt-8 border-t border-white/10 pt-6">
-          <p className="text-xs uppercase tracking-[0.15em] text-stone-600">
-            Email
-          </p>
-          <p className="mt-3 text-sm leading-6 text-stone-500">
-            Preferred public email address to be confirmed by José.
-          </p>
-        </div>
-      </div>
+      <a
+        href={siteConfig.links.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button w-full lg:max-w-sm lg:justify-self-end"
+      >
+        Connect on LinkedIn
+        <ArrowUpRight aria-hidden="true" size={16} />
+      </a>
     </Container>
   );
 }
