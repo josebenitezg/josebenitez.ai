@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
 
 export default {
   content: [
@@ -6,16 +7,13 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        sans: ["var(--font-sans)"],
+        serif: ["var(--font-serif)"],
       },
-      animation: {
-        slideRepos: 'slideRepos 30s linear infinite',
-      }
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    typography,
   ],
 } satisfies Config;

@@ -1,101 +1,96 @@
 "use client";
 
-import { 
-  Bars3Icon,
-} from "@heroicons/react/24/outline";
-import { usePathname } from 'next/navigation';
-import { useState } from "react";
-import Link from 'next/link';
+import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import Container from "@/components/Container";
 
-interface NavbarProps {
-  className?: string;
-}
-
-const MENU_ITEMS = [
-  { label: "Home", path: "/" },
+const NAV_ITEMS = [
+  { label: "Work", path: "/work" },
+  { label: "Capabilities", path: "/capabilities" },
+  { label: "Writing", path: "/writing" },
   { label: "About", path: "/about" },
-  { label: "Blog", path: "/blog" },
-  { label: "Biohacking", path: "/biohacking" },
 ];
 
-export default function Navbar({ className = "" }: NavbarProps) {
+export default function Navbar() {
   const pathname = usePathname();
-  const [isDropUpOpen, setIsDropUpOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  const isActive = (path: string) =>
+    pathname === path || pathname.startsWith(`${path}/`);
 
   return (
-    <>
-      <div className={`sm:flex hidden sticky top-0 z-20 border-b border-white/10 bg-transparent ${className}`}>
-        <div className="max-w-7xl mx-auto w-full h-14 flex items-center justify-between px-4">
-          <Link 
-            href="/"
-            className="flex items-center gap-3 font-semibold hover:opacity-80 transition-opacity"
-          >
-            <span className="text-white">José Benítez</span>
-          </Link>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#090909]/90 backdrop-blur-xl">
+      <Container className="relative flex h-16 items-center justify-between">
+        <Link
+          href="/"
+          className="font-semibold tracking-[-0.02em] text-stone-100 transition-colors hover:text-white"
+        >
+          José Benítez
+        </Link>
 
-          <nav className="flex gap-1">
-            {MENU_ITEMS.map((item) => (
+        <nav aria-label="Primary navigation" className="hidden items-center gap-1 md:flex">
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item.path}
+              href={item.path}
+              aria-current={isActive(item.path) ? "page" : undefined}
+              className={`rounded-full px-3 py-2 text-sm transition-colors ${
+                isActive(item.path)
+                  ? "bg-white/10 text-stone-100"
+                  : "text-stone-400 hover:bg-white/5 hover:text-stone-100"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Link href="/contact" className="button button-small ml-2">
+            Contact
+          </Link>
+        </nav>
+
+        <button
+          type="button"
+          onClick={() => setIsOpen((current) => !current)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-stone-200 transition-colors hover:bg-white/10 md:hidden"
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
+        >
+          {isOpen ? <X aria-hidden="true" size={19} /> : <Menu aria-hidden="true" size={19} />}
+        </button>
+
+        {isOpen && (
+          <nav
+            id="mobile-navigation"
+            aria-label="Mobile navigation"
+            className="absolute left-5 right-5 top-[calc(100%+0.75rem)] rounded-2xl border border-white/10 bg-[#111111] p-2 shadow-2xl shadow-black/40 md:hidden"
+          >
+            {NAV_ITEMS.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`px-2.5 py-1.5 rounded-md transition-colors ${
-                  pathname === item.path ? 'bg-white/10 text-white' : 'text-neutral-400 hover:text-white hover:bg-white/5'
+                aria-current={isActive(item.path) ? "page" : undefined}
+                className={`block rounded-xl px-4 py-3 text-sm transition-colors ${
+                  isActive(item.path)
+                    ? "bg-white/10 text-stone-100"
+                    : "text-stone-300 hover:bg-white/5"
                 }`}
               >
                 {item.label}
               </Link>
             ))}
+            <Link href="/contact" className="button mt-2 w-full">
+              Contact
+            </Link>
           </nav>
-        </div>
-      </div>
-
-      <div className="sm:hidden fixed bottom-8 right-4 z-50">
-        {isDropUpOpen && (
-          <div
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
-            onClick={() => setIsDropUpOpen(false)}
-          />
         )}
-        <button
-          onClick={() => setIsDropUpOpen(!isDropUpOpen)}
-          className={`
-            w-12 h-12 rounded-full 
-            bg-white/10 border border-white/15 
-            backdrop-blur-lg flex items-center justify-center 
-            shadow-lg shadow-black/20
-            transition-all duration-300
-            hover:bg-white/15 hover:scale-105
-            relative
-            after:absolute after:inset-0
-            after:rounded-full after:border-2 after:border-white/20
-          `}
-        >
-          <Bars3Icon className="w-6 h-6 text-white" />
-        </button>
-
-        {isDropUpOpen && (
-          <div className="absolute bottom-16 right-0 z-50 w-64 p-2 rounded-xl bg-black/60 backdrop-blur-xl border border-white/15 shadow-xl">
-            <div className="flex flex-col gap-2">
-              {MENU_ITEMS.map((item) => (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  className={`
-                    px-4 py-2 rounded-xl transition-all duration-300
-                    ${pathname === item.path 
-                      ? 'bg-white/10 text-white' 
-                      : 'hover:bg-white/5 text-neutral-300 hover:text-white'
-                    }
-                  `}
-                  onClick={() => setIsDropUpOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </>
+      </Container>
+    </header>
   );
-} 
+}
