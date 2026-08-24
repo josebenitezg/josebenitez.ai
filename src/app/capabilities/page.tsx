@@ -8,17 +8,17 @@ import { capabilities } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Capabilities",
   description:
-    "Ways José Benítez can support teams working through applied AI strategy, computer vision, infrastructure, and technical decisions.",
+    "Ways José Benítez can support teams working through Physical AI strategy, computer vision, edge and cloud infrastructure, and system evaluation.",
   alternates: {
     canonical: "/capabilities",
   },
 };
 
 const prompts = [
-  "Where can AI create real leverage in this system?",
+  "What does the system need to perceive before it can act reliably?",
   "What architecture fits the latency, cost, and reliability constraints?",
-  "What should run at the edge, in the cloud, or not exist at all?",
-  "How do we move from a promising model to an operating product?",
+  "What should run at the edge, in the cloud, or outside the AI path?",
+  "How do we move from a promising model to a reliable operating system?",
 ];
 
 export default function CapabilitiesPage() {
@@ -26,8 +26,8 @@ export default function CapabilitiesPage() {
     <>
       <PageIntro
         eyebrow="Capabilities"
-        title="Technical judgment before technical complexity."
-        description="Support for founders and technical leaders making consequential decisions about applied AI. Engagement shape and scope are defined around the actual constraint, not a fixed package."
+        title="Physical systems before abstract benchmarks."
+        description="Support for founders and technical leaders making consequential decisions about perception, inference, and autonomy. Engagement shape and scope are defined around the operating constraint, not a fixed package."
       />
 
       <Container className="py-20 sm:py-28">

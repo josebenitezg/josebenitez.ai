@@ -30,7 +30,7 @@ export default async function Home() {
         <DitherField />
         <Container className="relative z-10 grid min-h-[82vh] items-end gap-14 py-20 sm:py-28 lg:grid-cols-[minmax(0,1.5fr)_minmax(18rem,0.5fr)] lg:py-32">
           <div className="relative">
-            <p className="eyebrow">Applied AI · Computer vision · Infrastructure</p>
+            <p className="eyebrow">Physical AI · Correlations</p>
             <h1
               className="hero-title mt-7 max-w-5xl text-stone-100"
               aria-label="AI systems for the physical world."
@@ -39,9 +39,9 @@ export default async function Home() {
               <em className="block">physical world.</em>
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-stone-400 sm:text-xl">
-              I&apos;m an electrical engineer, founder, and AI operator working
-              across computer vision, AI infrastructure, IoT, and applied
-              machine learning for unattended retail.
+              I&apos;m an electrical engineer, founder, and Physical AI operator
+              working across perception and inference—and tracing the compute,
+              energy, infrastructure, and model shifts around those systems.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link href="/work" className="button">
@@ -55,7 +55,6 @@ export default async function Home() {
           </div>
           <div className="border-l border-white/10 pl-6 text-sm leading-7 text-stone-500 lg:mb-3">
             <p>Based in San Francisco.</p>
-            <p>Originally from Ybycui, Paraguay.</p>
             <p className="mt-5 text-stone-300">
               Founder & Chief AI Officer at Intuitivo.
             </p>
@@ -87,7 +86,7 @@ export default async function Home() {
             <div>
               <p className="eyebrow">Capabilities</p>
               <h2 className="mt-4 max-w-2xl text-4xl font-semibold tracking-[-0.035em] text-stone-100 sm:text-5xl">
-                From AI ambition to an operating system.
+                From physical signal to operating system.
               </h2>
             </div>
             <Link href="/capabilities" className="text-link">
@@ -159,16 +158,16 @@ export default async function Home() {
       <section className="py-24 sm:py-32">
         <Container className="grid gap-14 lg:grid-cols-[0.6fr_1.4fr]">
           <div>
-            <p className="eyebrow">Writing</p>
+            <p className="eyebrow">Physical AI · Correlations</p>
             <h2 className="mt-4 text-4xl font-semibold tracking-[-0.035em] text-stone-100">
-              Notes from the work.
+              Systems, and the forces around them.
             </h2>
             <p className="mt-5 max-w-md leading-7 text-stone-400">
-              Essays on applied AI, infrastructure, autonomy, technology, and
-              the ideas that shape how I build.
+              Writing on perception, inference, and autonomy—plus correlations
+              across compute, energy, infrastructure, and model shifts.
             </p>
             <Link href="/writing" className="text-link mt-8">
-              Browse all writing
+              Browse the writing
               <ArrowRight aria-hidden="true" size={15} />
             </Link>
           </div>
@@ -179,7 +178,10 @@ export default async function Home() {
                 href={`/blog/${post.slug}`}
                 className="group grid gap-3 py-7 sm:grid-cols-[1fr_auto] sm:items-center"
               >
-                <div>
+                <div lang={post.language}>
+                  <p className="mb-2 text-xs uppercase tracking-[0.14em] text-stone-600">
+                    {post.series === "physical-ai" ? "Physical AI" : "Correlations"}
+                  </p>
                   <h3 className="text-xl font-medium text-stone-200 transition-colors group-hover:text-white">
                     {post.title}
                   </h3>

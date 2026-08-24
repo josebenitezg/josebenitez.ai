@@ -2,9 +2,9 @@ export const siteConfig = {
   name: "José Benítez",
   fullName: "Jose Benitez Genes",
   url: "https://www.josebenitez.ai",
-  title: "José Benítez — AI systems for the physical world",
+  title: "José Benítez — Physical AI & correlations",
   description:
-    "Electrical engineer, founder, and AI operator working across computer vision, AI infrastructure, IoT, and applied machine learning.",
+    "Physical AI systems and correlations across computer vision, compute, energy, infrastructure, and real-world system performance.",
   links: {
     github: "https://github.com/josebenitezg",
     linkedin: "https://www.linkedin.com/in/josebenitezg/",
@@ -31,27 +31,27 @@ export const credentials = [
 export const capabilities = [
   {
     number: "01",
-    title: "AI strategy & advisory",
+    title: "Physical AI strategy",
     description:
-      "Clarify where AI can create durable value, what should be built, and what should stay simple. Best suited to teams moving from exploration to an executable technical roadmap.",
+      "Define where perception and autonomy can create durable value, what the system must sense, and which real-world constraints belong in the technical roadmap.",
   },
   {
     number: "02",
-    title: "Computer vision & inference",
+    title: "Computer vision & perception",
     description:
-      "Architecture for camera-based systems across edge and cloud, with attention to latency, reliability, model constraints, and the economics of inference.",
+      "Architecture for camera-based systems across edge and cloud, with attention to sensing conditions, latency, reliability, model limits, and inference economics.",
   },
   {
     number: "03",
-    title: "AI infrastructure",
+    title: "Edge & cloud AI infrastructure",
     description:
-      "Practical systems for deploying and operating machine learning workloads, from data and training decisions to production inference and observability.",
+      "Production systems for moving physical-world data from capture to inference, with explicit decisions around deployment, observability, cost, and recovery.",
   },
   {
     number: "04",
-    title: "Technical diligence & workshops",
+    title: "System evaluation & diligence",
     description:
-      "Focused reviews for founders and technical leaders evaluating AI roadmaps, architectures, technical risk, or a build-versus-buy decision.",
+      "Focused reviews for founders and technical leaders evaluating perception systems, architecture risk, operating constraints, or a build-versus-buy decision.",
   },
 ] as const;
 

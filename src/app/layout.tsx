@@ -46,7 +46,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "José Benítez — AI systems for the physical world",
+        alt: "José Benítez — Physical AI systems",
       },
     ],
   },

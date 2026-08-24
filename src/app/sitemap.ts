@@ -9,7 +9,6 @@ const routes = [
   "/writing",
   "/about",
   "/contact",
-  "/lab",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

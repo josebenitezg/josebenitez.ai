@@ -60,7 +60,7 @@ export default async function BlogPostPage({
   const html = await renderMarkdownToHtml(post.content);
   const formattedDate = new Date(
     post.date.length === 10 ? `${post.date}T00:00:00` : post.date,
-  ).toLocaleDateString("en-US", {
+  ).toLocaleDateString(post.language === "es" ? "es-ES" : "en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -68,7 +68,10 @@ export default async function BlogPostPage({
 
   return (
     <>
-      <article className="mx-auto w-full max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
+      <article
+        className="mx-auto w-full max-w-3xl px-5 py-16 sm:px-8 sm:py-24"
+        lang={post.language}
+      >
         <Link href="/writing" className="text-link">
           <ArrowLeft aria-hidden="true" size={14} />
           All writing
@@ -84,6 +87,10 @@ export default async function BlogPostPage({
           )}
           <div className="mt-6 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.12em] text-stone-600">
             <time dateTime={post.date}>{formattedDate}</time>
+            <span aria-hidden="true">·</span>
+            <span>
+              {post.series === "physical-ai" ? "Physical AI" : "Correlations"}
+            </span>
             <span aria-hidden="true">·</span>
             <span>{siteConfig.name}</span>
           </div>
