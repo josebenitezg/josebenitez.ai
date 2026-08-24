@@ -2,9 +2,9 @@ export const siteConfig = {
   name: "José Benítez",
   fullName: "Jose Benitez Genes",
   url: "https://www.josebenitez.ai",
-  title: "José Benítez — Physical AI systems",
+  title: "José Benítez — Physical AI & correlations",
   description:
-    "Electrical engineer, founder, and Physical AI operator working across computer vision, edge and cloud infrastructure, and real-world system performance.",
+    "Physical AI systems and correlations across computer vision, compute, energy, infrastructure, and real-world system performance.",
   links: {
     github: "https://github.com/josebenitezg",
     linkedin: "https://www.linkedin.com/in/josebenitezg/",

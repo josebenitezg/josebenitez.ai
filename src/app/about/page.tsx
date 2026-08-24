@@ -58,6 +58,11 @@ export default function AboutPage() {
               operate across real environments, not controlled benchmarks.
             </p>
             <p>
+              I also write about the correlations around these systems: the
+              compute, energy, infrastructure, and model shifts that expand or
+              constrain what Physical AI can do in practice.
+            </p>
+            <p>
               Before Intuitivo, I worked across connected hardware, digital
               manufacturing, and cloud systems. That foundation still shapes how
               I evaluate Physical AI: as an operating system, not an isolated

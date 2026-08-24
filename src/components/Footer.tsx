@@ -13,7 +13,7 @@ export default function Footer() {
       <Container className="flex flex-col gap-7 text-sm text-stone-400 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="font-medium text-stone-200">José Benítez</p>
-          <p className="mt-1">AI systems for the physical world.</p>
+          <p className="mt-1">Physical AI and its correlations.</p>
         </div>
         <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-5 gap-y-3">
           {footerLinks.map((link) => (

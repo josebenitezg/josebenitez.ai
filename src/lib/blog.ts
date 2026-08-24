@@ -2,6 +2,8 @@ import { readFile, readdir } from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
 
+export type WritingSeries = "physical-ai" | "correlations";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -9,6 +11,8 @@ export interface BlogPost {
   description: string;
   content: string;
   tags: string[];
+  series: WritingSeries;
+  language: "en" | "es";
   image?: string;
 }
 
@@ -17,6 +21,8 @@ type PostFrontmatter = {
   date?: unknown;
   description?: unknown;
   tags?: unknown;
+  series?: unknown;
+  language?: unknown;
   image?: unknown;
 };
 
@@ -39,6 +45,8 @@ function parsePost(
     tags: Array.isArray(data.tags)
       ? data.tags.filter((tag): tag is string => typeof tag === "string")
       : [],
+    series: data.series === "correlations" ? "correlations" : "physical-ai",
+    language: data.language === "es" ? "es" : "en",
     image:
       typeof data.image === "string" && data.image.length > 0
         ? data.image

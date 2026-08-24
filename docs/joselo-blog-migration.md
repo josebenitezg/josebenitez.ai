@@ -15,18 +15,19 @@ The MDX handoff bundle lives outside this repository at
 | `/biohacking` | Removed legacy redirect; recoverable from `origin/main:src/app/biohacking/page.tsx` | `https://joselo.blog/lab` | Preserve as a legacy alias after the destination exists. |
 | `/blog/do-it-anyway` | External handoff bundle: `confirmed/do-it-anyway.mdx` | `https://joselo.blog/do-it-anyway` | Personal essay on discipline, motivation, and willpower. |
 | `/blog/marco-existencial` | External handoff bundle: `confirmed/marco-existencial.mdx` | `https://joselo.blog/marco-existencial` | Personal philosophical and spiritual essay. |
+| `/blog/hello-world` | External handoff bundle: `candidates/hello-world.mdx` | `https://joselo.blog/hello-world` | Personal note about rebuilding, learning, and creating in public. |
 
-## Scope decisions still required
+## Correlations retained on josebenitez.ai
 
-These posts are no longer in the public `content/posts` tree so that the
-preview remains strictly focused on Physical AI. Their final destination needs
-an editorial decision before redirects are enabled.
+The phrase “correlations” does not exist in the previous code or frontmatter.
+For this draft, it is implemented as adjacent forces that shape Physical AI:
+compute, energy, infrastructure, and model shifts. This interpretation is
+explicit and reversible in the PR.
 
-| Previous public URL | Source retained at | Proposed destination | Decision boundary |
-| --- | --- | --- | --- |
-| `/blog/4o-image-gen` | External handoff bundle: `candidates/4o-image-gen.mdx` | `https://joselo.blog/4o-image-gen` | General AI/image-generation analysis; technical, but not Physical AI. |
-| `/blog/hello-world` | External handoff bundle: `candidates/hello-world.mdx` | `https://joselo.blog/hello-world` | Mixes general AI observations with a personal note about rebuilding and learning in public. |
-| `/blog/paraguay-ai-factory` | External handoff bundle: `candidates/paraguay-ai-factory.mdx` | `https://joselo.blog/paraguay-ai-factory` | AI infrastructure and public-policy analysis; adjacent to the professional focus, but not a Physical AI system case. |
+| Public URL | Source | Why it belongs under Correlations |
+| --- | --- | --- |
+| `/blog/4o-image-gen` | `content/posts/4o-image-gen.mdx` | Model-architecture shifts and their effect on multimodal systems. |
+| `/blog/paraguay-ai-factory` | `content/posts/paraguay-ai-factory.mdx` | The energy, compute, infrastructure, and policy layer around AI systems. |
 
 ## Content intentionally retained on josebenitez.ai
 
@@ -34,14 +35,16 @@ an editorial decision before redirects are enabled.
 | --- | --- | --- |
 | `/blog/autonomous-retail` | `content/posts/autonomous-retail.mdx` | Direct Physical AI case: perception and autonomy in unattended retail. |
 | `/blog/inferentia-chips` | `content/posts/inferentia-chips.mdx` | Direct supporting infrastructure case for production computer-vision inference. |
+| `/blog/4o-image-gen` | `content/posts/4o-image-gen.mdx` | Correlations: model and multimodal architecture shifts. |
+| `/blog/paraguay-ai-factory` | `content/posts/paraguay-ai-factory.mdx` | Correlations: energy and compute infrastructure. |
 
 ## Asset handoff
 
 | Content | Asset dependency | Action |
 | --- | --- | --- |
-| `hello-world` | External handoff bundle: `assets/hello-world.jpg` | Copy into the new project if the post moves. |
-| `paraguay-ai-factory` | External handoff bundle: `assets/paraguay-ai-factory.png` | Copy into the new project if the post moves. |
-| `4o-image-gen` | Remote images embedded in the MDX | Review remote availability and image rights before publishing on the new domain. |
+| `hello-world` | External handoff bundle: `assets/hello-world.jpg` | Copied into the `joselo.blog` project. |
+| `paraguay-ai-factory` | `public/blog/paraguay-ai-factory.png` | Restored to the professional project with the Correlations post. |
+| `4o-image-gen` | Remote images embedded in the MDX | Remains on its existing professional URL; continue monitoring remote availability and attribution. |
 | `do-it-anyway` | None | No asset migration required. |
 | `marco-existencial` | None | No asset migration required. |
 | `lab` / `biohacking` | None in the current route | No asset migration required. |
