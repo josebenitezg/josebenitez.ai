@@ -1,7 +1,7 @@
 # josebenitez.ai
 
-Professional site for José Benítez, focused on Physical AI, computer vision,
-inference infrastructure, and real-world system performance.
+Professional site for José Benítez, focused on Physical AI and correlations
+across compute, energy, infrastructure, and model shifts.
 
 ## Stack
 
@@ -45,3 +45,17 @@ is hidden and the API degrades without failing the site.
 Physical AI field notes live in `content/posts` as Markdown with frontmatter.
 Personal and general-interest writing is staged outside the public content tree;
 see `docs/joselo-blog-migration.md` for the source-to-destination manifest.
+
+## Personal-content redirects
+
+Permanent redirects to `joselo.blog` are implemented but disabled by default.
+After the new domain serves the approved production deployment, set this
+server-side Vercel environment variable and redeploy:
+
+```env
+JOSELO_BLOG_REDIRECTS_ENABLED=true
+```
+
+The switch covers `/lab`, `/biohacking`, `do-it-anyway`, `marco-existencial`,
+and `hello-world`. It deliberately does not redirect the Physical AI or
+Correlations posts.

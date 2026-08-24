@@ -54,6 +54,8 @@ explicit and reversible in the PR.
 1. Confirm the final `joselo.blog` URL structure.
 2. Publish each destination with matching canonical metadata.
 3. Verify desktop/mobile rendering and every local or remote image.
-4. Add permanent redirects from the legacy paths in one reversible change.
-5. Verify the redirects return the intended final URL before deploying
-   `josebenitez.ai`.
+4. Set `JOSELO_BLOG_REDIRECTS_ENABLED=true` in Vercel and redeploy. The
+   permanent redirects are already implemented behind this disabled-by-default
+   switch.
+5. Verify each redirect returns the intended final URL before treating the
+   migration as complete.
