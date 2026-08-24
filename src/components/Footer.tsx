@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Container from "@/components/Container";
 import { siteConfig } from "@/lib/site";
 
@@ -17,9 +16,6 @@ export default function Footer() {
           <p className="mt-1">AI systems for the physical world.</p>
         </div>
         <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-5 gap-y-3">
-          <Link href="/lab" className="transition-colors hover:text-stone-100">
-            Lab
-          </Link>
           {footerLinks.map((link) => (
             <a
               key={link.label}

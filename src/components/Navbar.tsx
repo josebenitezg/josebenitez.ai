@@ -9,7 +9,7 @@ import Container from "@/components/Container";
 const NAV_ITEMS = [
   { label: "Work", path: "/work" },
   { label: "Capabilities", path: "/capabilities" },
-  { label: "Writing", path: "/writing" },
+  { label: "Field notes", path: "/writing" },
   { label: "About", path: "/about" },
 ];
 

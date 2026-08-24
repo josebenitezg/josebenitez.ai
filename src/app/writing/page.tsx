@@ -5,9 +5,9 @@ import WritingIndex from "@/components/WritingIndex";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Writing",
+  title: "Field notes",
   description:
-    "Notes by José Benítez on applied AI, computer vision, infrastructure, autonomy, technology, and the ideas behind the work.",
+    "Field notes by José Benítez on Physical AI, computer vision, inference infrastructure, autonomy, and real-world system performance.",
   alternates: {
     canonical: "/writing",
   },
@@ -19,9 +19,9 @@ export default async function WritingPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Writing"
-        title="Thinking in public."
-        description="Technical notes and personal essays on building AI systems, understanding autonomy, and learning through the work."
+        eyebrow="Field notes"
+        title="Notes from the physical world."
+        description="Technical notes on building Physical AI systems across perception, inference infrastructure, autonomy, and operations."
       />
       <Container className="py-16 sm:py-24">
         <WritingIndex posts={posts} />

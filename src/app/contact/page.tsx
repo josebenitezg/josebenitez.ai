@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a conversation with José Benítez about applied AI, computer vision, AI infrastructure, or a consequential technical decision.",
+    "Start a conversation with José Benítez about Physical AI, computer vision, inference infrastructure, or a consequential system decision.",
   alternates: {
     canonical: "/contact",
   },
@@ -21,9 +21,9 @@ export default function ContactPage() {
           Start with the constraint.
         </h1>
         <p className="mt-7 max-w-2xl text-lg leading-8 text-stone-400 sm:text-xl">
-          If you&apos;re leading an AI initiative, evaluating a physical-world
-          system, or making a difficult architecture decision, send the context
-          and the question you need answered.
+          If you&apos;re building a system that must perceive or act in the physical
+          world, send the operating context, the constraint, and the decision you
+          need to make.
         </p>
       </div>
 

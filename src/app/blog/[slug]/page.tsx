@@ -71,7 +71,7 @@ export default async function BlogPostPage({
       <article className="mx-auto w-full max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
         <Link href="/writing" className="text-link">
           <ArrowLeft aria-hidden="true" size={14} />
-          All writing
+          All field notes
         </Link>
         <header className="mt-12 border-b border-white/10 pb-10">
           <h1 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-stone-100 sm:text-6xl">

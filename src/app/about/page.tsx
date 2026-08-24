@@ -7,17 +7,16 @@ import { featuredLinks } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "José Benítez is an electrical engineer, entrepreneur, and Founder & Chief AI Officer at Intuitivo.",
+    "José Benítez is an electrical engineer, Physical AI operator, and Founder & Chief AI Officer at Intuitivo.",
   alternates: {
     canonical: "/about",
   },
 };
 
 const highlights = [
-  "Founded Intuitivo and leads its AI work for unattended retail.",
-  "Previously founded and served as CTO of Aratiri, focused on digital manufacturing and IoT.",
-  "Contributed to low-cost 3D-printed prostheses with Po Paraguay's equiPO team.",
-  "Worked on smart-building technology at Función Digital.",
+  "Founded Intuitivo and leads its Physical AI work for unattended retail.",
+  "Documented computer-vision inference work with the AWS Machine Learning team.",
+  "Previously founded and served as CTO of Aratiri, focused on digital manufacturing and connected systems.",
 ];
 
 const publicLinks = [
@@ -32,8 +31,8 @@ export default function AboutPage() {
     <>
       <PageIntro
         eyebrow="About"
-        title="Engineer by training. Builder by habit."
-        description="I am Jose Benitez Genes, an electrical engineer and entrepreneur from Ybycui, Paraguay, now based in San Francisco."
+        title="Engineer by training. Physical AI operator by practice."
+        description="I am Jose Benitez Genes, an electrical engineer, entrepreneur, and Founder & Chief AI Officer at Intuitivo."
       />
 
       <Container className="py-20 sm:py-28">
@@ -48,9 +47,10 @@ export default function AboutPage() {
           </div>
           <div className="space-y-7 text-lg leading-8 text-stone-400">
             <p>
-              My work sits where software meets the physical world: computer
-              vision, IoT, cloud infrastructure, and the operational constraints
-              that decide whether an AI system is useful outside a demo.
+              My work is Physical AI: systems that perceive, decide, and operate
+              under real-world constraints. I focus on computer vision, IoT,
+              infrastructure, and the operating conditions that decide whether
+              a system is useful outside a demo.
             </p>
             <p>
               At Intuitivo, I lead AI infrastructure for unattended retail. The
@@ -58,11 +58,10 @@ export default function AboutPage() {
               operate across real environments, not controlled benchmarks.
             </p>
             <p>
-              I began repairing elevators to help pay for college and kept
-              following the same instinct: understand how a system works, then
-              make it more useful. A machine-learning course in 2014 connected
-              that instinct to AI, and the path has since crossed robotics,
-              manufacturing, cloud computing, and entrepreneurship.
+              Before Intuitivo, I worked across connected hardware, digital
+              manufacturing, and cloud systems. That foundation still shapes how
+              I evaluate Physical AI: as an operating system, not an isolated
+              model.
             </p>
           </div>
         </div>

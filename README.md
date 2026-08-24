@@ -1,6 +1,7 @@
 # josebenitez.ai
 
-Personal website and writing archive for José Benítez.
+Professional site for José Benítez, focused on Physical AI, computer vision,
+inference infrastructure, and real-world system performance.
 
 ## Stack
 
@@ -41,6 +42,6 @@ is hidden and the API degrades without failing the site.
 
 ## Content
 
-Posts live in `content/posts` as Markdown with frontmatter. The public site uses
-English for primary navigation and product positioning; existing essays remain
-in their original language.
+Physical AI field notes live in `content/posts` as Markdown with frontmatter.
+Personal and general-interest writing is staged outside the public content tree;
+see `docs/joselo-blog-migration.md` for the source-to-destination manifest.
