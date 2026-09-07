@@ -79,3 +79,15 @@ server on that port). It covers desktop and mobile Chromium, form changes,
 pause/resume, reduced motion, context loss/recovery, the SVG fallback, keyboard
 controls, mobile navigation, internal links, and reading without JavaScript.
 Screenshots and failure traces are written to the ignored `test-results/` folder.
+
+### A connected observatory
+
+All routes share the warm palette, local Instrument Serif, masthead, and room
+index. Each interior page uses a related signal study, and project illustrations
+are shared between the homepage and Work. Articles retain the Writing navigation
+state, add reading progress, and link back into the collection. The sculpture's
+selected form and pause preference are remembered in session storage when available.
+
+The browser suite also checks ten routes at 1440, 768, 390, and 320 pixels, shared
+visual styles, client-side navigation and browser history, reading progress,
+keyboard navigation, optional storage, and the HTML index without JavaScript.

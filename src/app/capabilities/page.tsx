@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Container from "@/components/Container";
+import NextRoom from "@/components/NextRoom";
 import PageIntro from "@/components/PageIntro";
 import { capabilities } from "@/lib/site";
 
@@ -25,62 +24,53 @@ export default function CapabilitiesPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Capabilities"
-        title="Physical systems before abstract benchmarks."
-        description="Support for founders and technical leaders making consequential decisions about perception, inference, and autonomy. Engagement shape and scope are defined around the operating constraint, not a fixed package."
+        number="04"
+        eyebrow="Working together"
+        title={
+          <>
+            Good questions.
+            <br />
+            <em>Better systems.</em>
+          </>
+        }
+        description="I work with founders and technical leaders thinking through perception, inference, and autonomy. We start with the system, the operating conditions, and the decision in front of you."
+        study={3}
+        annotation="Understand the parts. See the whole."
       />
-
-      <Container className="py-20 sm:py-28">
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-2">
-          {capabilities.map((capability) => (
-            <article key={capability.number} className="bg-[#0b0b0b] p-8 sm:p-10">
-              <p className="text-xs text-stone-600">{capability.number}</p>
-              <h2 className="mt-10 text-3xl font-semibold tracking-[-0.025em] text-stone-100">
-                {capability.title}
-              </h2>
-              <p className="mt-5 max-w-xl leading-7 text-stone-400">
-                {capability.description}
-              </p>
+      <Container className="room-content">
+        <div>
+          {capabilities.map((capability, index) => (
+            <article key={capability.number} className="capability-entry">
+              <span className="observatory-label">{capability.number}</span>
+              <h2>{capability.title}</h2>
+              <div>
+                <blockquote className="capability-question">
+                  {prompts[index]}
+                </blockquote>
+                <p>{capability.description}</p>
+              </div>
             </article>
           ))}
         </div>
-
-        <div className="mt-24 grid gap-12 border-t border-white/10 pt-16 lg:grid-cols-[0.7fr_1.3fr]">
-          <div>
-            <p className="eyebrow">Useful starting questions</p>
-            <h2 className="mt-5 text-3xl font-semibold text-stone-100">
-              Bring the hard decision.
-            </h2>
-          </div>
-          <ol className="divide-y divide-white/10 border-y border-white/10">
-            {prompts.map((prompt, index) => (
-              <li
-                key={prompt}
-                className="grid grid-cols-[2rem_1fr] gap-4 py-6 text-lg leading-8 text-stone-300"
-              >
-                <span className="text-sm text-stone-600">0{index + 1}</span>
-                {prompt}
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        <div className="surface mt-24 flex flex-col gap-8 p-8 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <h2 className="text-3xl font-semibold text-stone-100">
-              Have a specific system in mind?
-            </h2>
-            <p className="mt-3 max-w-2xl leading-7 text-stone-400">
-              Share the operating context and the decision you are facing.
-              Relevance comes before format.
-            </p>
-          </div>
-          <Link href="/contact" className="button shrink-0">
-            Start a conversation
-            <ArrowRight aria-hidden="true" size={16} />
-          </Link>
-        </div>
+        <section className="working-note">
+          <p className="observatory-label">A starting point</p>
+          <h2 className="mt-5">
+            Bring the question
+            <br />
+            <em>you keep coming back to.</em>
+          </h2>
+          <p>
+            We can begin with the context, what you’ve tried, and where the
+            uncertainty is. The shape of the work follows from there.
+          </p>
+        </section>
       </Container>
+      <NextRoom
+        href="/contact"
+        number="05"
+        label="Contact"
+        title="Let’s think about it together."
+      />
     </>
   );
 }

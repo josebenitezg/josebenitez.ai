@@ -1,24 +1,36 @@
+import type { ReactNode } from "react";
 import Container from "@/components/Container";
+import SignalStudy from "@/components/SignalStudy";
 
 export default function PageIntro({
+  number,
   eyebrow,
   title,
   description,
+  study = 0,
+  annotation,
 }: {
+  number: string;
   eyebrow: string;
-  title: string;
+  title: ReactNode;
   description: string;
+  study?: number;
+  annotation: string;
 }) {
   return (
-    <section className="border-b border-white/10 py-20 sm:py-28">
-      <Container className="max-w-5xl">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1 className="mt-5 max-w-4xl text-5xl font-semibold tracking-[-0.04em] text-stone-100 sm:text-6xl lg:text-7xl">
-          {title}
-        </h1>
-        <p className="mt-7 max-w-2xl text-lg leading-8 text-stone-400 sm:text-xl">
-          {description}
-        </p>
+    <section className="room-intro">
+      <Container className="room-intro-grid">
+        <div>
+          <p className="observatory-label">
+            <span className="room-number">{number}</span> / {eyebrow}
+          </p>
+          <h1>{title}</h1>
+          <p className="room-description">{description}</p>
+        </div>
+        <figure className="room-study">
+          <SignalStudy variant={study} />
+          <figcaption>{annotation}</figcaption>
+        </figure>
       </Container>
     </section>
   );

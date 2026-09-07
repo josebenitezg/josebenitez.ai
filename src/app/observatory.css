@@ -1,9 +1,5 @@
 /* A quiet, warm material palette. The canvas is an enhancement; the page is HTML. */
 .observatory-home {
-  --observatory-ink: #e9e2d5;
-  --observatory-muted: #a69e91;
-  --observatory-accent: #c3a275;
-  --observatory-line: #e5d4b31c;
   color: var(--observatory-ink);
   background: #11120f;
 }

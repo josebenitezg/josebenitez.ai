@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import ArtifactVisual from "@/components/ArtifactVisual";
+import NextRoom from "@/components/NextRoom";
 import { ArrowUpRight } from "lucide-react";
 import Container from "@/components/Container";
 import PageIntro from "@/components/PageIntro";
@@ -41,86 +44,78 @@ export default function WorkPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Selected work"
-        title="AI that meets the constraints of the physical world."
-        description="A focused record of publicly documented roles and systems. Where public metrics are unavailable, the gap is stated rather than filled with an invented number."
+        number="01"
+        eyebrow="Work"
+        title={
+          <>
+            Ideas, out in
+            <br />
+            <em>the world.</em>
+          </>
+        }
+        description="A few things I’ve helped bring into the world. From machines that see to the infrastructure that lets them act."
+        study={0}
+        annotation="An idea becomes a working system."
       />
-
-      <Container className="py-10 sm:py-16">
+      <Container className="room-content">
         {selectedWork.map((work, index) => {
           const links = evidenceLinks[work.title];
           const id =
             work.title === "AWS Inferentia"
               ? "aws-inferentia"
               : work.title.toLowerCase();
-
           return (
-            <article
-              key={work.title}
-              id={id}
-              className="grid scroll-mt-24 gap-10 border-b border-white/10 py-16 first:pt-6 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20"
-            >
-              <div>
-                <p className="eyebrow">{work.eyebrow}</p>
-                <p className="mt-6 text-sm text-stone-600">0{index + 1}</p>
+            <article key={work.title} id={id} className="work-entry">
+              <div className="work-object">
+                <ArtifactVisual index={index} />
               </div>
               <div>
-                <h2 className="text-4xl font-semibold tracking-[-0.035em] text-stone-100 sm:text-5xl">
-                  {work.title}
-                </h2>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-400">
-                  {work.description}
-                </p>
-
-                <div className="mt-10 grid gap-8 sm:grid-cols-2">
-                  <div>
-                    <h3 className="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-stone-600">
-                      Public scope
-                    </h3>
-                    <ul className="mt-4 space-y-3 text-sm leading-6 text-stone-300">
-                      {work.areas.map((area) => (
-                        <li key={area} className="border-l border-white/15 pl-4">
-                          {area}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h3 className="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-stone-600">
-                      Evidence
-                    </h3>
-                    {links.length > 0 ? (
-                      <div className="mt-4 flex flex-col items-start gap-3">
-                        {links.map((link) => (
-                          <a
-                            key={link.label}
-                            href={link.href}
-                            target={link.href.startsWith("http") ? "_blank" : undefined}
-                            rel={
-                              link.href.startsWith("http")
-                                ? "noopener noreferrer"
-                                : undefined
-                            }
-                            className="text-link"
-                          >
-                            {link.label}
-                            <ArrowUpRight aria-hidden="true" size={14} />
-                          </a>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="mt-4 max-w-sm text-sm leading-6 text-stone-500">
-                        Public case-study metrics and links have not yet been
-                        documented. Add verified outcomes here when available.
-                      </p>
+                <p className="observatory-label">{work.eyebrow}</p>
+                <h2>{work.title}</h2>
+                <p className="work-description">{work.description}</p>
+                <ul className="work-scope">
+                  {work.areas.map((area) => (
+                    <li key={area}>{area}</li>
+                  ))}
+                </ul>
+                {links.length > 0 && (
+                  <div className="work-links">
+                    {links.map((link) =>
+                      link.href.startsWith("http") ? (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="observatory-link"
+                        >
+                          {link.label}
+                          <ArrowUpRight aria-hidden="true" size={14} />
+                        </a>
+                      ) : (
+                        <Link
+                          key={link.label}
+                          href={link.href}
+                          className="observatory-link"
+                        >
+                          {link.label}
+                          <ArrowUpRight aria-hidden="true" size={14} />
+                        </Link>
+                      ),
                     )}
                   </div>
-                </div>
+                )}
               </div>
             </article>
           );
         })}
       </Container>
+      <NextRoom
+        href="/writing"
+        number="02"
+        label="Writing"
+        title="The questions behind the work."
+      />
     </>
   );
 }

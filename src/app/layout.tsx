@@ -1,5 +1,6 @@
 import "./globals.css";
 import "./observatory.css";
+import "./rooms.css";
 import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -79,7 +80,7 @@ export default function RootLayout({
         </a>
         <div className="flex min-h-screen flex-col">
           <Navbar />
-          <main id="main-content" className="flex-1">
+          <main id="main-content" className="flex-1" tabIndex={-1}>
             {children}
           </main>
           <Footer />

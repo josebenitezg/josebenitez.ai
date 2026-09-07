@@ -65,6 +65,26 @@ export default function Observatory() {
     const canvas = canvasRef.current;
     const stage = stageRef.current;
     if (!canvas || !stage) return;
+    if (generation === 0) {
+      try {
+        const saved = JSON.parse(
+          sessionStorage.getItem("observatory-study") || "null",
+        );
+        if (
+          saved &&
+          Number.isInteger(saved.mode) &&
+          saved.mode >= 0 &&
+          saved.mode < MODES.length &&
+          typeof saved.paused === "boolean"
+        ) {
+          input.current = { mode: saved.mode, paused: saved.paused };
+          setMode(saved.mode);
+          setPaused(saved.paused);
+        }
+      } catch {
+        // Storage can be unavailable; the study still works without persistence.
+      }
+    }
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     setReduced(motion.matches);
     const gl = canvas.getContext("webgl", {
@@ -239,14 +259,26 @@ export default function Observatory() {
     }
   }, [generation]);
 
+  const remember = () => {
+    try {
+      sessionStorage.setItem(
+        "observatory-study",
+        JSON.stringify(input.current),
+      );
+    } catch {
+      /* Optional session memory. */
+    }
+  };
   const selectMode = (value: number) => {
     input.current.mode = value;
     setMode(value);
+    remember();
     invalidate.current();
   };
   const togglePause = () => {
     input.current.paused = !input.current.paused;
     setPaused(input.current.paused);
+    remember();
     invalidate.current();
   };
 

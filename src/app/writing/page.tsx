@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import PageIntro from "@/components/PageIntro";
+import NextRoom from "@/components/NextRoom";
 import WritingIndex from "@/components/WritingIndex";
 import { getAllPosts } from "@/lib/blog";
 
@@ -19,13 +20,28 @@ export default async function WritingPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Physical AI · Correlations"
-        title="Systems, and the forces around them."
-        description="Writing on Physical AI in practice, plus correlations across compute, energy, infrastructure, and model shifts."
+        number="02"
+        eyebrow="Field notes"
+        title={
+          <>
+            Following
+            <br />
+            <em>the threads.</em>
+          </>
+        }
+        description="Notes on physical AI and the forces around it. Perception, compute, energy, and the connections that are easy to miss."
+        study={1}
+        annotation="Separate observations. Connected ideas."
       />
-      <Container className="py-16 sm:py-24">
+      <Container className="room-content">
         <WritingIndex posts={posts} />
       </Container>
+      <NextRoom
+        href="/about"
+        number="03"
+        label="About"
+        title="Meet the person taking notes."
+      />
     </>
   );
 }

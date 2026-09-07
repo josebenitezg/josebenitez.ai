@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowUpRight } from "lucide-react";
 import Container from "@/components/Container";
+import NextRoom from "@/components/NextRoom";
 import PageIntro from "@/components/PageIntro";
 import { featuredLinks } from "@/lib/site";
 
@@ -22,7 +23,10 @@ const highlights = [
 const publicLinks = [
   { label: "AWS Machine Learning collaboration", href: featuredLinks.aws },
   { label: "YoloVision conference", href: featuredLinks.yoloVision },
-  { label: "Conversation with OpenCV CEO Satya Mallick", href: featuredLinks.openCv },
+  {
+    label: "Conversation with OpenCV CEO Satya Mallick",
+    href: featuredLinks.openCv,
+  },
   { label: "MIT Innovator Under 35 · 2022", href: featuredLinks.mit },
 ];
 
@@ -30,80 +34,97 @@ export default function AboutPage() {
   return (
     <>
       <PageIntro
+        number="03"
         eyebrow="About"
-        title="Engineer by training. Physical AI operator by practice."
-        description="I am Jose Benitez Genes, an electrical engineer, entrepreneur, and Founder & Chief AI Officer at Intuitivo."
+        title={
+          <>
+            An engineer’s mind.
+            <br />
+            <em>A founder’s curiosity.</em>
+          </>
+        }
+        description="I’m José Benítez Genes. An electrical engineer, entrepreneur, and Founder & Chief AI Officer at Intuitivo. I’m drawn to the place where ideas become physical systems."
+        study={2}
+        annotation="A few paths. An ongoing curiosity."
       />
-
-      <Container className="py-20 sm:py-28">
-        <div className="grid gap-14 lg:grid-cols-[0.65fr_1.35fr] lg:gap-24">
-          <div>
-            <p className="eyebrow">Current work</p>
-            <p className="mt-5 leading-7 text-stone-300">
+      <Container className="room-content">
+        <section className="marginal-section" aria-labelledby="about-work">
+          <aside className="margin-note">
+            <p className="observatory-label" id="about-work">
+              Here, now
+            </p>
+            <p>
               Founder & Chief AI Officer
               <br />
               Intuitivo
             </p>
-          </div>
-          <div className="space-y-7 text-lg leading-8 text-stone-400">
+            <p>San Francisco, California</p>
+          </aside>
+          <div className="body-notes">
             <p>
               My work is Physical AI: systems that perceive, decide, and operate
-              under real-world constraints. I focus on computer vision, IoT,
-              infrastructure, and the operating conditions that decide whether
-              a system is useful outside a demo.
+              in the real world. I focus on computer vision, connected hardware,
+              and the infrastructure that makes those systems useful.
             </p>
             <p>
               At Intuitivo, I lead AI infrastructure for unattended retail. The
-              work requires turning camera data into reliable systems that can
-              operate across real environments, not controlled benchmarks.
+              work is turning camera data into reliable systems that can operate
+              across real environments, with all their variation and
+              uncertainty.
             </p>
             <p>
-              I also write about the correlations around these systems: the
-              compute, energy, infrastructure, and model shifts that expand or
-              constrain what Physical AI can do in practice.
+              I also follow the forces around these systems: compute, energy,
+              infrastructure, and the model shifts that expand what we can
+              build. Writing is one way I work through those connections.
             </p>
             <p>
               Before Intuitivo, I worked across connected hardware, digital
               manufacturing, and cloud systems. That foundation still shapes how
-              I evaluate Physical AI: as an operating system, not an isolated
-              model.
+              I think: the model is one part of a much larger system.
             </p>
           </div>
-        </div>
-
-        <div className="mt-24 grid gap-14 border-t border-white/10 pt-16 lg:grid-cols-[0.65fr_1.35fr] lg:gap-24">
-          <div>
-            <p className="eyebrow">Selected highlights</p>
+        </section>
+        <section className="marginal-section" aria-labelledby="about-path">
+          <div className="margin-note">
+            <p className="observatory-label" id="about-path">
+              Along the way
+            </p>
           </div>
-          <ul className="divide-y divide-white/10 border-y border-white/10">
+          <ul className="career-record">
             {highlights.map((highlight) => (
-              <li key={highlight} className="py-5 leading-7 text-stone-300">
-                {highlight}
-              </li>
+              <li key={highlight}>{highlight}</li>
             ))}
           </ul>
-        </div>
-
-        <div className="mt-24 grid gap-14 border-t border-white/10 pt-16 lg:grid-cols-[0.65fr_1.35fr] lg:gap-24">
-          <div>
-            <p className="eyebrow">Public record</p>
+        </section>
+        <section className="marginal-section" aria-labelledby="about-record">
+          <div className="margin-note">
+            <p className="observatory-label" id="about-record">
+              Elsewhere on the internet
+            </p>
+            <p>Conversations, collaborations, and a little public history.</p>
           </div>
-          <div className="flex flex-col items-start gap-4">
+          <div className="public-record">
             {publicLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-link text-base"
+                className="observatory-link"
               >
                 {link.label}
                 <ArrowUpRight aria-hidden="true" size={15} />
               </a>
             ))}
           </div>
-        </div>
+        </section>
       </Container>
+      <NextRoom
+        href="/capabilities"
+        number="04"
+        label="Capabilities"
+        title="Put that curiosity to work."
+      />
     </>
   );
 }
