@@ -38,13 +38,20 @@ test("all rooms share their visual foundation at desktop and phone widths", asyn
       expect(appearance.weight, route).toBe("400");
       expect(appearance.header, route).toBe("rgba(17, 18, 15, 0.96)");
       expect(appearance.overflow, `${route} at ${width}px`).toBe(false);
-      for (const content of await page.locator(".room-content, .contact-grid, .reading-layout").all()) {
-        const gutters = await content.evaluate(el => ({ left: parseFloat(getComputedStyle(el).paddingLeft), right: parseFloat(getComputedStyle(el).paddingRight) }));
+      for (const content of await page
+        .locator(".room-content, .contact-grid, .reading-layout")
+        .all()) {
+        const gutters = await content.evaluate((el) => ({
+          left: parseFloat(getComputedStyle(el).paddingLeft),
+          right: parseFloat(getComputedStyle(el).paddingRight),
+        }));
         expect(gutters.left, `${route} left gutter`).toBeGreaterThanOrEqual(20);
-        expect(gutters.right, `${route} right gutter`).toBeGreaterThanOrEqual(20);
+        expect(gutters.right, `${route} right gutter`).toBeGreaterThanOrEqual(
+          20,
+        );
       }
       await expect(
-        page.getByRole("navigation", { name: "Observatory index" }),
+        page.locator('nav[aria-label="Observatory index"]'),
       ).toBeAttached();
       if (width === widths[0]) {
         await page.screenshot({
@@ -175,13 +182,14 @@ test("the room index remains usable without scripts and storage is optional", as
   });
   const plainPage = await context.newPage();
   await plainPage.goto("http://127.0.0.1:3107/writing");
+  await plainPage.locator(".footer-index summary").click();
   await plainPage
     .getByRole("navigation", { name: "Observatory index" })
     .getByRole("link", { name: /About/ })
     .click();
   await expect(plainPage).toHaveURL(/\/about$/);
   await expect(plainPage.getByRole("heading", { level: 1 })).toContainText(
-    "An engineer’s mind.",
+    "Engineer.",
   );
   await context.close();
 });

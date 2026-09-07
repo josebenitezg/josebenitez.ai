@@ -19,29 +19,11 @@ export default async function WritingPage() {
 
   return (
     <>
-      <PageIntro
-        number="02"
-        eyebrow="Field notes"
-        title={
-          <>
-            Following
-            <br />
-            <em>the threads.</em>
-          </>
-        }
-        description="Notes on physical AI and the forces around it. Perception, compute, energy, and the connections that are easy to miss."
-        study={1}
-        annotation="Separate observations. Connected ideas."
-      />
+      <PageIntro title="Writing." study={1} />
       <Container className="room-content">
         <WritingIndex posts={posts} />
       </Container>
-      <NextRoom
-        href="/about"
-        number="03"
-        label="About"
-        title="Meet the person taking notes."
-      />
+      <NextRoom href="/about" title="About me" />
     </>
   );
 }

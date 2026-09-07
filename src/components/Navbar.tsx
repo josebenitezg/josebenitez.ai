@@ -41,32 +41,29 @@ export default function Navbar() {
     document.addEventListener("keydown", close);
     return () => document.removeEventListener("keydown", close);
   }, [isOpen]);
-  const navigation = (mobile = false) =>
-    rooms.slice(1).map((room) => (
-      <Link
-        key={room.href}
-        href={room.href}
-        onClick={() => setIsOpen(false)}
-        className={room.href === "/contact" ? "nav-contact" : undefined}
-        aria-current={
-          currentRoom?.href === room.href
-            ? pathname === room.href
-              ? "page"
-              : "location"
-            : undefined
-        }
-      >
-        {mobile && (
-          <span className="nav-number" aria-hidden="true">
-            {room.number}
-          </span>
-        )}
-        {room.label}
-        {room.href === "/contact" && (
-          <ArrowUpRight size={13} aria-hidden="true" />
-        )}
-      </Link>
-    ));
+  const navigation = () =>
+    rooms
+      .filter((room) => room.href !== "/" && room.href !== "/capabilities")
+      .map((room) => (
+        <Link
+          key={room.href}
+          href={room.href}
+          onClick={() => setIsOpen(false)}
+          className={room.href === "/contact" ? "nav-contact" : undefined}
+          aria-current={
+            currentRoom?.href === room.href
+              ? pathname === room.href
+                ? "page"
+                : "location"
+              : undefined
+          }
+        >
+          {room.label}
+          {room.href === "/contact" && (
+            <ArrowUpRight size={13} aria-hidden="true" />
+          )}
+        </Link>
+      ));
   return (
     <header className="site-header">
       <Container className="site-header-inner">
@@ -83,10 +80,7 @@ export default function Navbar() {
               ))}
             </g>
           </svg>
-          <span>
-            José Benítez
-            <span className="signature-caption">Personal observatory</span>
-          </span>
+          <span>José Benítez</span>
         </Link>
         <nav className="desktop-navigation" aria-label="Primary navigation">
           {navigation()}
@@ -112,17 +106,13 @@ export default function Navbar() {
             className="mobile-navigation"
             aria-label="Mobile navigation"
           >
-            <p className="observatory-label">Around the observatory</p>
-            {navigation(true)}
+            {navigation()}
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
               className="mobile-home"
             >
-              <span className="nav-number" aria-hidden="true">
-                00
-              </span>
-              Back to the observatory
+              Home
             </Link>
           </nav>
         )}

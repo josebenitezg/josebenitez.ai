@@ -1,36 +1,38 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import Container from "@/components/Container";
 import SiteIndex from "@/components/SiteIndex";
 import { siteConfig } from "@/lib/site";
-const footerLinks = [
-  { label: "LinkedIn", href: siteConfig.links.linkedin },
-  { label: "GitHub", href: siteConfig.links.github },
-  { label: "X", href: siteConfig.links.x },
-];
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <Container>
-        <p className="observatory-label">
-          A few connected rooms. One ongoing curiosity.
-        </p>
-        <SiteIndex />
-        <div className="footer-colophon">
-          <div>
-            <p>José Benítez</p>
-            <span>Physical AI. Open questions. San Francisco.</span>
-          </div>
+      <Container className="quiet-footer">
+        <Link href="/contact" className="observatory-link">
+          Say hello
+          <ArrowUpRight size={15} aria-hidden="true" />
+        </Link>
+        <div className="footer-options">
+          <details className="footer-index">
+            <summary>Explore</summary>
+            <SiteIndex />
+          </details>
           <nav aria-label="Footer navigation">
-            {footerLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${link.label} profile (opens in a new tab)`}
-              >
-                {link.label}
-              </a>
-            ))}
+            <a
+              href={siteConfig.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile (opens in a new tab)"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile (opens in a new tab)"
+            >
+              GitHub
+            </a>
           </nav>
         </div>
       </Container>

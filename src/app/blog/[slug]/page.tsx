@@ -110,9 +110,6 @@ export default async function BlogPostPage({
         </header>
         <Container className="reading-layout">
           <aside className="reading-margin">
-            <p className="observatory-label">
-              02 / {post.language === "es" ? "Notas de campo" : "Field notes"}
-            </p>
             <time dateTime={post.date}>{formattedDate}</time>
             <span className="reading-author">{siteConfig.name}</span>
             <span className="reading-time">
@@ -136,19 +133,9 @@ export default async function BlogPostPage({
         </Container>
       </article>
       {nextPost ? (
-        <NextRoom
-          href={`/blog/${nextPost.slug}`}
-          number="02"
-          label="Another thread"
-          title={nextPost.title}
-        />
+        <NextRoom href={`/blog/${nextPost.slug}`} title={nextPost.title} />
       ) : (
-        <NextRoom
-          href="/writing"
-          number="02"
-          label="Writing"
-          title="More things to think about."
-        />
+        <NextRoom href="/writing" title="More things to think about." />
       )}
     </>
   );

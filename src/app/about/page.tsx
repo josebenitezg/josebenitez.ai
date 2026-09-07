@@ -14,12 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-const highlights = [
-  "Founded Intuitivo and leads its Physical AI work for unattended retail.",
-  "Documented computer-vision inference work with the AWS Machine Learning team.",
-  "Previously founded and served as CTO of Aratiri, focused on digital manufacturing and connected systems.",
-];
-
 const publicLinks = [
   { label: "AWS Machine Learning collaboration", href: featuredLinks.aws },
   { label: "YoloVision conference", href: featuredLinks.yoloVision },
@@ -34,75 +28,30 @@ export default function AboutPage() {
   return (
     <>
       <PageIntro
-        number="03"
-        eyebrow="About"
         title={
           <>
-            An engineer’s mind.
+            Engineer.
             <br />
-            <em>A founder’s curiosity.</em>
+            <em>Founder.</em>
           </>
         }
-        description="I’m José Benítez Genes. An electrical engineer, entrepreneur, and Founder & Chief AI Officer at Intuitivo. I’m drawn to the place where ideas become physical systems."
+        description="I’m José Benítez, Founder & Chief AI Officer at Intuitivo."
         study={2}
-        annotation="A few paths. An ongoing curiosity."
       />
-      <Container className="room-content">
-        <section className="marginal-section" aria-labelledby="about-work">
-          <aside className="margin-note">
-            <p className="observatory-label" id="about-work">
-              Here, now
-            </p>
-            <p>
-              Founder & Chief AI Officer
-              <br />
-              Intuitivo
-            </p>
-            <p>San Francisco, California</p>
-          </aside>
-          <div className="body-notes">
-            <p>
-              My work is Physical AI: systems that perceive, decide, and operate
-              in the real world. I focus on computer vision, connected hardware,
-              and the infrastructure that makes those systems useful.
-            </p>
-            <p>
-              At Intuitivo, I lead AI infrastructure for unattended retail. The
-              work is turning camera data into reliable systems that can operate
-              across real environments, with all their variation and
-              uncertainty.
-            </p>
-            <p>
-              I also follow the forces around these systems: compute, energy,
-              infrastructure, and the model shifts that expand what we can
-              build. Writing is one way I work through those connections.
-            </p>
-            <p>
-              Before Intuitivo, I worked across connected hardware, digital
-              manufacturing, and cloud systems. That foundation still shapes how
-              I think: the model is one part of a much larger system.
-            </p>
-          </div>
-        </section>
-        <section className="marginal-section" aria-labelledby="about-path">
-          <div className="margin-note">
-            <p className="observatory-label" id="about-path">
-              Along the way
-            </p>
-          </div>
-          <ul className="career-record">
-            {highlights.map((highlight) => (
-              <li key={highlight}>{highlight}</li>
-            ))}
-          </ul>
-        </section>
-        <section className="marginal-section" aria-labelledby="about-record">
-          <div className="margin-note">
-            <p className="observatory-label" id="about-record">
-              Elsewhere on the internet
-            </p>
-            <p>Conversations, collaborations, and a little public history.</p>
-          </div>
+      <Container className="room-content about-quiet">
+        <div className="body-notes">
+          <p>
+            I build systems that see and act in the physical world. At
+            Intuitivo, that means computer vision and AI infrastructure for
+            autonomous retail.
+          </p>
+          <p>
+            Before that, I founded Aratiri, working with digital manufacturing
+            and connected hardware. I’m based in San Francisco.
+          </p>
+        </div>
+        <details className="public-details">
+          <summary>Talks & collaborations</summary>
           <div className="public-record">
             {publicLinks.map((link) => (
               <a
@@ -117,14 +66,9 @@ export default function AboutPage() {
               </a>
             ))}
           </div>
-        </section>
+        </details>
       </Container>
-      <NextRoom
-        href="/capabilities"
-        number="04"
-        label="Capabilities"
-        title="Put that curiosity to work."
-      />
+      <NextRoom href="/capabilities" title="How I can help" />
     </>
   );
 }

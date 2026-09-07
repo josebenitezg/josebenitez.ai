@@ -43,20 +43,7 @@ const evidenceLinks = {
 export default function WorkPage() {
   return (
     <>
-      <PageIntro
-        number="01"
-        eyebrow="Work"
-        title={
-          <>
-            Ideas, out in
-            <br />
-            <em>the world.</em>
-          </>
-        }
-        description="A few things I’ve helped bring into the world. From machines that see to the infrastructure that lets them act."
-        study={0}
-        annotation="An idea becomes a working system."
-      />
+      <PageIntro title="Selected work." study={0} />
       <Container className="room-content">
         {selectedWork.map((work, index) => {
           const links = evidenceLinks[work.title];
@@ -110,12 +97,7 @@ export default function WorkPage() {
           );
         })}
       </Container>
-      <NextRoom
-        href="/writing"
-        number="02"
-        label="Writing"
-        title="The questions behind the work."
-      />
+      <NextRoom href="/writing" title="All writing" />
     </>
   );
 }

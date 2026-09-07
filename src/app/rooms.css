@@ -26,14 +26,6 @@
   height: 35px;
   color: var(--observatory-accent);
 }
-.signature-caption {
-  display: block;
-  font: 8px monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--observatory-muted);
-  margin-top: 4px;
-}
 .desktop-navigation {
   display: flex;
   align-items: center;
@@ -118,18 +110,14 @@
   align-items: center;
   gap: 70px;
 }
-.room-number {
-  color: var(--observatory-accent);
-}
 .room-intro h1 {
-  margin-top: 27px;
   font-size: clamp(58px, 6vw, 84px);
   letter-spacing: -0.035em;
   line-height: 1.02;
+  margin-top: 0;
 }
 .room-intro h1 em,
-.room-content h2 em,
-.contact-room h2 em {
+.room-content h2 em {
   color: #b8aa92;
 }
 .room-description {
@@ -143,18 +131,11 @@
   margin: 0;
   min-width: 0;
   color: var(--observatory-accent);
+  padding: 10px 0;
 }
 .signal-study {
   width: 100%;
   height: auto;
-}
-.room-study figcaption {
-  text-align: center;
-  color: var(--observatory-muted);
-  font-family: var(--font-display), var(--font-serif);
-  font-style: italic;
-  font-size: 15px;
-  margin-top: 5px;
 }
 .room-content {
   padding-top: 64px;
@@ -177,109 +158,21 @@
   line-height: 1.9;
 }
 .next-room {
-  padding: 46px 0 53px;
   border-top: 1px solid var(--observatory-line);
+  padding: 28px 0;
 }
-.next-room a {
-  display: block;
-}
-.next-room-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  max-width: 850px;
-  font:
-    400 clamp(34px, 3.5vw, 48px) / 1.1 var(--font-display),
-    var(--font-serif);
-  letter-spacing: -0.02em;
-  margin-top: 15px;
-}
-.next-room-title svg {
+.next-room svg {
   flex-shrink: 0;
-  color: var(--observatory-accent);
   transition: transform 220ms ease;
 }
 .site-footer {
-  padding: 48px 0 32px;
   border-top: 1px solid var(--observatory-line);
   background: #10110e;
-}
-.site-index {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  margin: 35px 0 45px;
+  padding: 28px 0;
 }
 .site-index a {
   min-width: 0;
   padding-right: 15px;
-  color: var(--observatory-muted);
-}
-.index-station {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  height: 25px;
-  font: 9px monospace;
-}
-.index-station::after {
-  content: "";
-  position: absolute;
-  left: 40px;
-  right: 0;
-  top: 12px;
-  height: 1px;
-  background: var(--observatory-line);
-}
-.index-point {
-  width: 5px;
-  height: 5px;
-  border: 1px solid var(--observatory-muted);
-  border-radius: 50%;
-}
-.site-index [aria-current] .index-point {
-  background: var(--observatory-accent);
-  border-color: var(--observatory-accent);
-}
-.site-index [aria-current] .index-label {
-  color: var(--observatory-ink);
-}
-.index-label {
-  display: block;
-  font-size: 12px;
-  margin-top: 8px;
-}
-.index-note {
-  display: block;
-  max-width: 130px;
-  margin-top: 7px;
-  font-size: 10px;
-  line-height: 1.7;
-}
-.footer-colophon {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-  padding-top: 25px;
-  border-top: 1px solid var(--observatory-line);
-  font-size: 11px;
-}
-.footer-colophon span {
-  display: block;
-  margin-top: 7px;
-  color: var(--observatory-muted);
-  font-size: 10px;
-}
-.footer-colophon nav {
-  display: flex;
-  gap: 22px;
-}
-.footer-colophon nav a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
   color: var(--observatory-muted);
 }
 /* Work: the very same objects encountered on the homepage, opened out. */
@@ -328,23 +221,6 @@
   font-size: 12px;
 }
 /* Writing: an index with the pace and margins of a notebook. */
-.writing-shelf + .writing-shelf {
-  margin-top: 72px;
-}
-.writing-shelf {
-  display: grid;
-  grid-template-columns: 0.65fr 1.35fr;
-  gap: 70px;
-}
-.shelf-heading h2 {
-  margin-top: 22px;
-  font-size: 36px;
-}
-.shelf-heading p:not(.observatory-label) {
-  margin-top: 17px;
-  font-size: 12px;
-  max-width: 250px;
-}
 .writing-list {
   list-style: none;
   padding: 0;
@@ -354,54 +230,20 @@
   display: grid;
   grid-template-columns: 1fr 18px;
   gap: 24px;
-  padding: 29px 0;
   border-bottom: 1px solid var(--observatory-line);
-}
-.writing-entry h3 {
-  margin-top: 13px;
-  font-size: 29px;
-}
-.writing-entry .writing-summary {
-  font-size: 12px;
-  margin-top: 13px;
-  line-height: 1.85;
+  padding: 30px 0;
 }
 .writing-entry time {
   font: 9px monospace;
   color: var(--observatory-muted);
+  display: block;
+  margin-top: 13px;
 }
 .writing-entry > svg {
   margin-top: 4px;
   color: var(--observatory-accent);
 }
-.writing-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 14px;
-}
-.writing-tags span {
-  font-size: 9px;
-  color: var(--observatory-muted);
-}
-/* About and capabilities share a quiet marginalia column. */
-.marginal-section {
-  display: grid;
-  grid-template-columns: 0.65fr 1.35fr;
-  gap: 70px;
-}
-.marginal-section + .marginal-section {
-  padding-top: 54px;
-  margin-top: 54px;
-  border-top: 1px solid var(--observatory-line);
-}
-.margin-note {
-  max-width: 235px;
-}
-.margin-note p:not(.observatory-label) {
-  margin-top: 18px;
-  font-size: 12px;
-}
+/* Short introductions, with supporting detail available on request. */
 .body-notes > p + p {
   margin-top: 23px;
 }
@@ -414,89 +256,21 @@
   max-width: 100%;
   font-size: 12px;
 }
-.career-record {
-  list-style: none;
-  padding: 0;
-}
-.career-record li {
-  padding: 19px 0;
-  border-bottom: 1px solid var(--observatory-line);
-}
-.career-record li:first-child {
-  padding-top: 0;
-}
 .capability-entry {
   display: grid;
-  grid-template-columns: 50px 0.9fr 1fr;
-  gap: 40px;
   padding: 38px 0;
   border-bottom: 1px solid var(--observatory-line);
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 70px;
 }
 .capability-entry:first-child {
   padding-top: 0;
 }
-.capability-entry .observatory-label {
-  padding-top: 6px;
-}
 .capability-entry h2 {
   font-size: 32px;
 }
-.capability-question {
-  margin-bottom: 12px;
-  font:
-    italic 23px/1.35 var(--font-display),
-    var(--font-serif);
-  color: var(--observatory-ink);
-}
 .capability-entry p:not(.observatory-label) {
   font-size: 12px;
-}
-.working-note {
-  margin: 54px 0 0;
-}
-.working-note p {
-  margin-top: 20px;
-  max-width: 590px;
-}
-.contact-room {
-  padding-top: 66px;
-  padding-bottom: 90px;
-}
-.contact-grid {
-  display: grid;
-  grid-template-columns: 0.65fr 1.35fr;
-  gap: 70px;
-}
-.contact-room h2 {
-  font:
-    400 42px/1.08 var(--font-display),
-    var(--font-serif);
-}
-.contact-room .contact-note {
-  color: var(--observatory-muted);
-  max-width: 480px;
-  font-size: 14px;
-  line-height: 1.9;
-  margin: 24px 0;
-}
-.contact-channel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 25px;
-  padding: 26px 0;
-  border-top: 1px solid var(--observatory-line);
-  border-bottom: 1px solid var(--observatory-line);
-  font-size: 14px;
-}
-.contact-channel small {
-  display: block;
-  color: var(--observatory-muted);
-  font-size: 11px;
-  margin-top: 8px;
-}
-.contact-channel svg {
-  color: var(--observatory-accent);
 }
 /* Reading is a quieter room, never a different website. */
 .reading-header {
@@ -640,16 +414,122 @@
 .state-room button {
   margin-top: 25px;
 }
+html[data-navigation-input="keyboard"] .room-arrival {
+  animation: none;
+}
+.reading-body .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.reading-body .prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.writing-entry h2 {
+  max-width: 850px;
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 0;
+}
+.about-quiet .body-notes {
+  max-width: 600px;
+}
+.public-details {
+  max-width: 600px;
+  margin-top: 30px;
+  border-top: 1px solid var(--observatory-line);
+}
+.public-details summary {
+  font-size: 12px;
+  min-height: 54px;
+  padding: 20px 0;
+  cursor: pointer;
+  color: var(--observatory-muted);
+}
+.public-details .public-record {
+  padding: 10px 0;
+}
+.contact-direct {
+  margin-top: 24px;
+}
+.quiet-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 30px;
+}
+.footer-options,
+.footer-options > nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.footer-options > nav a,
+.footer-index summary {
+  font-size: 11px;
+  color: var(--observatory-muted);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.footer-index {
+  position: relative;
+}
+.footer-index summary {
+  cursor: pointer;
+  list-style: none;
+  gap: 8px;
+}
+.footer-index summary::-webkit-details-marker {
+  display: none;
+}
+.footer-index summary::after {
+  content: "+";
+  color: var(--observatory-accent);
+}
+.footer-index[open] summary::after {
+  content: "−";
+}
+.footer-index .site-index {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid var(--observatory-line);
+  background: #181a15;
+  z-index: 20;
+}
+.footer-index .site-index a {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  min-height: 44px;
+  font-size: 12px;
+}
+.footer-index .site-index a[aria-current] {
+  color: var(--observatory-ink);
+}
+summary:focus-visible {
+  outline: 2px solid var(--observatory-accent);
+  outline-offset: 4px;
+}
 @media (hover: hover) and (pointer: fine) {
   .desktop-navigation a:hover,
-  .site-index a:hover .index-label,
-  .footer-colophon a:hover {
+  .site-index a:hover,
+  .footer-options > nav a:hover {
     color: var(--observatory-ink);
   }
   .next-room a:hover svg {
     transform: translate(3px, -3px);
   }
-  .writing-entry:hover h3 {
+  .writing-entry:hover h2 {
     color: #d4b888;
   }
   .button:hover {
@@ -664,10 +544,7 @@
   .room-intro h1 {
     font-size: 66px;
   }
-  .work-entry,
-  .writing-shelf,
-  .marginal-section,
-  .contact-grid {
+  .work-entry {
     gap: 40px;
   }
   .reading-layout {
@@ -677,10 +554,6 @@
   .reading-heading-grid {
     gap: 30px;
     grid-template-columns: 1fr 110px;
-  }
-  .capability-entry {
-    grid-template-columns: 30px 0.85fr 1fr;
-    gap: 25px;
   }
   .desktop-navigation {
     gap: 19px;
@@ -708,9 +581,6 @@
     border: 1px solid var(--observatory-line);
     box-shadow: 0 20px 50px #0005;
   }
-  .mobile-navigation .observatory-label {
-    margin-bottom: 14px;
-  }
   .mobile-navigation a {
     display: flex;
     align-items: center;
@@ -721,10 +591,6 @@
   }
   .mobile-navigation a[aria-current] {
     color: var(--observatory-ink);
-  }
-  .nav-number {
-    font: 10px monospace;
-    color: var(--observatory-accent);
   }
   .mobile-navigation .mobile-home {
     font-size: 12px;
@@ -741,7 +607,6 @@
   }
   .room-intro h1 {
     font-size: clamp(53px, 10vw, 72px);
-    margin-top: 23px;
   }
   .room-description {
     max-width: 520px;
@@ -752,35 +617,15 @@
     display: flex;
     align-items: center;
     gap: 18px;
+    padding: 0;
   }
   .room-study .signal-study {
-    width: 90px;
     flex-shrink: 0;
-  }
-  .room-study figcaption {
-    max-width: 190px;
-    font-size: 14px;
-    text-align: left;
-    margin-top: 0;
+    width: 100px;
   }
   .room-content {
     padding-top: 42px;
     padding-bottom: 55px;
-  }
-  .site-index {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    row-gap: 28px;
-  }
-  .index-note {
-    display: none;
-  }
-  .footer-colophon {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 13px;
-  }
-  .site-footer {
-    padding: 35px 0 25px;
   }
   .work-entry {
     grid-template-columns: 1fr;
@@ -794,43 +639,12 @@
   .work-object .artifact-visual {
     aspect-ratio: 1.6;
   }
-  .writing-shelf {
-    grid-template-columns: 1fr;
-    gap: 26px;
-  }
-  .shelf-heading p:not(.observatory-label) {
-    max-width: 420px;
-  }
-  .writing-shelf + .writing-shelf {
-    margin-top: 52px;
-  }
-  .writing-entry h3 {
-    font-size: 28px;
-  }
-  .marginal-section,
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 26px;
-  }
-  .margin-note {
-    max-width: 100%;
-  }
   .capability-entry {
-    grid-template-columns: 25px 1fr;
-    gap: 18px;
-  }
-  .capability-entry > div {
-    grid-column: 2;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
   .capability-entry h2 {
     font-size: 30px;
-  }
-  .contact-room {
-    padding-top: 42px;
-    padding-bottom: 60px;
-  }
-  .contact-room h2 {
-    font-size: 37px;
   }
   .reading-header {
     padding: 28px 0 35px;
@@ -866,9 +680,6 @@
   .reading-margin .reading-time {
     margin: 0;
   }
-  .reading-margin .observatory-label {
-    width: 100%;
-  }
   .reading-margin .reading-back {
     display: none;
   }
@@ -881,8 +692,12 @@
   .reading-body .prose h3 {
     font-size: 27px;
   }
-  .next-room {
-    padding: 34px 0 39px;
+  .writing-entry h2 {
+    font-size: 27px;
+  }
+  .footer-index .site-index {
+    right: auto;
+    left: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -892,17 +707,4 @@
   .next-room a:hover svg {
     transform: none;
   }
-}
-html[data-navigation-input="keyboard"] .room-arrival {
-  animation: none;
-}
-.reading-body .katex-display {
-  max-width: 100%;
-  overflow-x: auto;
-  padding-bottom: 8px;
-}
-.reading-body .prose table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
 }

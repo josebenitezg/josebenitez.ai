@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { Pause, Play } from "lucide-react";
 
 const MODES = [
-  { name: "Perception", note: "From a cloud of signals, a shape emerges." },
-  { name: "Connection", note: "Separate points. A shared structure." },
-  { name: "Possibility", note: "The same pieces, another way of seeing." },
+  { name: "Perception" },
+  { name: "Connection" },
+  { name: "Possibility" },
 ] as const;
 
 // Parametric points stay on the GPU; only a few uniforms change per frame.
@@ -287,10 +287,6 @@ export default function Observatory() {
       className="observatory-object"
       aria-label="An interactive study of signals and form"
     >
-      <div className="object-topline">
-        <span>Study 001 — Signals into form</span>
-        <span aria-hidden="true">↗</span>
-      </div>
       <div
         className="object-stage"
         ref={stageRef}
@@ -344,10 +340,36 @@ export default function Observatory() {
             <button
               key={item.name}
               type="button"
+              aria-label={item.name}
+              title={item.name}
               aria-pressed={mode === index}
               onClick={() => selectMode(index)}
             >
-              {item.name}
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <ellipse
+                  cx="12"
+                  cy="12"
+                  rx={index === 1 ? 7 : 9}
+                  ry={index === 2 ? 4 : 7}
+                  stroke="currentColor"
+                  transform={index === 2 ? "rotate(-35 12 12)" : undefined}
+                />
+                {index !== 2 && (
+                  <ellipse
+                    cx="12"
+                    cy="12"
+                    rx={index === 0 ? 5 : 3}
+                    ry="7"
+                    stroke="currentColor"
+                  />
+                )}
+              </svg>
             </button>
           ))}
           <button
@@ -373,9 +395,6 @@ export default function Observatory() {
             )}
           </button>
         </div>
-        <p className="object-note" aria-live="polite">
-          {MODES[mode].note}
-        </p>
       </figcaption>
     </figure>
   );

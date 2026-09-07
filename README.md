@@ -79,11 +79,17 @@ server on that port). It covers desktop and mobile Chromium, form changes,
 pause/resume, reduced motion, context loss/recovery, the SVG fallback, keyboard
 controls, mobile navigation, internal links, and reading without JavaScript.
 Screenshots and failure traces are written to the ignored `test-results/` folder.
+Review desktop and mobile screenshots separately for reading hierarchy, competing
+labels, and repeated explanations; passing browser tests does not validate those
+design decisions.
 
 ### A connected observatory
 
 All routes share the warm palette, local Instrument Serif, masthead, and room
-index. Each interior page uses a related signal study, and project illustrations
+index, available from the footer's Explore disclosure. The homepage leads with
+one short introduction, three projects, and three article titles. Supporting
+biography and contact details live on their own pages. Each interior page uses a
+related signal study, and project illustrations
 are shared between the homepage and Work. Articles retain the Writing navigation
 state, add reading progress, and link back into the collection. The sculpture's
 selected form and pause preference are remembered in session storage when available.

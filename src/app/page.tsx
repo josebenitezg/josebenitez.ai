@@ -20,12 +20,6 @@ export default async function Home() {
       <section className="observatory-arrival" aria-labelledby="arrival-title">
         <Container className="arrival-grid">
           <div className="arrival-copy">
-            <p className="observatory-label">
-              <span className="small-star" aria-hidden="true">
-                ✳
-              </span>{" "}
-              A personal observatory
-            </p>
             <h1 id="arrival-title">
               Between the
               <br />
@@ -34,24 +28,13 @@ export default async function Home() {
               <em>the possible.</em>
             </h1>
             <p className="arrival-description">
-              I’m José. An engineer and founder exploring how machines see, how
-              systems think, and what happens when ideas meet the real world.
+              I’m José. I build AI for the physical world.
             </p>
             <Link href="#explore" className="observatory-link arrival-link">
-              Take a look around <ArrowDown size={15} aria-hidden="true" />
+              Explore <ArrowDown size={15} aria-hidden="true" />
             </Link>
           </div>
           <Observatory />
-          <div className="arrival-footer">
-            <span>San Francisco, California</span>
-            <span>
-              <span className="status-dot" aria-hidden="true" /> Building at
-              Intuitivo
-            </span>
-            <span className="arrival-coordinate">
-              37°46′ N &nbsp; 122°25′ W
-            </span>
-          </div>
         </Container>
       </section>
       <section
@@ -61,14 +44,7 @@ export default async function Home() {
       >
         <Container>
           <div className="section-heading">
-            <p className="observatory-label">01 / Things I’m building</p>
-            <h2 id="explore-title">
-              Ideas, out in <em>the world.</em>
-            </h2>
-            <p>
-              Perception, infrastructure, and the interesting space between
-              hardware and intelligence.
-            </p>
+            <h2 id="explore-title">Selected work.</h2>
           </div>
           <div className="artifact-grid">
             {selectedWork.map((work, index) => (
@@ -76,9 +52,16 @@ export default async function Home() {
                 <ArtifactVisual index={index} link />
                 <div className="artifact-caption">
                   <h3>{work.title}</h3>
-                  <p>{work.eyebrow}</p>
+                  <p>
+                    {
+                      [
+                        "Autonomous retail",
+                        "AI infrastructure",
+                        "Connected hardware",
+                      ][index]
+                    }
+                  </p>
                 </div>
-                <p className="artifact-description">{work.description}</p>
               </Link>
             ))}
           </div>
@@ -90,95 +73,23 @@ export default async function Home() {
       >
         <Container className="notes-grid">
           <div className="section-heading">
-            <p className="observatory-label">02 / Field notes</p>
-            <h2 id="notes-title">
-              Following
-              <br />
-              <em>the threads.</em>
-            </h2>
-            <p>
-              Notes on physical AI, and the forces around it. Compute, energy,
-              infrastructure. Things that connect.
-            </p>
+            <h2 id="notes-title">Writing.</h2>
             <Link href="/writing" className="observatory-link">
               All writing <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
           </div>
           <div className="note-list">
-            {latestPosts.map((post, index) => (
+            {latestPosts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
                 className="note-row"
               >
-                <span className="note-number" aria-hidden="true">
-                  0{index + 1}
-                </span>
-                <div lang={post.language}>
-                  <p className="observatory-label">
-                    {post.series === "physical-ai"
-                      ? "Physical AI"
-                      : "Correlations"}
-                  </p>
-                  <h3>{post.title}</h3>
-                  {post.description && (
-                    <p className="note-description">{post.description}</p>
-                  )}
-                </div>
+                <h3 lang={post.language}>{post.title}</h3>
                 <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
             ))}
           </div>
-        </Container>
-      </section>
-      <section
-        className="observatory-section observatory-about"
-        aria-labelledby="about-title"
-      >
-        <Container className="about-grid">
-          <p className="observatory-label">03 / The person behind it</p>
-          <div>
-            <h2 id="about-title">
-              An engineer’s mind.
-              <br />
-              <em>A founder’s curiosity.</em>
-            </h2>
-            <p>
-              I work where software meets the physical world. Today, that means
-              building AI systems at Intuitivo—and following the questions those
-              systems open up.
-            </p>
-            <div className="about-links">
-              <Link href="/about" className="observatory-link">
-                A little more about me{" "}
-                <ArrowUpRight size={15} aria-hidden="true" />
-              </Link>
-              <Link href="/capabilities" className="observatory-link">
-                How I can help <ArrowUpRight size={15} aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
-      <section
-        className="observatory-invitation"
-        aria-labelledby="invitation-title"
-      >
-        <Container>
-          <span className="invitation-star" aria-hidden="true">
-            ✳
-          </span>
-          <p className="observatory-label">
-            Good things begin with a conversation.
-          </p>
-          <h2 id="invitation-title">
-            What are you
-            <br />
-            <em>thinking about?</em>
-          </h2>
-          <Link href="/contact" className="observatory-link">
-            Say hello <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
         </Container>
       </section>
     </div>

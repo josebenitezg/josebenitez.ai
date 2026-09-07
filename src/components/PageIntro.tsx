@@ -3,34 +3,27 @@ import Container from "@/components/Container";
 import SignalStudy from "@/components/SignalStudy";
 
 export default function PageIntro({
-  number,
-  eyebrow,
   title,
   description,
   study = 0,
-  annotation,
+  children,
 }: {
-  number: string;
-  eyebrow: string;
   title: ReactNode;
-  description: string;
+  description?: string;
   study?: number;
-  annotation: string;
+  children?: ReactNode;
 }) {
   return (
     <section className="room-intro">
       <Container className="room-intro-grid">
         <div>
-          <p className="observatory-label">
-            <span className="room-number">{number}</span> / {eyebrow}
-          </p>
           <h1>{title}</h1>
-          <p className="room-description">{description}</p>
+          {description && <p className="room-description">{description}</p>}
+          {children}
         </div>
-        <figure className="room-study">
+        <div className="room-study" aria-hidden="true">
           <SignalStudy variant={study} />
-          <figcaption>{annotation}</figcaption>
-        </figure>
+        </div>
       </Container>
     </section>
   );

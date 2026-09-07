@@ -13,64 +13,30 @@ export const metadata: Metadata = {
   },
 };
 
-const prompts = [
-  "What does the system need to perceive before it can act reliably?",
-  "What architecture fits the latency, cost, and reliability constraints?",
-  "What should run at the edge, in the cloud, or outside the AI path?",
-  "How do we move from a promising model to a reliable operating system?",
-];
-
 export default function CapabilitiesPage() {
   return (
     <>
       <PageIntro
-        number="04"
-        eyebrow="Working together"
         title={
           <>
-            Good questions.
-            <br />
-            <em>Better systems.</em>
+            How I<br />
+            <em>can help.</em>
           </>
         }
-        description="I work with founders and technical leaders thinking through perception, inference, and autonomy. We start with the system, the operating conditions, and the decision in front of you."
+        description="Working with founders and teams building physical AI."
         study={3}
-        annotation="Understand the parts. See the whole."
       />
       <Container className="room-content">
         <div>
-          {capabilities.map((capability, index) => (
+          {capabilities.map((capability) => (
             <article key={capability.number} className="capability-entry">
-              <span className="observatory-label">{capability.number}</span>
               <h2>{capability.title}</h2>
-              <div>
-                <blockquote className="capability-question">
-                  {prompts[index]}
-                </blockquote>
-                <p>{capability.description}</p>
-              </div>
+              <p>{capability.description}</p>
             </article>
           ))}
         </div>
-        <section className="working-note">
-          <p className="observatory-label">A starting point</p>
-          <h2 className="mt-5">
-            Bring the question
-            <br />
-            <em>you keep coming back to.</em>
-          </h2>
-          <p>
-            We can begin with the context, what you’ve tried, and where the
-            uncertainty is. The shape of the work follows from there.
-          </p>
-        </section>
       </Container>
-      <NextRoom
-        href="/contact"
-        number="05"
-        label="Contact"
-        title="Let’s think about it together."
-      />
+      <NextRoom href="/contact" title="Get in touch" />
     </>
   );
 }

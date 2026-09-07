@@ -12,7 +12,6 @@ export default function ArtifactVisual({
       className={`artifact-visual artifact-visual-${index}`}
       aria-hidden="true"
     >
-      <span className="artifact-index">FIG. 0{index + 1}</span>
       <svg viewBox="0 0 400 250" fill="none">
         {index === 0 && (
           <g stroke="currentColor">
@@ -74,13 +73,6 @@ export default function ArtifactVisual({
           </g>
         )}
       </svg>
-      <span className="artifact-medium">
-        {
-          ["Perception / Autonomy", "Compute / Inference", "Matter / Making"][
-            index
-          ]
-        }
-      </span>
       {link && <ArrowUpRight className="artifact-arrow" size={18} />}
     </div>
   );

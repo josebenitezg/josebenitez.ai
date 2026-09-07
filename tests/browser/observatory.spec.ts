@@ -54,9 +54,7 @@ test("renders, morphs, pauses, resumes, and stops drawing offscreen", async ({
   await expect
     .poll(() => page.evaluate(() => window.sculptureMode))
     .toBeGreaterThan(1.95);
-  await expect(page.locator(".object-note")).toHaveText(
-    "The same pieces, another way of seeing.",
-  );
+
   await page.getByRole("button", { name: "Pause sculpture motion" }).click();
   const pausedFrames = await page.evaluate(() => window.sculptureFrames);
   // A deliberate observation interval proves the animation loop really stops.
@@ -139,7 +137,7 @@ test("keeps a useful still illustration when WebGL is unavailable", async ({
   ).toBeDisabled();
   await page.getByRole("button", { name: "Possibility", exact: true }).click();
   await expect(page.locator(".object-fallback-2")).toBeVisible();
-  await page.getByRole("link", { name: "Take a look around" }).click();
+  await page.getByRole("link", { name: "Explore" }).click();
   await expect(page).toHaveURL(/#explore$/);
   expect(
     await page.evaluate(
