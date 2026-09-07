@@ -16,7 +16,7 @@ export const siteConfig = {
 export const credentials = [
   {
     label: "Current role",
-    value: "Founder & Chief AI Officer · Intuitivo",
+    value: "Founder & Chief Product Officer · Intuitivo",
   },
   {
     label: "Recognition",
@@ -58,7 +58,7 @@ export const capabilities = [
 export const selectedWork = [
   {
     title: "Intuitivo",
-    eyebrow: "Founder & Chief AI Officer",
+    eyebrow: "Founder & Chief Product Officer",
     description:
       "Leading the development of AI infrastructure for unattended retail, combining computer vision, IoT, and cloud systems for autonomous points of purchase.",
     areas: [

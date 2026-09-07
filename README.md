@@ -59,3 +59,41 @@ JOSELO_BLOG_REDIRECTS_ENABLED=true
 The switch covers `/lab`, `/biohacking`, `do-it-anyway`, `marco-existencial`,
 and `hello-world`. It deliberately does not redirect the Physical AI or
 Correlations posts.
+
+### Observatory browser checks
+
+The homepage sculpture uses WebGL point geometry with an SVG still illustration
+when WebGL is unavailable. Motion respects the system preference, can be paused,
+and stops while offscreen or while the tab is hidden. All content and navigation
+remain HTML.
+
+```bash
+npm ci
+npx playwright install chromium
+npm run check
+npm run test:browser
+```
+
+The browser suite starts the production build on port 3107 (or reuses a local
+server on that port). It covers desktop and mobile Chromium, form changes,
+pause/resume, reduced motion, context loss/recovery, the SVG fallback, keyboard
+controls, mobile navigation, internal links, and reading without JavaScript.
+Screenshots and failure traces are written to the ignored `test-results/` folder.
+Review desktop and mobile screenshots separately for reading hierarchy, competing
+labels, and repeated explanations; passing browser tests does not validate those
+design decisions.
+
+### A connected observatory
+
+All routes share the warm palette, local Instrument Serif, masthead, and room
+index, available from the footer's Explore disclosure. The homepage leads with
+one short introduction, three projects, and three article titles. Supporting
+biography and contact details live on their own pages. Each interior page uses a
+related signal study, and project illustrations
+are shared between the homepage and Work. Articles retain the Writing navigation
+state, add reading progress, and link back into the collection. The sculpture's
+selected form and pause preference are remembered in session storage when available.
+
+The browser suite also checks ten routes at 1440, 768, 390, and 320 pixels, shared
+visual styles, client-side navigation and browser history, reading progress,
+keyboard navigation, optional storage, and the HTML index without JavaScript.

@@ -42,3 +42,7 @@ yarn-error.log*
 next-env.d.ts
 
 .codegpt
+
+# browser verification
+/test-results/
+/playwright-report/

@@ -80,7 +80,7 @@ export default function LikeButton({ slug }: LikeButtonProps) {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl px-5 pb-20 sm:px-8">
+    <div className="reading-response">
       <button
         type="button"
         onClick={handleLike}
@@ -95,7 +95,7 @@ export default function LikeButton({ slug }: LikeButtonProps) {
           className={hasLiked ? "fill-red-400 text-red-400" : ""}
         />
         <span>{hasLiked ? "Liked" : "Like"}</span>
-        <span aria-label={`${likes} likes`} className="text-stone-600">
+        <span aria-label={`${likes} likes`} className="text-stone-400">
           {likes}
         </span>
       </button>

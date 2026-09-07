@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import PageIntro from "@/components/PageIntro";
+import NextRoom from "@/components/NextRoom";
 import WritingIndex from "@/components/WritingIndex";
 import { getAllPosts } from "@/lib/blog";
 
@@ -18,14 +19,11 @@ export default async function WritingPage() {
 
   return (
     <>
-      <PageIntro
-        eyebrow="Physical AI · Correlations"
-        title="Systems, and the forces around them."
-        description="Writing on Physical AI in practice, plus correlations across compute, energy, infrastructure, and model shifts."
-      />
-      <Container className="py-16 sm:py-24">
+      <PageIntro title="Writing." study={1} />
+      <Container className="room-content">
         <WritingIndex posts={posts} />
       </Container>
+      <NextRoom href="/about" title="About me" />
     </>
   );
 }

@@ -1,227 +1,97 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Container from "@/components/Container";
-import DitherField from "@/components/DitherField";
-import {
-  capabilities,
-  credentials,
-  selectedWork,
-  siteConfig,
-} from "@/lib/site";
+import Observatory from "@/components/Observatory";
+import ArtifactVisual from "@/components/ArtifactVisual";
+import { selectedWork, siteConfig } from "@/lib/site";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: siteConfig.title,
-  },
+  title: { absolute: siteConfig.title },
   description: siteConfig.description,
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
 };
 
 export default async function Home() {
   const latestPosts = (await getAllPosts()).slice(0, 3);
-
   return (
-    <>
-      <section className="hero-section overflow-hidden border-b border-white/10">
-        <DitherField />
-        <Container className="relative z-10 grid min-h-[82vh] items-end gap-14 py-20 sm:py-28 lg:grid-cols-[minmax(0,1.5fr)_minmax(18rem,0.5fr)] lg:py-32">
-          <div className="relative">
-            <p className="eyebrow">Physical AI · Correlations</p>
-            <h1
-              className="hero-title mt-7 max-w-5xl text-stone-100"
-              aria-label="AI systems for the physical world."
-            >
-              <span className="block">AI systems for the</span>
-              <em className="block">physical world.</em>
+    <div className="observatory-home">
+      <section className="observatory-arrival" aria-labelledby="arrival-title">
+        <Container className="arrival-grid">
+          <div className="arrival-copy">
+            <h1 id="arrival-title">
+              Between the
+              <br />
+              physical &amp;
+              <br />
+              <em>the possible.</em>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-stone-400 sm:text-xl">
-              I&apos;m an electrical engineer, founder, and Physical AI operator
-              working across perception and inference—and tracing the compute,
-              energy, infrastructure, and model shifts around those systems.
+            <p className="arrival-description">
+              I’m José. I build AI for the physical world.
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Link href="/work" className="button">
-                View selected work
-                <ArrowRight aria-hidden="true" size={16} />
-              </Link>
-              <Link href="/contact" className="button button-secondary">
-                Start a conversation
-              </Link>
-            </div>
-          </div>
-          <div className="border-l border-white/10 pl-6 text-sm leading-7 text-stone-500 lg:mb-3">
-            <p>Based in San Francisco.</p>
-            <p className="mt-5 text-stone-300">
-              Founder & Chief AI Officer at Intuitivo.
-            </p>
-          </div>
-        </Container>
-      </section>
-
-      <section aria-label="Selected credentials" className="border-b border-white/10">
-        <Container className="grid sm:grid-cols-3">
-          {credentials.map((credential, index) => (
-            <div
-              key={credential.label}
-              className={`py-7 sm:px-6 ${
-                index > 0 ? "border-t border-white/10 sm:border-l sm:border-t-0" : ""
-              }`}
-            >
-              <p className="text-xs uppercase tracking-[0.15em] text-stone-600">
-                {credential.label}
-              </p>
-              <p className="mt-2 text-sm text-stone-300">{credential.value}</p>
-            </div>
-          ))}
-        </Container>
-      </section>
-
-      <section className="py-24 sm:py-32">
-        <Container>
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="eyebrow">Capabilities</p>
-              <h2 className="mt-4 max-w-2xl text-4xl font-semibold tracking-[-0.035em] text-stone-100 sm:text-5xl">
-                From physical signal to operating system.
-              </h2>
-            </div>
-            <Link href="/capabilities" className="text-link">
-              See how I can help
-              <ArrowRight aria-hidden="true" size={15} />
+            <Link href="#explore" className="observatory-link arrival-link">
+              Explore <ArrowDown size={15} aria-hidden="true" />
             </Link>
           </div>
-
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-2">
-            {capabilities.map((capability) => (
-              <article key={capability.number} className="bg-[#0b0b0b] p-7 sm:p-9">
-                <p className="text-xs font-medium text-stone-600">
-                  {capability.number}
-                </p>
-                <h3 className="mt-8 text-2xl font-semibold text-stone-100">
-                  {capability.title}
-                </h3>
-                <p className="mt-4 max-w-xl leading-7 text-stone-400">
-                  {capability.description}
-                </p>
-              </article>
-            ))}
-          </div>
+          <Observatory />
         </Container>
       </section>
-
-      <section className="border-y border-white/10 bg-white/[0.015] py-24 sm:py-32">
+      <section
+        id="explore"
+        className="observatory-section"
+        aria-labelledby="explore-title"
+      >
         <Container>
-          <p className="eyebrow">Selected work</p>
-          <div className="mt-5 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.035em] text-stone-100 sm:text-5xl">
-              Applied systems, documented without theatre.
-            </h2>
-            <Link href="/work" className="text-link">
-              Explore the work
-              <ArrowRight aria-hidden="true" size={15} />
-            </Link>
+          <div className="section-heading">
+            <h2 id="explore-title">Selected work.</h2>
           </div>
-
-          <div className="mt-14 grid gap-5 lg:grid-cols-3">
-            {selectedWork.map((work) => (
-              <Link
-                key={work.title}
-                href={work.href}
-                className="surface group flex min-h-[25rem] flex-col p-7 transition-colors hover:bg-white/[0.05]"
-              >
-                <p className="text-xs uppercase tracking-[0.14em] text-stone-600">
-                  {work.eyebrow}
-                </p>
-                <h3 className="mt-5 text-3xl font-semibold text-stone-100">
-                  {work.title}
-                </h3>
-                <p className="mt-5 leading-7 text-stone-400">{work.description}</p>
-                <ul className="mt-8 space-y-2 text-sm text-stone-500">
-                  {work.areas.map((area) => (
-                    <li key={area}>{area}</li>
-                  ))}
-                </ul>
-                <span className="mt-auto inline-flex items-center gap-2 pt-8 text-sm font-medium text-stone-300 group-hover:text-white">
-                  View context
-                  <ArrowRight aria-hidden="true" size={15} />
-                </span>
+          <div className="artifact-grid">
+            {selectedWork.map((work, index) => (
+              <Link href={work.href} key={work.title} className="artifact-card">
+                <ArtifactVisual index={index} link />
+                <div className="artifact-caption">
+                  <h3>{work.title}</h3>
+                  <p>
+                    {
+                      [
+                        "Autonomous retail",
+                        "AI infrastructure",
+                        "Connected hardware",
+                      ][index]
+                    }
+                  </p>
+                </div>
               </Link>
             ))}
           </div>
         </Container>
       </section>
-
-      <section className="py-24 sm:py-32">
-        <Container className="grid gap-14 lg:grid-cols-[0.6fr_1.4fr]">
-          <div>
-            <p className="eyebrow">Physical AI · Correlations</p>
-            <h2 className="mt-4 text-4xl font-semibold tracking-[-0.035em] text-stone-100">
-              Systems, and the forces around them.
-            </h2>
-            <p className="mt-5 max-w-md leading-7 text-stone-400">
-              Writing on perception, inference, and autonomy—plus correlations
-              across compute, energy, infrastructure, and model shifts.
-            </p>
-            <Link href="/writing" className="text-link mt-8">
-              Browse the writing
-              <ArrowRight aria-hidden="true" size={15} />
+      <section
+        className="observatory-section field-notes"
+        aria-labelledby="notes-title"
+      >
+        <Container className="notes-grid">
+          <div className="section-heading">
+            <h2 id="notes-title">Writing.</h2>
+            <Link href="/writing" className="observatory-link">
+              All writing <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
           </div>
-          <div className="divide-y divide-white/10 border-y border-white/10">
+          <div className="note-list">
             {latestPosts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group grid gap-3 py-7 sm:grid-cols-[1fr_auto] sm:items-center"
+                className="note-row"
               >
-                <div lang={post.language}>
-                  <p className="mb-2 text-xs uppercase tracking-[0.14em] text-stone-600">
-                    {post.series === "physical-ai" ? "Physical AI" : "Correlations"}
-                  </p>
-                  <h3 className="text-xl font-medium text-stone-200 transition-colors group-hover:text-white">
-                    {post.title}
-                  </h3>
-                  {post.description && (
-                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-stone-500">
-                      {post.description}
-                    </p>
-                  )}
-                </div>
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="text-stone-600 transition-colors group-hover:text-stone-200"
-                  size={18}
-                />
+                <h3 lang={post.language}>{post.title}</h3>
+                <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
             ))}
           </div>
         </Container>
       </section>
-
-      <section className="border-t border-white/10 py-24 sm:py-32">
-        <Container>
-          <div className="surface grid gap-10 p-8 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div>
-              <p className="eyebrow">Conversation</p>
-              <h2 className="mt-5 max-w-3xl text-4xl font-semibold tracking-[-0.035em] text-stone-100 sm:text-5xl">
-                Building an AI system that has to work in the real world?
-              </h2>
-              <p className="mt-5 max-w-2xl leading-7 text-stone-400">
-                Share the context, the constraint, and the decision you need to
-                make. I&apos;ll tell you if my experience is relevant.
-              </p>
-            </div>
-            <Link href="/contact" className="button">
-              Get in touch
-              <ArrowRight aria-hidden="true" size={16} />
-            </Link>
-          </div>
-        </Container>
-      </section>
-    </>
+    </div>
   );
 }

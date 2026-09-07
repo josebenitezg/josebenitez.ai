@@ -1,34 +1,40 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import Container from "@/components/Container";
+import SiteIndex from "@/components/SiteIndex";
 import { siteConfig } from "@/lib/site";
-
-const footerLinks = [
-  { label: "LinkedIn", href: siteConfig.links.linkedin },
-  { label: "GitHub", href: siteConfig.links.github },
-  { label: "X", href: siteConfig.links.x },
-];
-
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 py-10">
-      <Container className="flex flex-col gap-7 text-sm text-stone-400 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="font-medium text-stone-200">José Benítez</p>
-          <p className="mt-1">Physical AI and its correlations.</p>
-        </div>
-        <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-5 gap-y-3">
-          {footerLinks.map((link) => (
+    <footer className="site-footer">
+      <Container className="quiet-footer">
+        <Link href="/contact" className="observatory-link">
+          Say hello
+          <ArrowUpRight size={15} aria-hidden="true" />
+        </Link>
+        <div className="footer-options">
+          <details className="footer-index">
+            <summary>Explore</summary>
+            <SiteIndex />
+          </details>
+          <nav aria-label="Footer navigation">
             <a
-              key={link.label}
-              href={link.href}
+              href={siteConfig.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${link.label} profile (opens in a new tab)`}
-              className="transition-colors hover:text-stone-100"
+              aria-label="LinkedIn profile (opens in a new tab)"
             >
-              {link.label}
+              LinkedIn
             </a>
-          ))}
-        </nav>
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile (opens in a new tab)"
+            >
+              GitHub
+            </a>
+          </nav>
+        </div>
       </Container>
     </footer>
   );

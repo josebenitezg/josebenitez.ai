@@ -1,0 +1,314 @@
+/* A quiet, warm material palette. The canvas is an enhancement; the page is HTML. */
+.observatory-home {
+  color: var(--observatory-ink);
+  background: #11120f;
+}
+.observatory-home h1,
+.observatory-home h2,
+.observatory-home h3 {
+  font-family: var(--font-display), var(--font-serif);
+  font-weight: 400;
+}
+.observatory-home em {
+  font-weight: 400;
+  color: #b8aa92;
+}
+.observatory-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--observatory-muted);
+}
+.observatory-arrival {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 76% 42%, #8071530c, transparent 55%);
+}
+.arrival-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.04fr;
+  align-items: center;
+  column-gap: 30px;
+  min-height: calc(92svh - 76px);
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+.arrival-copy {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+}
+.arrival-copy h1 {
+  font-size: clamp(68px, 6.6vw, 98px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  margin: 0 0 28px;
+}
+.arrival-description {
+  color: var(--observatory-muted);
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 320px;
+}
+.observatory-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 44px;
+  font-size: 12px;
+  color: var(--observatory-ink);
+  text-decoration: underline;
+  text-decoration-color: #e9e2d544;
+  text-underline-offset: 7px;
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease;
+}
+.observatory-link:hover {
+  color: white;
+  text-decoration-color: #e9e2d5;
+}
+.arrival-link {
+  margin-top: 24px;
+}
+.observatory-object {
+  min-width: 0;
+  margin: 0;
+}
+.object-stage {
+  position: relative;
+  height: 450px;
+  touch-action: pan-y;
+}
+.object-stage canvas,
+.object-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.object-fallback {
+  color: #c3a275;
+}
+.object-fallback svg {
+  height: 100%;
+  width: 100%;
+}
+.object-axis {
+  position: absolute;
+  color: #7d7769;
+  font: 12px monospace;
+}
+.axis-top {
+  top: 25px;
+  left: 50%;
+}
+.axis-bottom {
+  bottom: 25px;
+  left: 50%;
+}
+.object-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+.object-controls button {
+  min-height: 44px;
+  font-size: 10px;
+  color: var(--observatory-muted);
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 44px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+}
+.object-controls button[aria-pressed="true"] {
+  color: #e9e2d5;
+  background: #ded0b80b;
+  border-color: #c3a27555;
+}
+.object-controls .motion-toggle {
+  margin-left: 8px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--observatory-line);
+  border-color: transparent;
+}
+.object-controls button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.observatory-section {
+  padding: 104px 0;
+  border-top: 1px solid var(--observatory-line);
+  scroll-margin-top: 64px;
+}
+.section-heading h2 {
+  font-size: clamp(40px, 4.3vw, 58px);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  margin-top: 0;
+}
+.artifact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 48px;
+}
+.artifact-visual {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1.4;
+  border: 1px solid var(--observatory-line);
+  background: #171914;
+  color: #a3b39b;
+}
+.artifact-visual-1 {
+  background: #1a1915;
+  color: #c7ad81;
+}
+.artifact-visual-2 {
+  background: #191817;
+  color: #b4a19b;
+}
+.artifact-visual svg:not(.artifact-arrow) {
+  width: 100%;
+  height: 100%;
+  padding: 12px 0;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.artifact-arrow {
+  position: absolute;
+  right: 15px;
+  bottom: 14px;
+  color: #a69e91;
+}
+.artifact-caption {
+  margin-top: 23px;
+}
+.artifact-caption h3 {
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+.artifact-caption p {
+  margin-top: 5px;
+  color: var(--observatory-muted);
+  font-size: 10px;
+}
+.notes-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 90px;
+}
+.field-notes .observatory-link {
+  margin-top: 25px;
+}
+.note-row {
+  display: grid;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--observatory-line);
+  grid-template-columns: 1fr 18px;
+  gap: 28px;
+}
+.note-row:first-child {
+  padding-top: 0;
+}
+.note-row > svg {
+  margin-top: 5px;
+  color: #a69e91;
+  flex-shrink: 0;
+}
+.note-row h3 {
+  font-size: 27px;
+  line-height: 1.2;
+  transition: color 180ms ease;
+  margin: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .artifact-card:hover .artifact-visual svg:not(.artifact-arrow) {
+    transform: translateY(-4px) rotate(-3deg);
+  }
+  .object-controls button:not(:disabled):hover {
+    color: #f6efe3;
+    background: #ded0b812;
+  }
+  .note-row:hover h3 {
+    color: #d4b888;
+  }
+}
+@media (max-width: 1023px) {
+  .arrival-grid {
+    column-gap: 8px;
+  }
+  .arrival-copy h1 {
+    font-size: clamp(62px, 8vw, 82px);
+  }
+  .object-stage {
+    height: 350px;
+  }
+  .notes-grid {
+    gap: 40px;
+  }
+}
+@media (max-width: 700px) {
+  .arrival-grid {
+    grid-template-columns: 1fr;
+  }
+  .arrival-copy h1 {
+    font-size: clamp(62px, 12.5vw, 85px);
+  }
+  .arrival-link {
+    margin-top: 17px;
+  }
+  .object-stage {
+    height: min(95vw, 400px);
+  }
+  .observatory-section {
+    padding: 65px 0;
+  }
+  .artifact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 32px;
+  }
+  .artifact-visual {
+    aspect-ratio: 1.6;
+  }
+  .notes-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .note-row h3 {
+    font-size: 25px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .observatory-home *,
+  .observatory-home *::before {
+    transition: none !important;
+  }
+  .artifact-card:hover .artifact-visual svg:not(.artifact-arrow) {
+    transform: none;
+  }
+}
+@media (max-width: 767px) {
+  .arrival-grid {
+    min-height: auto;
+    padding-top: 55px;
+    padding-bottom: 55px;
+  }
+  .observatory-object {
+    margin-top: 32px;
+  }
+}
