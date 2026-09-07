@@ -243,9 +243,67 @@
   margin-top: 4px;
   color: var(--observatory-accent);
 }
-/* Short introductions, with supporting detail available on request. */
-.body-notes > p + p {
-  margin-top: 23px;
+/* A quiet chronology: dates, company, role. */
+.career-timeline {
+  max-width: 720px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.career-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 28px;
+  padding: 0 0 32px 28px;
+}
+.career-entry::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  border: 1px solid var(--observatory-muted);
+  border-radius: 50%;
+  background: #11120f;
+  z-index: 1;
+}
+.career-entry:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 15px;
+  bottom: -10px;
+  width: 1px;
+  background: var(--observatory-line);
+}
+.career-entry[data-current]::before {
+  background: var(--observatory-accent);
+  border-color: var(--observatory-accent);
+}
+.career-period {
+  padding-top: 5px;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--observatory-muted);
+  white-space: nowrap;
+}
+.career-entry h2 {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.15;
+  color: var(--observatory-ink);
+}
+.career-entry p {
+  margin-top: 5px;
+}
+.about-quiet .career-entry p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.career-profile {
+  margin-left: 166px;
 }
 .public-record {
   display: flex;
@@ -432,9 +490,6 @@ html[data-navigation-input="keyboard"] .room-arrival {
   font-size: 32px;
   line-height: 1.2;
   margin: 0;
-}
-.about-quiet .body-notes {
-  max-width: 600px;
 }
 .public-details {
   max-width: 600px;
@@ -626,6 +681,21 @@ summary:focus-visible {
   .room-content {
     padding-top: 42px;
     padding-bottom: 55px;
+  }
+  .career-entry {
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 14px;
+    padding-left: 20px;
+    padding-bottom: 28px;
+  }
+  .career-entry h2 {
+    font-size: 25px;
+  }
+  .career-period {
+    font-size: 10px;
+  }
+  .career-profile {
+    margin-left: 110px;
   }
   .work-entry {
     grid-template-columns: 1fr;

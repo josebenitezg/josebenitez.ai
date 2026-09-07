@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { ArrowUpRight } from "lucide-react";
 import Container from "@/components/Container";
+import CareerTimeline from "@/components/CareerTimeline";
 import NextRoom from "@/components/NextRoom";
 import PageIntro from "@/components/PageIntro";
-import { featuredLinks } from "@/lib/site";
+import { featuredLinks, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "José Benítez is an electrical engineer, Physical AI operator, and Founder & Chief AI Officer at Intuitivo.",
+    "José Benítez is an electrical engineer and Founder & Chief Product Officer at Intuitivo. His work spans industrial systems, digital manufacturing, and Physical AI.",
   alternates: {
     canonical: "/about",
   },
@@ -35,21 +36,21 @@ export default function AboutPage() {
             <em>Founder.</em>
           </>
         }
-        description="I’m José Benítez, Founder & Chief AI Officer at Intuitivo."
+        description="Building physical AI. Based in San Francisco."
         study={2}
       />
       <Container className="room-content about-quiet">
-        <div className="body-notes">
-          <p>
-            I build systems that see and act in the physical world. At
-            Intuitivo, that means computer vision and AI infrastructure for
-            autonomous retail.
-          </p>
-          <p>
-            Before that, I founded Aratiri, working with digital manufacturing
-            and connected hardware. I’m based in San Francisco.
-          </p>
-        </div>
+        <CareerTimeline />
+        <a
+          href={siteConfig.links.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="observatory-link career-profile"
+          aria-label="More on LinkedIn (opens in a new tab)"
+        >
+          More on LinkedIn
+          <ArrowUpRight aria-hidden="true" size={15} />
+        </a>
         <details className="public-details">
           <summary>Talks & collaborations</summary>
           <div className="public-record">
