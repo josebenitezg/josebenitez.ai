@@ -25,7 +25,9 @@ export default function Navbar() {
     pathname === path || pathname.startsWith(`${path}/`);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#090909]/90 backdrop-blur-xl">
+    <header
+      className={`sticky top-0 z-50 border-b border-white/10 backdrop-blur-xl ${pathname === "/" ? "bg-[#11120f]/95" : "bg-[#090909]/90"}`}
+    >
       <Container className="relative flex h-16 items-center justify-between">
         <Link
           href="/"
@@ -34,7 +36,10 @@ export default function Navbar() {
           José Benítez
         </Link>
 
-        <nav aria-label="Primary navigation" className="hidden items-center gap-1 md:flex">
+        <nav
+          aria-label="Primary navigation"
+          className="hidden items-center gap-1 md:flex"
+        >
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.path}
@@ -62,7 +67,11 @@ export default function Navbar() {
           aria-expanded={isOpen}
           aria-controls="mobile-navigation"
         >
-          {isOpen ? <X aria-hidden="true" size={19} /> : <Menu aria-hidden="true" size={19} />}
+          {isOpen ? (
+            <X aria-hidden="true" size={19} />
+          ) : (
+            <Menu aria-hidden="true" size={19} />
+          )}
         </button>
 
         {isOpen && (
