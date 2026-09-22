@@ -12,6 +12,11 @@ export const metadata: Metadata = {
 };
 
 const talks = [
+  {
+    label: "Embedded Vision Summit — Vision AI in retail, from lab to 2,000 checkouts",
+    href: featuredLinks.embeddedVision,
+    meta: "2026",
+  },
   { label: "AWS Machine Learning collaboration", href: featuredLinks.aws },
   { label: "YoloVision conference", href: featuredLinks.yoloVision },
   { label: "Conversation with OpenCV CEO Satya Mallick", href: featuredLinks.openCv },
