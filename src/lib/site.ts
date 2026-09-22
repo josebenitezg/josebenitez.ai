@@ -14,6 +14,8 @@ export const siteConfig = {
 } as const;
 
 export const featuredLinks = {
+  embeddedVision:
+    "https://www.edge-ai-vision.com/2026/09/vision-ai-in-retail-from-lab-to-2000-autonomous-checkout-points-of-sale-a-presentation-from-intuitivo/",
   aws: "https://aws.amazon.com/blogs/machine-learning/intuitivo-achieves-higher-throughput-while-saving-on-ai-ml-costs-using-aws-inferentia-and-pytorch/",
   yoloVision:
     "https://www.youtube.com/live/xWZ9mW7Z4Tc?si=e9eTO6KDl4xBdAHA&t=21551",
