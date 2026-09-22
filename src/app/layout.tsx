@@ -1,30 +1,12 @@
 import "./globals.css";
-import "./observatory.css";
-import "./rooms.css";
 import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import { Analytics } from "@vercel/analytics/next";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { siteConfig } from "@/lib/site";
-
-const instrumentSerif = localFont({
-  src: [
-    {
-      path: "./fonts/InstrumentSerif-Regular.woff2",
-      style: "normal",
-      weight: "400",
-    },
-    {
-      path: "./fonts/InstrumentSerif-Italic.woff2",
-      style: "italic",
-      weight: "400",
-    },
-  ],
-  variable: "--font-display",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -70,15 +52,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={instrumentSerif.variable}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
-        <a
-          href="#main-content"
-          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-stone-100 px-4 py-2 text-sm font-medium text-stone-950 transition-transform focus:translate-y-0"
-        >
+        <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <div className="flex min-h-screen flex-col">
+        <div className="page flex min-h-screen flex-col">
           <Navbar />
           <main id="main-content" className="flex-1" tabIndex={-1}>
             {children}

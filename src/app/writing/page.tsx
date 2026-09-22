@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import Container from "@/components/Container";
-import PageIntro from "@/components/PageIntro";
-import NextRoom from "@/components/NextRoom";
-import WritingIndex from "@/components/WritingIndex";
+import PostList from "@/components/PostList";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -19,11 +16,10 @@ export default async function WritingPage() {
 
   return (
     <>
-      <PageIntro title="Writing." study={1} />
-      <Container className="room-content">
-        <WritingIndex posts={posts} />
-      </Container>
-      <NextRoom href="/about" title="About me" />
+      <h1 className="title">Writing</h1>
+      <div className="section !mt-12">
+        <PostList posts={posts} />
+      </div>
     </>
   );
 }

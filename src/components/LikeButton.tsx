@@ -80,25 +80,20 @@ export default function LikeButton({ slug }: LikeButtonProps) {
   }
 
   return (
-    <div className="reading-response">
-      <button
-        type="button"
-        onClick={handleLike}
-        disabled={isLoading}
-        className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-stone-400 transition-colors hover:border-white/20 hover:text-stone-100 disabled:cursor-not-allowed disabled:opacity-50"
-        aria-label={hasLiked ? "Remove like from post" : "Like this post"}
-        aria-pressed={hasLiked}
-      >
-        <Heart
-          aria-hidden="true"
-          size={17}
-          className={hasLiked ? "fill-red-400 text-red-400" : ""}
-        />
-        <span>{hasLiked ? "Liked" : "Like"}</span>
-        <span aria-label={`${likes} likes`} className="text-stone-400">
-          {likes}
-        </span>
-      </button>
-    </div>
+    <button
+      type="button"
+      onClick={handleLike}
+      disabled={isLoading}
+      className="like-button"
+      aria-label={hasLiked ? "Remove like from post" : "Like this post"}
+      aria-pressed={hasLiked}
+    >
+      <Heart
+        aria-hidden="true"
+        size={15}
+        className={hasLiked ? "fill-current" : ""}
+      />
+      <span aria-label={`${likes} likes`}>{likes}</span>
+    </button>
   );
 }

@@ -11,16 +11,16 @@ export default function Icon() {
     (
       <div
         style={{
-          fontSize: 24,
-          background: "#090909",
+          fontSize: 18,
+          background: "#000",
           width: "100%",
           height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "#f5f5f4",
-          fontFamily: "serif",
-          fontWeight: 700,
+          color: "#ededed",
+          fontFamily: "sans-serif",
+          fontWeight: 600, letterSpacing: "-0.06em",
         }}
       >
         JB
