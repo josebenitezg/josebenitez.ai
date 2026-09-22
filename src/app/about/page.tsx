@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRight } from "lucide-react";
-import Container from "@/components/Container";
-import CareerTimeline from "@/components/CareerTimeline";
-import NextRoom from "@/components/NextRoom";
-import PageIntro from "@/components/PageIntro";
+import { experience } from "@/lib/experience";
 import { featuredLinks, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -15,61 +11,75 @@ export const metadata: Metadata = {
   },
 };
 
-const publicLinks = [
+const talks = [
   { label: "AWS Machine Learning collaboration", href: featuredLinks.aws },
   { label: "YoloVision conference", href: featuredLinks.yoloVision },
-  {
-    label: "Conversation with OpenCV CEO Satya Mallick",
-    href: featuredLinks.openCv,
-  },
-  { label: "MIT Innovator Under 35 · 2022", href: featuredLinks.mit },
+  { label: "Conversation with OpenCV CEO Satya Mallick", href: featuredLinks.openCv },
+  { label: "MIT Innovator Under 35", href: featuredLinks.mit, meta: "2022" },
 ];
+
+function period(start: string, end: string | null) {
+  const from = start.slice(0, 4);
+  if (end === null) return `${from} — now`;
+  const to = end.slice(0, 4);
+  return from === to ? from : `${from} — ${to}`;
+}
 
 export default function AboutPage() {
   return (
     <>
-      <PageIntro
-        title={
-          <>
-            Engineer.
-            <br />
-            <em>Founder.</em>
-          </>
-        }
-        description="Building physical AI. Based in San Francisco."
-        study={2}
-      />
-      <Container className="room-content about-quiet">
-        <CareerTimeline />
-        <a
-          href={siteConfig.links.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="observatory-link career-profile"
-          aria-label="More on LinkedIn (opens in a new tab)"
-        >
-          More on LinkedIn
-          <ArrowUpRight aria-hidden="true" size={15} />
+      <h1 className="title">About</h1>
+      <p className="lede">
+        Electrical engineer and founder, building physical AI in San Francisco.
+        I started in industrial maintenance, moved through 3D printing and
+        connected hardware, and now lead product at Intuitivo.
+      </p>
+      <p className="lede">
+        I help founders and teams working on perception, edge and cloud
+        inference, and system evaluation.{" "}
+        <a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer">
+          Say hello on LinkedIn
         </a>
-        <details className="public-details">
-          <summary>Talks & collaborations</summary>
-          <div className="public-record">
-            {publicLinks.map((link) => (
+        .
+      </p>
+
+      <section className="section" aria-labelledby="experience-title">
+        <h2 id="experience-title" className="section-title">
+          Experience
+        </h2>
+        <ol className="list">
+          {experience.map((entry) => (
+            <li key={`${entry.company}-${entry.start}`} className="row">
+              <span className="row-title">
+                {entry.company}
+                <span className="text-[var(--muted)]"> · {entry.role}</span>
+              </span>
+              <span className="row-meta">{period(entry.start, entry.end)}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="section" aria-labelledby="talks-title">
+        <h2 id="talks-title" className="section-title">
+          Talks &amp; recognition
+        </h2>
+        <ul className="list">
+          {talks.map((talk) => (
+            <li key={talk.label}>
               <a
-                key={link.label}
-                href={link.href}
+                href={talk.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="observatory-link"
+                className="row"
               >
-                {link.label}
-                <ArrowUpRight aria-hidden="true" size={15} />
+                <span className="row-title">{talk.label}</span>
+                <span className="row-meta">{talk.meta ?? "↗"}</span>
               </a>
-            ))}
-          </div>
-        </details>
-      </Container>
-      <NextRoom href="/capabilities" title="How I can help" />
+            </li>
+          ))}
+        </ul>
+      </section>
     </>
   );
 }
