@@ -5,7 +5,7 @@ import { featuredLinks, siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "José Benítez is an electrical engineer and Founder & Chief Product Officer at Intuitivo. His work spans industrial systems, digital manufacturing, and Physical AI.",
+    "José Benítez is an electrical engineer and Founder & Chief Technology Officer at Intuitivo. His work spans industrial systems, digital manufacturing, and Physical AI.",
   alternates: {
     canonical: "/about",
   },
@@ -37,7 +37,7 @@ export default function AboutPage() {
       <p className="lede">
         Electrical engineer and founder, building physical AI in San Francisco.
         I started in industrial maintenance, moved through 3D printing and
-        connected hardware, and now lead product at Intuitivo.
+        connected hardware, and now lead technology at Intuitivo as CTO.
       </p>
       <p className="lede">
         I help founders and teams working on perception, edge and cloud
@@ -54,7 +54,7 @@ export default function AboutPage() {
         </h2>
         <ol className="list">
           {experience.map((entry) => (
-            <li key={`${entry.company}-${entry.start}`} className="row">
+            <li key={`${entry.company}-${entry.role}-${entry.start}`} className="row">
               <span className="row-title">
                 {entry.company}
                 <span className="text-[var(--muted)]"> · {entry.role}</span>

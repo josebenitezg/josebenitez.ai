@@ -1,4 +1,5 @@
-// Dates and roles checked against LinkedIn on 2026-09-07:
+// Current CTO role confirmed directly by José on 2026-09-29.
+// Earlier dates and roles checked against LinkedIn on 2026-09-07:
 // https://www.linkedin.com/in/josebenitezg/details/experience/
 // The experience section still lists CAIO as current. José's own announcement
 // confirms the move to CPO in 2026; it does not specify an exact start date:
@@ -6,9 +7,15 @@
 export const experience = [
   {
     company: "Intuitivo",
-    role: "Founder & Chief Product Officer",
+    role: "Founder & Chief Technology Officer",
     start: "2026",
     end: null,
+  },
+  {
+    company: "Intuitivo",
+    role: "Founder & Chief Product Officer",
+    start: "2026",
+    end: "2026",
   },
   {
     company: "Intuitivo",
