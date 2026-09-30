@@ -16,7 +16,7 @@ export default async function Home() {
     <>
       <h1 className="title">I build AI for the physical world.</h1>
       <p className="lede">
-        Founder &amp; Chief Product Officer at Intuitivo. Electrical engineer,
+        Founder &amp; Chief Technology Officer at Intuitivo. Electrical engineer,
         based in San Francisco.
       </p>
 
